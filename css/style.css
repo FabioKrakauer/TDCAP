@@ -1,0 +1,38 @@
+.btn-primary {
+    background-color: #427DB6 !important;
+}
+.bg-primary {
+    background-color: #427DB6 !important;
+}
+.right {
+    height: 100vh;
+}
+.title{
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 13pt;
+}
+p{
+    font-family: 'Lato', sans-serif !important;
+}
+.nav-item{
+    list-style-type: none;
+    font-size: 16pt;
+}
+.nav-item:hover{
+    background-color: #194684;
+
+}
+.navigation:hover {
+    text-decoration: none;
+}
+.active{
+    background-color: #194684;
+}
+@media(max-width: 576px){
+    .right {
+        height: 200px;
+    }
+}
+@media(min-width: 768px){
+}
