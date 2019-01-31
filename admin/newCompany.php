@@ -18,7 +18,7 @@
             <p class="text-white text-white text-center font-size-14 mt-4 ml-2">Transformando Conhecimento em ação e ação em resultado</p>
         </div>
         <div class="nav mt-5">
-            <ul class="col-12">
+            <ul class="col-12 no-padding">
                 <li class="nav-item text-center active">
                     <a href="/admin/newCompany.php" class="text-white navigation">ADICIONAR EMPRESA</a>
                 </li>
@@ -48,6 +48,39 @@
           <div class="title d-flex align-items-center">
               <h1 class="text-white font-size-20 ml-5">Adicionar Empresa</h1>
           </div>
+          <form action="../controller/newCompany.php" method="post">
+                <div class="row justify-content-center">
+                    <div class="form-group col-11">
+                        <label for="name">Nome:</label>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Nome da empresa">
+                    </div>
+                    <div class="form-group col-11">
+                        <label for="cnpj">CNPJ:</label>
+                        <input type="text" name="cnpj" id="cnpj" class="form-control" placeholder="CNPJ da empresa">
+                    </div>
+                    <div class="form-group col-11">
+                        <label for="adress">Endereço:</label>
+                        <input type="text" name="adress" id="adress" class="form-control" placeholder="Endereço da empresa">
+                    </div>
+                    <div class="form-group col-11">
+                        <label for="telephone">Telefone:</label>
+                        <input type="text" name="telephone" id="telephone" class="form-control" placeholder="Telefone da empresa">
+                    </div>
+                    <div class="form-group col-11">
+                        <label for="site">Site:</label>
+                        <input type="text" name="site" id="site" class="form-control" placeholder="Site da empresa">
+                    </div>
+                    <div class="form-group col-11">
+                        <label for="contact">Contato do responsável:</label>
+                        <input type="text" name="contact" id="contact" class="form-control" placeholder="Contato do responsável">
+                    </div>
+                    <div class="form-group col-11">
+                        <label for="email">E-mail:</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="E-mail do responsável">
+                    </div>          
+                </div>
+                <input type="submit" name="action" class="btn btn-primary ml-5" value="Salvar">
+          </form>
       </div>
       </div>
     <!-- Optional JavaScript -->
