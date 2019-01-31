@@ -34,4 +34,23 @@ class DataBase{
             die();
         }
     }
+    function query($sql){
+        return $this->connection->query($sql);
+    }
+    function getFieldsValues($sql){
+        $sel = $this->query($sql);
+        $fields = [];
+        while($row = $sel->fetch()){
+            array_push($fields, $row);
+        }
+        return $fields;
+    }
+    function getConnection(){
+        return $this->connection;
+    }
+    function getLastInsertedID($query){
+        $stm = $this->connection->prepare($query);
+        $stm->execute();
+        return $this->conn->lastInsertId();
+    }
 }
