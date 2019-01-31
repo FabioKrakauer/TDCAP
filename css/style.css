@@ -8,9 +8,8 @@
     height: 100vh;
 }
 .title{
-    color: white;
-    font-family: 'Lato', sans-serif;
-    font-size: 13pt;
+    background-color: #194684;
+    height: 45px;
 }
 p{
     font-family: 'Lato', sans-serif !important;
@@ -29,9 +28,27 @@ p{
 .active{
     background-color: #194684;
 }
+.font-size-14{
+    font-size: 14pt;
+}
+.font-size-15{
+    font-size: 15pt;
+}
+.font-size-16{
+    font-size: 16pt;
+}
+.font-size-18{
+    font-size: 18pt;
+}
+.font-size-20{
+    font-size: 20pt;
+}
+.right{
+    padding: 0;
+}
 @media(max-width: 576px){
     .right {
-        height: 200px;
+        height: 430px;
     }
 }
 @media(min-width: 768px){

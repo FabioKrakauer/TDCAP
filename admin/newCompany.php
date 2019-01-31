@@ -15,7 +15,7 @@
           <div class="right bg-primary col-12 col-sm-5">
         <div class="logo d-flex justify-content-center text-justify">
             <img src="../img/logo.gif" alt="Logo" class="mt-4 ml-4">
-            <p class="text-white text-white text-center title mt-4 ml-2">Transformando Conhecimento em ação e ação em resultado</p>
+            <p class="text-white text-white text-center font-size-14 mt-4 ml-2">Transformando Conhecimento em ação e ação em resultado</p>
         </div>
         <div class="nav mt-5">
             <ul class="col-12">
@@ -44,7 +44,10 @@
         </div>
       </div>
       <div class="right col-12 col-sm-7">
-          <p class="text-primary text-right">Olá, Alberto</p>
+          <p class="text-primary text-right mr-5 font-size-16">Olá, Alberto Perazzo</p>
+          <div class="title d-flex align-items-center">
+              <h1 class="text-white font-size-20 ml-5">Adicionar Empresa</h1>
+          </div>
       </div>
       </div>
     <!-- Optional JavaScript -->
