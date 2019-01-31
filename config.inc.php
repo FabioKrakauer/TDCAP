@@ -1,10 +1,10 @@
 <?php
 
 //Configurações do banco de dados!
-$host     = "localhost";
+$host = "localhost";
 $dbname = "tdccap_prework";
 $username = "root";
-$password   = "";
+$password = "";
 $port = 3306;
 
 //Definição dos nomes para acesso
@@ -14,3 +14,5 @@ define("APP_URL", "localhost/TDCAP");
 
 ini_set("upload_max_filesize", "100M");
 
+require_once 'classes/Database.class.php';
+$database = new DataBase();
