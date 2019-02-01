@@ -2,7 +2,7 @@
 
 //Configurações do banco de dados!
 $host = "localhost";
-$dbname = "tdccap_prework";
+$dbname = "tdc";
 $username = "root";
 $password = "";
 $port = 3306;
