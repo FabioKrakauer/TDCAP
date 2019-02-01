@@ -25,9 +25,9 @@ class DataBase{
         $this->password = $password;
         $this->port = $port;
         $dsn = 'mysql:host='.$this->host.';dbname='.$this->database;
-        $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'); 
         try{
             $this->connection = new PDO($dsn, $this->user, $this->password);
+            $this->connection->exec("set names utf8");
         }catch(PDOException $e){
             echo '<h1>Erro ao conectar a um banco de dados!</h3>';
             echo 'Contate um administrador!';

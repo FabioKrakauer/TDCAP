@@ -5,6 +5,7 @@
 <?php
     $dir = realpath(__DIR__ . '/..');
     require_once $dir.'/config.inc.php';
+    require_once 'User.class.php';
     if(!isset($_SESSION)){
         session_start();
     }
@@ -62,7 +63,7 @@
             $arr = json_decode($_SESSION["auth"], true);
             $email = utf8_decode($arr["email"]);
             $password = utf8_decode($arr["password"]);
-            return new User(Auth::validate($name, $password));
+            return new User(Auth::validate($email, $password));
         }
         public static function logout(){
             setcookie('auth', '', time()-3600, '/');
@@ -74,7 +75,6 @@
             $day = date("Y-m-d H:i:s", time());
             $id = Auth::user()->getID();
             $query = "INSERT INTO `admin_log` (`id`, `user_id`, `action`, `datestamp`) VALUES (NULL, '$id', '$message', '$day')";
-            $db = new APIDB();
             $db->query($query);
         }
     }
