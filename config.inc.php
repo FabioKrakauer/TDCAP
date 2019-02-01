@@ -12,7 +12,9 @@ define("APP_ROOT", dirname(__FILE__));
 define("APP_NAME", "TDC");
 define("APP_URL", "localhost/TDCAP");
 
+//Tamanho maximo para upload de arquivos
 ini_set("upload_max_filesize", "100M");
 
+//Defini banco de dados
 require_once 'classes/Database.class.php';
 $database = new DataBase();
