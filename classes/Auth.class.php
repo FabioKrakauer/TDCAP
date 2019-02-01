@@ -4,23 +4,21 @@
 ?>
 <?php
     $dir = realpath(__DIR__ . '/..');
-    require_once $dir.'/config/config.php';
-    require_once APP_ROOT . '/classes/APIDB.class.php';
-    require_once APP_ROOT . "/classes/User.class.php";
+    require_once $dir.'/config.inc.php';
     if(!isset($_SESSION)){
         session_start();
     }
     
     class Auth{
-        public static function isLogged($redirect = false, $nextUrl = "index.php"){
+        public static function isLogged($redirect = false){
             if(isset($_COOKIE["auth"]) && $_COOKIE["auth"] != "abc"){
                 if(!isset($_SESSION["auth"])){
                     $_SESSION["auth"] = $_COOKIE["auth"];
                 }
                 $jdecode = json_decode($_COOKIE["auth"], true);
-                $name = utf8_decode($jdecode["name"]);
+                $email = utf8_decode($jdecode["email"]);
                 $password = utf8_decode($jdecode["password"]);
-                $result = Auth::validate($name, $password);
+                $result = Auth::validate($email, $password);
                 if($result == -1){
                     if($redirect == true){
                         //HEADER EXCEPTION
@@ -43,14 +41,15 @@
             }
         
     }
-        public static function validate($username, $password){
-            $db = new APIDB();
+        public static function validate($email, $password){
+            global $database;
             $id = -1;
-            $select = $db->query("SELECT `id` FROM `admin` WHERE `name` = '$username' AND `password`='$password'");
+            $select = $database->query("SELECT `id`, `email`, `password`, `admin` FROM `user` WHERE `email`='$email' AND `password`='$password'");
             if($row = $select->fetch()){
                 $arr = [
-                    "name" => utf8_encode($username),
-                    "password" => utf8_encode($password)
+                    "email" => utf8_encode($row["email"]),
+                    "password" => utf8_encode($row["password"]),
+                    "admin" => utf8_encode($row["admin"])
                 ];
                 
                 $json = json_encode($arr);
@@ -61,7 +60,7 @@
         }
         public static function user(){
             $arr = json_decode($_SESSION["auth"], true);
-            $name = utf8_decode($arr["name"]);
+            $email = utf8_decode($arr["email"]);
             $password = utf8_decode($arr["password"]);
             return new User(Auth::validate($name, $password));
         }
