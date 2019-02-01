@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 01-Fev-2019 às 19:18
+-- Generation Time: 01-Fev-2019 às 19:34
 -- Versão do servidor: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -32,10 +32,30 @@ CREATE TABLE `user` (
   `id` int(10) NOT NULL,
   `name` varchar(55) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(32) NOT NULL,
   `company` int(5) NOT NULL,
+  `admin` tinyint(1) NOT NULL,
   `first_access` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
