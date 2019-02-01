@@ -45,6 +45,12 @@ class DataBase{
         }
         return $fields;
     }
+    function getFieldValue($sql){
+        $sel = $this->query($sql);
+        if($row = $sel->fetch()){
+            return $row;
+        }
+    }
     function getConnection(){
         return $this->connection;
     }
