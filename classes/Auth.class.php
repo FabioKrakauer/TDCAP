@@ -11,7 +11,10 @@
     }
     
     class Auth{
-        public static function isLogged($redirect = false){
+        public static function isLogged($redirect = false, $nextPage = 0){
+            // NEXT PAGE =
+            // 0 = USER LOGIN
+            // 1 = ADMIN LOGIN
             if(isset($_COOKIE["auth"]) && $_COOKIE["auth"] != "abc"){
                 if(!isset($_SESSION["auth"])){
                     $_SESSION["auth"] = $_COOKIE["auth"];
@@ -22,8 +25,13 @@
                 $result = Auth::validate($email, $password);
                 if($result == -1){
                     if($redirect == true){
-                        //HEADER EXCEPTION
-                        echo "<script>window.location='/estoque/pages/login.php'</script>";
+                        if($nextPage == 1){
+                            //HEADER EXCEPTION
+                            echo "<script>window.location='/".APP_NAME."/admin/pages/login.php'</script>";
+                        }else{
+                            //HEADER EXCEPTION
+                            echo "<script>window.location='/".APP_NAME."/pages/login.php'</script>";
+                        }
                         return false;
                     }else{
                         return false;
@@ -33,12 +41,15 @@
                 }
             }else{
                 if($redirect == true){
-                    //HEADER EXCEPTION
-                    echo "<script>window.location='/estoque/pages/login.php'</script>";
-                    return false;
-                }else{
-                    return false;
-                }    
+                    if($nextPage == 1){
+                        //HEADER EXCEPTION
+                        echo "<script>window.location='/".APP_NAME."/admin/pages/login.php'</script>";
+                    }else{
+                        //HEADER EXCEPTION
+                        echo "<script>window.location='/".APP_NAME."/pages/login.php'</script>";
+                    }
+                }
+                return false; 
             }
         
     }
