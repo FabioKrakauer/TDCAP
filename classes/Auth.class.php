@@ -71,10 +71,11 @@
             $_COOKIE["auth"] = null;
         }
         public static function log($message){
-            $db = new APIDB();
+            global $database;
+            $db = $database;
             $day = date("Y-m-d H:i:s", time());
             $id = Auth::user()->getID();
-            $query = "INSERT INTO `admin_log` (`id`, `user_id`, `action`, `datestamp`) VALUES (NULL, '$id', '$message', '$day')";
+            $query = "INSERT INTO `admin_log` (`id`, `admin_id`, `action`, `datestamp`) VALUES (NULL, '$id', '$message', '$day')";
             $db->query($query);
         }
     }
