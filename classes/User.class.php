@@ -2,6 +2,7 @@
 
 $dir = realpath(__DIR__ . '/..');
 require_once $dir.'/config.inc.php';
+require_once 'Course.class.php';
 
 class User{
 
@@ -25,9 +26,12 @@ class User{
         $this->company = $fields["company"];
         $this->admin = $fields["admin"];
         $this->first_access = $fields["first_access"];
-        
+        $this->courses = [];
+        $coursesFields = $database->getFieldsValues("SELECT `course_id` FROM `user_course` WHERE `user_id`='$id'");
+        foreach($coursesFields as $position=>$course){
+            array_push($this->courses, new Course($course["course_id"]));
+        }
     }
-
     function getID(){
         return $this->id;
     }
@@ -45,5 +49,8 @@ class User{
     }
     function getFirstAccess(){
         return $this->first_access;
+    }
+    function getCourses(){
+        return $this->courses;
     }
 }
