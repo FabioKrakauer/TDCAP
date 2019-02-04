@@ -3,6 +3,7 @@
 $dir = realpath(__DIR__ . '/..');
 require_once $dir.'/config.inc.php';
 require_once 'Course.class.php';
+require_once 'Company.class.php';
 
 class User{
 
@@ -23,7 +24,7 @@ class User{
         $this->name = $fields["name"];
         $this->email = $fields["email"];
         $this->password = $fields["password"];
-        $this->company = $fields["company"];
+        $this->company = new Company($fields["company"]);
         $this->admin = $fields["admin"];
         $this->first_access = $fields["first_access"];
         $this->courses = [];
