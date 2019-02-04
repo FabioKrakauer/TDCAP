@@ -17,7 +17,7 @@
                     "name" => utf8_encode($user->getName()),
                     "email" => utf8_encode($user->getEmail()),
                     "course" => array(),
-                    "company" => $user->getCompany(),
+                    "company" => $user->getCompany()->getID(),
                     "first_access" => $user->getFirstAccess(),
                 ];
                 foreach($user->getCourses() as $course){
@@ -44,6 +44,7 @@
                     $id = $course->getID();
                     array_push($result["course"], $id);
                 }
+                
             $json = json_encode($result, JSON_PRETTY_PRINT);
             header('Content-Type: application/json');
             echo $json;
