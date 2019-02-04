@@ -7,8 +7,14 @@ header{
 }
 
 #dynamic-content h1,
-.save{
+.save,
+main hr{
     background-color: #194684;
+}
+
+.hello{
+    background-color: #427DB6;
+    text-align: end;
 }
 
 @media (min-width: 992px){
