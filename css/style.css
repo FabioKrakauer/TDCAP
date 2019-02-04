@@ -1,61 +1,12 @@
-.btn-primary {
-    background-color: #427DB6 !important;
+header{
+    background-color: #427DB6;
 }
-.bg-primary {
-    background-color: #427DB6 !important;
-}
-.right {
-    height: 100vh;
-}
-.title{
-    background-color: #194684;
-    height: 45px;
-}
-p{
-    font-family: 'Lato', sans-serif !important;
-}
-label {
-    color: #427DB6;
-}
-.nav-item{
-    list-style-type: none;
-    font-size: 16pt;
-}
-.nav-item:hover{
-    background-color: #194684;
 
-}
-.no-padding{
-    padding: 0;
-}
-.navigation:hover {
-    text-decoration: none;
-}
-.active{
+.active-content{
     background-color: #194684;
 }
-.font-size-14{
-    font-size: 14pt;
-}
-.font-size-15{
-    font-size: 15pt;
-}
-.font-size-16{
-    font-size: 16pt;
-}
-.font-size-18{
-    font-size: 18pt;
-}
-.font-size-20{
-    font-size: 20pt;
-}
-.right{
-    padding: 0;
-}
-@media(max-width: 576px){
-    .right {
-        height: 430px;
-    }
-}
-@media(min-width: 768px){
+
+#dynamic-content h1,
+.save{
+    background-color: #194684;
 }
