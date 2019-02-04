@@ -22,8 +22,7 @@
             </div>
         </div>
         <nav>
-            <hr>
-            <ul class="text-center pb-3 mb-0" id="admin-list">
+            <ul class="text-center py-3 mb-0 border-top border-bottom border-secondary" id="admin-list">
                 <li class="py-1">Adicionar Empresa</li>
                 <li class="py-1">Empresas Cadastradas</li>
                 <li class="py-1">Adicionar Aluno</li>
@@ -33,12 +32,11 @@
                 <li class="py-1">Ver Relatório</li>
             </ul>
         </nav>
-        <hr>
     </header>
     
     <main>
         <div class="hello">
-            <h6 class="mr-4 py-2 mb-0 text-white">Olá, <span>Alberto Perazzo</span></h6>
+            <h6 class="mr-4 pb-2 pt-4 mb-0 text-white">Olá, <span>Alberto Perazzo</span></h6>
         </div>
         <div class="" id="dynamic-content">
             <h1 class="h3 text-white text-center py-1">TDC</h1>
