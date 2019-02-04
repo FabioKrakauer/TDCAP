@@ -10,3 +10,18 @@ header{
 .save{
     background-color: #194684;
 }
+
+@media (min-width: 992px){
+    body{
+        display: flex;
+    }
+    
+    header{
+        width: 40%;
+        height: 100vh;
+    }
+    
+    main{
+        width: 60%;
+    }
+}

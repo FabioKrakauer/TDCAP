@@ -7,7 +7,7 @@ $('#admin-list li').on('click', function() {
     let adicionarEmpresa = `
         <h1 class="h3 text-white text-center p-1 mb-4">${$(this).html()}</h1>
         <form action="../controller/newCompany.php" method="post">
-            <div class="container row">
+            <div class="container row mx-auto">
                 <div class="form-group col-12">
                     <label for="name">Nome:</label>
                     <input type="text" name="name" id="name" class="form-control" placeholder="Nome da empresa">
@@ -58,7 +58,7 @@ $('#admin-list li').on('click', function() {
     let adicionarAluno = `
         <h1 class="h3 text-white text-center p-1 mb-4">${$(this).html()}</h1>
         <form action="../controller/newStudent.php" method="post">
-            <div class="container row">
+            <div class="container row mx-auto">
                 <div class="form-group col-12">
                     <label for="name">Nome:</label>
                     <input type="text" name="name" id="name" class="form-control" placeholder="Nome do aluno">
@@ -97,7 +97,7 @@ $('#admin-list li').on('click', function() {
     let adicionarCursos = `
         <h1 class="h3 text-white text-center p-1 mb-4">${$(this).html()}</h1>
         <form action="../controller/newCourse.php" method="post">
-            <div class="container row">
+            <div class="container row mx-auto">
                 <div class="form-group col-12">
                     <label for="name">Nome:</label>
                     <input type="text" name="name" id="name" class="form-control" placeholder="Nome do curso">

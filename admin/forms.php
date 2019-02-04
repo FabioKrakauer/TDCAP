@@ -38,7 +38,7 @@
 
     <main>
         <div class="" id="dynamic-content">
-            <h1 class="h3 text-white text-center p-1">TDC</h1>
+            <h1 class="h3 text-white text-center">TDC</h1>
             <div id="form"></div>
         </div>
     </main>
