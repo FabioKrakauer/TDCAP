@@ -33,10 +33,10 @@ $user = Auth::user();
             <!-- LIST ALL USER COURSES -->
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title"><a href="/page/course.php?id=<?= $course->getID() ?>">Curso: <?= $course->getName() ?></a></h4>
+                    <h4 class="card-title"><a href="/page/course.php?id=<?= $course->getID() ?>?slide=inicial">Curso: <?= $course->getName() ?></a></h4>
                     <p class="card-text">Empresa: <?= $course->getCompany()->getName() ?></p>
                     <p class="card-text">Progresso: <?= "Em breve" ?></p>
-                    <a href="/page/course.php?id=<?= $course->getID() ?>" class="btn btn-primary">Abrir</a>
+                    <a href="/page/course.php?id=<?= $course->getID() ?>?slide=inicial" class="btn btn-primary">Abrir</a>
                 </div>
             </div>
 <?php   }
@@ -45,7 +45,7 @@ $user = Auth::user();
 
 
 
-    
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
