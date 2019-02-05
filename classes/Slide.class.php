@@ -25,4 +25,19 @@ class Slide{
         $this->slide_audio = $field["slide_audio"];
         $this->order = $field["orders"];
     }
+    function getID(){
+        return $this->id;
+    }
+    function getTitle(){
+        return $this->title;
+    }
+    function getSlideImage(){
+        return $this->slide_image;
+    }
+    function getSlideAudio(){
+        return $this->slide_audio;
+    }
+    function getOrder(){
+        return $this->order;
+    }
 }
