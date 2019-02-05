@@ -54,4 +54,7 @@ class User{
     function getCourses(){
         return $this->courses;
     }
+    function getCourse(){
+        return $this->courses;
+    }
 }
