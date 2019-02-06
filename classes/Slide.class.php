@@ -19,7 +19,7 @@ class Slide{
 
         $field = $database->getFieldValue("SELECT * FROM `slides` WHERE `id`='$id'");
         $this->id = $field["id"];
-        $this->course = new Course($field["course_id"]);
+        $this->course = $field["course_id"];
         $this->title = $field["title"];
         $this->slide_image = $field["slide_image"];
         $this->slide_audio = $field["slide_audio"];
@@ -30,6 +30,9 @@ class Slide{
     }
     function getTitle(){
         return $this->title;
+    }
+    function getCourse(){
+        return new Course($this->course);
     }
     function getSlideImage(){
         return $this->slide_image;
