@@ -4,12 +4,12 @@
 $host = "localhost";
 $dbname = "tdc";
 $username = "root";
-$password = "root";
-$port = 8889;
+$password = "";
+$port = 3306;
 
 //Definição dos nomes para acesso
 define("APP_ROOT", dirname(__FILE__));
-define("APP_NAME", "tdc");
+define("APP_NAME", "tdcap");
 define("APP_URL", "localhost/TDCAP");
 
 //Tamanho maximo para upload de arquivos
