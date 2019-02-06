@@ -22,11 +22,11 @@ header{
     }
     
     header{
-        width: 40%;
+        width: 35%;
         height: 100vh;
     }
     
     main{
-        width: 60%;
+        width: 65%;
     }
 }

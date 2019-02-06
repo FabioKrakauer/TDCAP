@@ -1,4 +1,12 @@
 $('#admin-list li').on('click', function() {
+
+    var json
+    $.getJSON('../api/company.php?company=0', function(data){
+        json = data;
+    })
+
+    console.log(json)
+
     $('#admin-list li').removeClass('active-content')
     $(this).addClass('active-content')
 
@@ -47,10 +55,10 @@ $('#admin-list li').on('click', function() {
         <h1 class="h3 text-white text-center p-1 mb-4">${$(this).html()}</h1>
         <div class="container">
             <ul class="container list-group list-group-flush">
-                <li class="list-group-item">Empresa 000</li>
-                <li class="list-group-item">Empresa abc</li>
-                <li class="list-group-item">Empresa 123</li>
-                <li class="list-group-item">Empresa xyz</li>
+                <li class="list-group-item">Empresa 000<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
+                <li class="list-group-item">Empresa abc<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
+                <li class="list-group-item">Empresa 123<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
+                <li class="list-group-item">Empresa xyz<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
             </ul>
         </div>
     `
@@ -66,6 +74,24 @@ $('#admin-list li').on('click', function() {
                 <div class="form-group col-12">
                     <label for="email">E-mail:</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="E-mail do aluno">
+                </div>
+                <div class="form-group col-12">
+                    <label for="student-course">Curso:</label>
+                    <select class="custom-select" id="student-course">
+                        <option selected disabled>Curso...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="form-group col-12">
+                    <label for="student-company">Empresa:</label>
+                    <select class="custom-select" id="student-company">
+                        <option selected disabled>Empresa...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
                 </div>
                 <div class="form-group col-12">
                     <label for="password">Senha:</label>
@@ -86,10 +112,10 @@ $('#admin-list li').on('click', function() {
         <h1 class="h3 text-white text-center p-1 mb-4">${$(this).html()}</h1>
         <div class="container">
             <ul class="container list-group list-group-flush">
-                <li class="list-group-item">Aluno 1</li>
-                <li class="list-group-item">Aluno 2</li>
-                <li class="list-group-item">Aluno 3</li>
-                <li class="list-group-item">Aluno 4</li>
+                <li class="list-group-item">Aluno 1<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
+                <li class="list-group-item">Aluno 2<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
+                <li class="list-group-item">Aluno 3<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
+                <li class="list-group-item">Aluno 4<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
             </ul>
         </div>
     `
@@ -103,6 +129,31 @@ $('#admin-list li').on('click', function() {
                     <input type="text" name="name" id="name" class="form-control" placeholder="Nome do curso">
                 </div>
                 <div class="form-group col-12">
+                    <label for="student-company">Empresa:</label>
+                    <select class="custom-select" id="student-company">
+                        <option selected disabled>Empresa...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="form-group col-12 col-lg-6">
+                    <label for="inicial-slide">Slide inicial:</label>
+                    <input type="file" class="form-control-file" id="inicial-slide">
+                </div>
+                <div class="form-group col-12 col-lg-6">
+                    <label for="inicial-audio">Áudio inicial:</label>
+                    <input type="file" class="form-control-file" id="inicial-audio">
+                </div>
+                <div class="form-group col-12 col-lg-6">
+                    <label for="end-slide">Slide final:</label>
+                    <input type="file" class="form-control-file" id="end-slide">
+                </div>
+                <div class="form-group col-12 col-lg-6">
+                    <label for="end-audio">Áudio final:</label>
+                    <input type="file" class="form-control-file" id="end-audio">
+                </div>
+                <div class="form-group col-12">
                     <input type="submit" name="action" class="btn save text-white" value="Salvar">
                 </div>
             </div>
@@ -113,10 +164,10 @@ $('#admin-list li').on('click', function() {
         <h1 class="h3 text-white text-center p-1 mb-4">${$(this).html()}</h1>
         <div class="container">
             <ul class="container list-group list-group-flush">
-                <li class="list-group-item">Curso 1</li>
-                <li class="list-group-item">Curso 2</li>
-                <li class="list-group-item">Curso 3</li>
-                <li class="list-group-item">Curso 4</li>
+                <li class="list-group-item">Curso 1<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
+                <li class="list-group-item">Curso 2<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
+                <li class="list-group-item">Curso 3<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
+                <li class="list-group-item">Curso 4<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
             </ul>
         </div>
     `
