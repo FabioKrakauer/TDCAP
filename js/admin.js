@@ -1,11 +1,12 @@
-$('#admin-list li').on('click', function() {
-
-    var json
-    $.getJSON('../api/company.php?company=0', function(data){
+$( document ).ready(function() {
+    let json
+    $.getJSON('http://localhost:8888/TDCAP/api/company.php?company=0', function(data){
         json = data;
     })
-
     console.log(json)
+});
+
+$('#admin-list li').on('click', function() {
 
     $('#admin-list li').removeClass('active-content')
     $(this).addClass('active-content')

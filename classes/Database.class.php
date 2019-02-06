@@ -31,6 +31,8 @@ class DataBase{
         }catch(PDOException $e){
             echo '<h1>Erro ao conectar a um banco de dados!</h3>';
             echo 'Contate um administrador!';
+            var_dump($e->getMessage());
+            // $e->getMessage();
             die();
         }
     }
