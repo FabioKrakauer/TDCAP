@@ -1,9 +1,7 @@
 $( document ).ready(function() {
-    let json
-    $.getJSON('http://localhost:8888/TDCAP/api/company.php?company=0', function(data){
-        json = data;
+    $.getJSON('http://mysafeinfo.com/api/data?list=englishmonarchs&format=json', function(json){
+        console.log(json[1].cty)
     })
-    console.log(json)
 });
 
 $('#admin-list li').on('click', function() {
