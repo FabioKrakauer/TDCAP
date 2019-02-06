@@ -4,6 +4,7 @@
 $dir = realpath(__DIR__ . '/..');
 require_once $dir.'/config.inc.php';
 require_once 'Company.class.php';
+require_once 'Slide.class.php';
 
 class Course{
 
@@ -22,11 +23,18 @@ class Course{
         $field = $database->getFieldValue("SELECT * FROM `course` WHERE `id`='$id'");
         $this->id = $field["id"];
         $this->name = $field["name"];
+        $this->slides = [];
         $this->company = new Company($field["company"]);
         $this->inicial_slide = $field["inicial_slide"];
         $this->inicial_audio = $field["inicial_audio"];
         $this->end_slide = $field["end_slide"];
         $this->end_audio = $field["end_audio"];
+
+        $slidesFields = $database->getFieldsValues("SELECT `id` FROM `slides` WHERE `course_id`='$this->id'");
+
+        foreach($slidesFields as $slides){
+            array_push($this->slides, new Slide($slides["id"]));
+        }
     }
     function getID(){
         return $this->id;
