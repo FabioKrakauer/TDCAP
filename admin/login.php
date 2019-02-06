@@ -28,7 +28,7 @@
                 <label for="password">Senha:</label>
                 <input type="password" class="form-control" name="password" id="password">
             </div>
-            <button type="button" id="sendlogin" class="btn btn-primary">login</button>
+            <button type="button" id="sendlogin" class="btn btn-primary">Logar</button>
         </form>
     </div>
 
