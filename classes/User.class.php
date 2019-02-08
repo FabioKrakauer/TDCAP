@@ -57,4 +57,23 @@ class User{
     function getCourse(){
         return $this->courses;
     }
+    function viewSlide($slideID){
+        global $database;
+        $user = Auth::user()->getID();
+        $fields = $database->getFieldValue("SELECT * FROM `user_slides` WHERE `user_id`='$user' AND `slide_id` = '$slideID'");
+        if($fields == null){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    function addSlideView($slideID){
+        global $database;
+        $userID = Auth::user()->getID();
+        if($this->viewSlide($slideID)){
+            return false;
+        }else{
+            $database->query("INSERT INTO `user_slides` (`id`, `user_id`, `slide_id`) VALUES (NULL, '$userID', '$slideID')");
+        }
+    }
 }

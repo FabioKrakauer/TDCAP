@@ -33,10 +33,10 @@ $user = Auth::user();
             <!-- LIST ALL USER COURSES -->
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title"><a href="/pages/course.php?id=<?= $course->getID() ?>?slide=inicial">Curso: <?= $course->getName() ?></a></h4>
+                    <h4 class="card-title"><a href="pages/course.php?course=<?= $course->getID() ?>&slide=inicial">Curso: <?= $course->getName() ?></a></h4>
                     <p class="card-text">Empresa: <?= $course->getCompany()->getName() ?></p>
                     <p class="card-text">Progresso: <?= "Em breve" ?></p>
-                    <a href="/pages/course.php?id=<?= $course->getID() ?>?slide=inicial" class="btn btn-primary">Abrir</a>
+                    <a href="pages/course.php?course=<?= $course->getID() ?>&slide=inicial" class="btn btn-primary">Abrir</a>
                 </div>
             </div>
 <?php   }

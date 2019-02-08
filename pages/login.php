@@ -33,7 +33,7 @@ if(Auth::isLogged(false)){
             <?= $error ?>
 <?php   }
     ?>
-      <form action="../controller/LoginController.php" method="post" >
+      <form action="../controller/loginController.php" method="post" >
         <input type="text" name="email" id="email" class="form-control col-5"><br>
         <input type="password" name="password" id="password" class="form-control col-5"><br>
         <input type="submit" name="action" value="Logar" class="btn btn-success mt-3 col-5">
