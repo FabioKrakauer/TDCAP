@@ -61,7 +61,7 @@ $.getJSON('http://localhost:8888/tdcap/js/teste.json', function (data) {
                     ${listCompanies}
                 </ul>
             </div>
-                    `
+        `
 
 
         let adicionarAluno = `
