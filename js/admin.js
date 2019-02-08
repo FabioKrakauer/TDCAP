@@ -1,11 +1,11 @@
 
-    var companies = []
+var companies = []
 $.getJSON('http://localhost:8888/tdcap/js/teste.json', function (data) {
-    $(data.companies).each(function(index, company){
+    $(data.companies).each(function (index, company) {
         companies.push(company)
     })
-    companies.forEach((index, data) => console.log(data.name))
-    
+    // companies.forEach((index, data) => console.log(data.name))
+
     $('#admin-list li').on('click', function () {
         $('#admin-list li').removeClass('active-content')
         $(this).addClass('active-content')
@@ -50,12 +50,19 @@ $.getJSON('http://localhost:8888/tdcap/js/teste.json', function (data) {
                     </div>
                 </form>
             `
-            console.log(companies)
-            let empresasCadastradas = 
-                "<h1 class='h3 text-white text-center p-1 mb-4'>" + $(this).html() + "</h1>" +
-                "<div class='container'><ul class='container list-group list-group-flush'>" +
-                companies.forEach((index, data) => '<li class="list-group-item">Empresa abc<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">' + data + '</button></li>') +
-                "</ul></div>"
+        listCompanies = ``
+        companies.forEach(function (data, index) {
+            listCompanies += `<li class='list-group-item'>${data.name}<button class='btn btn-outline-primary btn-sm btn-lg-lg float-right'>Editar</button></li>`
+        })
+        let empresasCadastradas = `
+            <h1 class='h3 text-white text-center p-1 mb-4'>${$(this).html()}</h1>
+            <div class='container'><ul class='container list-group list-group-flush'>
+                <ul>
+                    ${listCompanies}
+                </ul>
+            </div>
+                    `
+
 
         let adicionarAluno = `
                 <h1 class="h3 text-white text-center p-1 mb-4">${$(this).html()}</h1>
