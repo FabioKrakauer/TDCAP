@@ -1,0 +1,51 @@
+{
+    "companies": [
+        {
+            "name": "ABI",
+            "cnpj": "12.123.123/0001-20",
+            "address": "Rua 1,123",
+            "phone": "19-3231-2345",
+            "site": "www.site.com.br",
+            "contact": "Jose",
+            "email": "teste@teste.com",
+            "id": 1
+        },
+        {
+            "name": "Bud",
+            "cnpj": "22.123.123/0001-20",
+            "address": "2Rua 1,123",
+            "phone": "29-3231-2345",
+            "site": "2www.site.com.br",
+            "contact": "2Jose",
+            "email": "2teste@teste.com",
+            "id": 2
+        },
+        {
+            "name": "Antartica",
+            "cnpj": "32.123.123/0001-20",
+            "address": "3Rua 1,123",
+            "phone": "39-3231-2345",
+            "site": "3www.site.com.br",
+            "contact": "3Jose",
+            "email": "3teste@teste.com",
+            "id": 3
+        },
+        {
+            "name": "Skol",
+            "cnpj": "42.123.123/0001-20",
+            "address": "4Rua 1,123",
+            "phone": "49-3231-2345",
+            "site": "4www.site.com.br",
+            "contact": "4Jose",
+            "email": "4teste@teste.com",
+            "id": 4
+        }
+    ],
+        
+    "admin_users": {
+
+    },
+    "courses": {
+
+    }
+}
