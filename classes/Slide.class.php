@@ -43,4 +43,10 @@ class Slide{
     function getOrder(){
         return $this->order;
     }
+    function getPathImage(){
+        return APP_ROOT . "/courses/" . $this->getCourse()->getID() . "/" . $this->getSlideImage();
+    }
+    function getPathAudio(){
+        return APP_ROOT . "/courses/" . $this->getCourse()->getID() . "/" . $this->getSlideAudio();
+    }
 }
