@@ -42,7 +42,7 @@ addCompanyView = function(){
     $('#dynamic-content').html(content)
 }
 
-createCompanyView = function (data) {
+showCompanyView = function (data) {
     var listCompanies = ``
 
     data.forEach(function (data) {
