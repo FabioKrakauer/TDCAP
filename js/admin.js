@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
-    
     addCompany = function (){
         $('#admin-list li').removeClass('active-content')
         $('#admin-list li:nth-child(1)').addClass('active-content')
+        addCompanyView()
     }
     
     showCompany = function (){
@@ -11,6 +11,12 @@ $(document).ready(function(){
         $('#admin-list li:nth-child(2)').addClass('active-content')
         $.getJSON('http://ramacciotti.org/tdc/api/company.php?company=0', function (data) {
             createCompanyView(data)
+        })
+    }
+
+    editCompany = function(id){
+        $.getJSON('http://ramacciotti.org/tdc/api/company.php?company=' + id, function (data) {
+            editCompanyView(data)
         })
     }
     
@@ -40,9 +46,5 @@ $(document).ready(function(){
         })
     }
     
-    editCompany = function(id){
-        $.getJSON('http://ramacciotti.org/tdc/api/company.php?company=' + id, function (data) {
-            editCompanyView(data)
-        })
-    }
+    
 })
