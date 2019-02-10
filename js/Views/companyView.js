@@ -33,7 +33,7 @@ addCompanyView = function(){
                         <input type="email" name="email" id="email" class="form-control" placeholder="E-mail do responsável">
                     </div>
                     <div class="form-group col-12">
-                        <input type="submit" name="action" class="btn save text-white" value="Salvar">
+                        <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
                     </div>
                 </div>
             </form>
@@ -76,31 +76,31 @@ editCompanyView = function(data) {
             <div class="container row mx-auto">
                 <div class="form-group col-12">
                     <label for="name">Nome:</label>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="${data.name}">
+                    <input type="text" name="name" id="name" class="form-control" value="${data.name}">
                 </div>
                 <div class="form-group col-12">
                     <label for="cnpj">CNPJ:</label>
-                    <input type="text" name="cnpj" id="cnpj" class="form-control" placeholder="${data.cnpj}">
+                    <input type="text" name="cnpj" id="cnpj" class="form-control" value="${data.cnpj}">
                 </div>
                 <div class="form-group col-12">
                     <label for="adress">Endereço:</label>
-                    <input type="text" name="adress" id="adress" class="form-control" placeholder="${data.adress}">
+                    <input type="text" name="adress" id="adress" class="form-control" value="${data.adress}">
                 </div>
                 <div class="form-group col-12">
                     <label for="telephone">Telefone:</label>
-                    <input type="text" name="telephone" id="telephone" class="form-control" placeholder="${data.phone}">
+                    <input type="text" name="telephone" id="telephone" class="form-control" value="${data.phone}">
                 </div>
                 <div class="form-group col-12">
                     <label for="site">Site:</label>
-                    <input type="text" name="site" id="site" class="form-control" placeholder="${data.website}">
+                    <input type="text" name="site" id="site" class="form-control" value="${data.website}">
                 </div>
                 <div class="form-group col-12">
                     <label for="contact">Contato do responsável:</label>
-                    <input type="text" name="contact" id="contact" class="form-control" placeholder="${data.contact}">
+                    <input type="text" name="contact" id="contact" class="form-control" value="${data.contact}">
                 </div>
                 <div class="form-group col-12">
                     <label for="email">E-mail:</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="${data.email}">
+                    <input type="email" name="email" id="email" class="form-control" value="${data.email}">
                 </div>
                 <div class="form-group col-12">
                     <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
