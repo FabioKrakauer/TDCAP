@@ -23,13 +23,12 @@
         </div>
         <nav>
             <ul class="text-center py-3 mb-0 border-top border-bottom border-secondary" id="admin-list">
-                <li class="py-1" onclick="addCompany(event)">Adicionar Empresa</li>
-                <li class="py-1">Empresas Cadastradas</li>
-                <li class="py-1">Adicionar Aluno</li>
-                <li class="py-1">Alunos Cadastrados</li>
-                <li class="py-1">Adicionar Cursos</li>
-                <li class="py-1">Cursos Cadastrados</li>
-                <li class="py-1">Ver Relatório</li>
+                <li class="py-1" onclick="addCompany()">Adicionar Empresa</li>
+                <li class="py-1" onclick="showCompany()">Empresas Cadastradas</li>
+                <li class="py-1" onclick="addStudent()">Adicionar Aluno</li>
+                <li class="py-1" onclick="showStudent()">Alunos Cadastrados</li>
+                <li class="py-1" onclick="addCourse()">Adicionar Cursos</li>
+                <li class="py-1" onclick="showCourse()">Cursos Cadastrados</li>
             </ul>
         </nav>
     </header>
@@ -48,5 +47,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="../js/admin.js"></script>
+    <script src="../js/Views/companyView.js"></script>
 </body>
 </html>
