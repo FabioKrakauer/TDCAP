@@ -1,8 +1,8 @@
 
 var companies = []
-$.getJSON('http://ramacciotti.org/tdc/api/company.php?company=0', function (data) {
+// $.getJSON('http://ramacciotti.org/tdc/api/company.php?company=0', function (data) {
+    $.getJSON('localhost:8888/tdc/api/company.php?company=0', function (data) {
     $(data).each(function (index, company) {
-        // companies.push(company)
         console.log(company)
     })
 
@@ -113,7 +113,7 @@ $.getJSON('http://ramacciotti.org/tdc/api/company.php?company=0', function (data
                 <h1 class="h3 text-white text-center p-1 mb-4">${$(this).html()}</h1>
                 <div class="container">
                     <ul class="container list-group list-group-flush">
-                        <li class="list-group-item">Aluno 1<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
+                        <li class="list-group-item">Aluno 1<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button><button class="btn btn-outline-primary btn-sm btn-lg-lg mr-2 float-right">Relatório</button></li>
                         <li class="list-group-item">Aluno 2<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
                         <li class="list-group-item">Aluno 3<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>
                         <li class="list-group-item">Aluno 4<button class="btn btn-outline-primary btn-sm btn-lg-lg float-right">Editar</button></li>

@@ -23,7 +23,7 @@
         </div>
         <nav>
             <ul class="text-center py-3 mb-0 border-top border-bottom border-secondary" id="admin-list">
-                <li class="py-1">Adicionar Empresa</li>
+                <li class="py-1" onclick="addCompany(event)">Adicionar Empresa</li>
                 <li class="py-1">Empresas Cadastradas</li>
                 <li class="py-1">Adicionar Aluno</li>
                 <li class="py-1">Alunos Cadastrados</li>

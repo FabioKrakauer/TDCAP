@@ -20,6 +20,7 @@ class DataBase{
         global $password;
         global $port;
 
+        $this->host = $host;
         $this->database = $dbname;
         $this->user = $username;
         $this->password = $password;
@@ -31,6 +32,7 @@ class DataBase{
         }catch(PDOException $e){
             echo '<h1>Erro ao conectar a um banco de dados!</h3>';
             echo 'Contate um administrador!';
+            echo $e->getMessage();
             die();
         }
     }
