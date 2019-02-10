@@ -17,18 +17,26 @@
             <a class="navbar-brand" href="#"><img src="../img/logo.gif" alt="logo"></a>
         </nav>
     </header>
-
+    <?php
+        if(isset($_GET["error"])){ ?>
+            <div class="alert alert-danger" role="alert">
+                <strong><?= $_GET["error"] ?></strong>
+            </div>
+    <?php }
+    
+    ?>
     <div class="login-form container mt-5 rounded border p-5">
         <form action="../controller/loginController.php" method="post">
+            <input type="hidden" name="admin" value="loginAdmin">
             <div class="form-group">
-                <label for="username">Nome de usuário ou e-mail:</label>
-                <input type="text" class="form-control" name="username" id="username">
+                <label for="username">E-mail:</label>
+                <input type="text" class="form-control" name="email" id="username">
             </div>
             <div class="form-group">
                 <label for="password">Senha:</label>
                 <input type="password" class="form-control" name="password" id="password">
             </div>
-            <button type="button" id="sendlogin" class="btn btn-primary">Logar</button>
+            <button type="submit" name="action" id="sendlogin" class="btn btn-primary">Logar</button>
         </form>
     </div>
 
