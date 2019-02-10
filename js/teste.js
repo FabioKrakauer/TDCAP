@@ -187,7 +187,7 @@ var companies = []
 
         switch (category) {
             case 'adicionarEmpresa':
-                $('#dynamic-content').html(adicionarEmpresa)
+                $('#dynamic-content').html(content)
                 break
             case 'empresasCadastradas':
                 $('#dynamic-content').html(empresasCadastradas)
