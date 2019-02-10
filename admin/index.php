@@ -8,7 +8,7 @@ require_once APP_ROOT . "/classes/Auth.class.php";
 Auth::isLogged(true, 1);
 $user = Auth::user();
 if(!$user->isAdmin()){
-    echo "<h1>Somente administradores podem acessar esta pagina!";
+    echo "<h1>Somente administradores podem acessar esta pagina!</h1>";
     die();
 }
 
