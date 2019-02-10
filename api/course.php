@@ -12,7 +12,7 @@
             $result = [];
             foreach($fields as $courseID){
                 $course = new Course($courseID["id"]);
-                $result[$course->getID()] = [
+                $array = [
                     "id" => $course->getID(),
                     "name" => $course->getName(),
                     "company" => $course->getCompany()->getID(),
@@ -21,6 +21,7 @@
                     "end_slide" => $course->getEndlSlideName(),
                     "end_audio" => $course->getEndAudioName()
                 ];
+                array_push($result, $array);
             }
                 $json = json_encode($result, JSON_PRETTY_PRINT);
                 header('Content-Type: application/json');

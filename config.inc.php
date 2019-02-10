@@ -4,8 +4,8 @@
 $host = "localhost";
 $dbname = "tdc";
 $username = "root";
-$password = "root";
-$port = 8889;
+$password = "";
+$port = 3306;
 
 //Definição dos nomes para acesso
 define("APP_ROOT", dirname(__FILE__));

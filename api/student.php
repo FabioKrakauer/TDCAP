@@ -12,7 +12,7 @@
             $field = $database->getFieldsValues("SELECT `id` FROM `user`");
             foreach($field as $row){
                 $user = new User($row["id"]);
-                $result[$row["id"]] = [
+                $array = [
                     "id" => $user->getID(),
                     "name" => utf8_encode($user->getName()),
                     "email" => utf8_encode($user->getEmail()),
@@ -22,8 +22,9 @@
                 ];
                 foreach($user->getCourses() as $course){
                     $id = $course->getID();
-                    array_push($result[$row["id"]]["course"], $id);
+                    array_push($array["course"], $id);
                 }
+                array_push($result, $array);
             
             }
             $json = json_encode($result, JSON_PRETTY_PRINT);

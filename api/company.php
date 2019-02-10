@@ -12,7 +12,7 @@
             $result = [];
             foreach($fields as $companyID){
                 $company = new Company($companyID["id"]);
-                $result[$company->getID()] = [
+                $array = [
                     "id" => $company->getID(),
                     "name" => utf8_encode($company->getName()),
                     "CNPJ" => $company->getCNPJ(),
@@ -22,6 +22,7 @@
                     "contact" => $company->getContact(),
                     "email" => $company->getEmail()
                 ];
+                array_push($result, $array);
             }
             $json = json_encode($result, JSON_PRETTY_PRINT);
             header('Content-Type: application/json');
