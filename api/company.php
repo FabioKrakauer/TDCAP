@@ -1,5 +1,5 @@
 <?php
-
+    header("Access-Control-Allow-Origin: *");
     $dir = realpath(__DIR__ . '/..');
     require_once $dir.'/config.inc.php';
     require_once APP_ROOT . '/classes/Company.class.php';

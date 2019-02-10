@@ -1,10 +1,10 @@
 
 var companies = []
-$.getJSON('http://localhost:8888/tdcap/js/teste.json', function (data) {
-    $(data.companies).each(function (index, company) {
-        companies.push(company)
+$.getJSON('http://ramacciotti.org/tdc/api/company.php?company=0', function (data) {
+    $(data).each(function (index, company) {
+        // companies.push(company)
+        console.log(company)
     })
-    // companies.forEach((index, data) => console.log(data.name))
 
     $('#admin-list li').on('click', function () {
         $('#admin-list li').removeClass('active-content')
