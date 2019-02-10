@@ -27,7 +27,7 @@
                     if($redirect == true){
                         if($nextPage == 1){
                             //HEADER EXCEPTION
-                            echo "<script>window.location='/".APP_NAME."/admin/pages/login.php'</script>";
+                            echo "<script>window.location='/".APP_NAME."/admin/login.php'</script>";
                         }else{
                             //HEADER EXCEPTION
                             echo "<script>window.location='/".APP_NAME."/pages/login.php'</script>";
@@ -43,7 +43,7 @@
                 if($redirect == true){
                     if($nextPage == 1){
                         //HEADER EXCEPTION
-                        echo "<script>window.location='/".APP_NAME."/admin/pages/login.php'</script>";
+                        echo "<script>window.location='/".APP_NAME."/admin/login.php'</script>";
                     }else{
                         //HEADER EXCEPTION
                         echo "<script>window.location='/".APP_NAME."/pages/login.php'</script>";

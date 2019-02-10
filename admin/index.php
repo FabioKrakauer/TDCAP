@@ -1,3 +1,18 @@
+<?php 
+
+require_once '../config.inc.php';
+require_once APP_ROOT . "/classes/User.class.php";
+require_once APP_ROOT . "/classes/Auth.class.php";
+
+
+Auth::isLogged(true, 1);
+$user = Auth::user();
+if(!$user->isAdmin()){
+    echo "<h1>Somente administradores podem acessar esta pagina!";
+    die();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -35,7 +50,7 @@
     <p id="json"></p>
     <main>
         <div class="hello">
-            <h6 class="mr-4 pb-2 pt-4 mb-0 text-white">Olá, <span>Alberto Perazzo</span></h6>
+            <h6 class="mr-4 pb-2 pt-4 mb-0 text-white">Olá, <span><?= $user->getName() ?></span></h6>
         </div>
         <div class="" id="dynamic-content">
             <h1 class="h3 text-white text-center py-1">TDC</h1>
