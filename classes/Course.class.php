@@ -48,16 +48,10 @@ class Course{
     function getCompany(){
         return $this->company;
     }
-    function getInicialSlideName(){
-        return $this->inicial_slide;
+    function getInicialSlide(){
+        return new Slide($this->inicial_slide);
     }
-    function getEndlSlideName(){
-        return $this->end_slide;
-    }
-    function getInicialAudioName(){
-        return $this->inicial_audio;
-    }
-    function getEndAudioName(){
-        return $this->end_audio;
+    function getEndlSlide(){
+        return new Slide($this->end_slide);
     }
 }
