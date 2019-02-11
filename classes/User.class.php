@@ -67,13 +67,23 @@ class User{
             return true;
         }
     }
-    function addSlideView($slideID){
+    function addSlideView($slide){
         global $database;
         $userID = Auth::user()->getID();
-        if($this->viewSlide($slideID)){
+        if($this->viewSlide($slide->getID())){
             return false;
         }else{
-            $database->query("INSERT INTO `user_slides` (`id`, `user_id`, `slide_id`) VALUES (NULL, '$userID', '$slideID')");
+            $database->query("INSERT INTO `user_slides` (`id`, `user_id`, `course_id`, `slide_id`) VALUES (NULL, '$userID', '".$slide->getCourse()->getID()."' ,'".$slide->getID()."')");
         }
+    }
+    function getCourseProgress($courseID){
+        global $database;
+        $user = Auth::user();
+        $slidesCourse = $database->getFieldValue("SELECT COUNT(`title`) AS `value` FROM `slides` WHERE `course_id`='$courseID'");
+        $slidesQuantity = $slidesCourse["value"];
+        $slidesViews = $database->getFieldValue("SELECT COUNT(`slide_id`) AS `value` FROM `user_slides` WHERE `course_id`='$courseID'");
+        $views = $slidesViews["value"];
+        $views *= 100;
+        return $views / $slidesQuantity;
     }
 }

@@ -10,8 +10,8 @@ $user = Auth::user();
 
 if(isset($_GET["course"]) && isset($_GET["slide"])){
     $course = new Course($_GET["course"]);
-    $user->addSlideView($_GET["slide"]);
     $slide = new Slide($_GET["slide"]);
+    $user->addSlideView($slide);
 ?>
 
 <!doctype html>

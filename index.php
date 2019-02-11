@@ -35,7 +35,7 @@ $user = Auth::user();
                 <div class="card-body">
                     <h4 class="card-title"><a href="pages/course.php?course=<?= $course->getID() ?>&slide=inicial">Curso: <?= $course->getName() ?></a></h4>
                     <p class="card-text">Empresa: <?= $course->getCompany()->getName() ?></p>
-                    <p class="card-text">Progresso: <?= "Em breve" ?></p>
+                    <p class="card-text">Progresso: <?= $user->getCourseProgress($course->getID()) . "%" ?></p>
                     <a href="pages/course.php?course=<?= $course->getID() ?>&slide=inicial" class="btn btn-primary">Abrir</a>
                 </div>
             </div>

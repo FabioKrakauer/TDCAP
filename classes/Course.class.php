@@ -26,9 +26,7 @@ class Course{
         $this->slides = [];
         $this->company = new Company($field["company"]);
         $this->inicial_slide = $field["inicial_slide"];
-        $this->inicial_audio = $field["inicial_audio"];
         $this->end_slide = $field["end_slide"];
-        $this->end_audio = $field["end_audio"];
 
         $slidesFields = $database->getFieldsValues("SELECT `id` FROM `slides` WHERE `course_id`='$this->id'");
 
