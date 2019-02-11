@@ -18,9 +18,7 @@
                     "name" => $course->getName(),
                     "company" => $course->getCompany()->getID(),
                     "inicial_slide" => $course->getInicialSlideName(),
-                    "inicial_audio" => $course->getInicialAudioName(),
                     "end_slide" => $course->getEndlSlideName(),
-                    "end_audio" => $course->getEndAudioName()
                 ];
                 array_push($result, $array);
             }
@@ -35,9 +33,7 @@
                     "name" => $course->getName(),
                     "company" => $course->getCompany()->getID(),
                     "inicial_slide" => $course->getInicialSlideName(),
-                    "inicial_audio" => $course->getInicialAudioName(),
                     "end_slide" => $course->getEndlSlideName(),
-                    "end_audio" => $course->getEndAudioName()
                 ];
                 
             $json = json_encode($result, JSON_PRETTY_PRINT);
