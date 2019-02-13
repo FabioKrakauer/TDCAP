@@ -117,7 +117,6 @@ showStudentView = function (data) {
 
 editStudentView = function (studentData) {
     let courseHasList = ``
-    let companyHasList = ``
     let courseData //lista de todos os cursos com dados
     let companyData
     let courseToList = ``
@@ -146,22 +145,30 @@ editStudentView = function (studentData) {
         companyData = companyAPIData
     })
         .done(function () {
-            if (!($.isEmptyObject(studentData.company))) {
-                studentData.company.forEach(function (companyId) {
-                    companyHasList += `<li class='list-group-item'>${companyData[companyId - 1].name}</li>`
-                })
-            }
+            // if (!($.isEmptyObject(studentData.company))) {
+            //     studentData.company.forEach(function (companyId) {
+            //         companyHasList += `<li class='list-group-item'>${companyData[companyId - 1].name}</li>`
+            //     })
+            // }
+            // companyData.forEach(function (company) {
+            //     if ($.inArray(company.id, studentData.company) != -1) {
+            //         return
+            //     }
+            //     companyToList += `<option value="${company.name}">${company.name}</option>`
+            // })
             companyData.forEach(function (company) {
-                if ($.inArray(company.id, studentData.course) != -1) {
-                    return
+                if(company == studentData.company){
+                    companyToList += `<option value="${company.name}" selected>${company.name}</option>`
+                }else{
+                    companyToList += `<option value="${company.name}">${company.name}</option>`
                 }
-                companyToList += `<option value="${company.name}">${company.name}</option>`
             })
+
             addEditContent()
         })
 
     const addEditContent = function () {
-        if (courseHasList == undefined || companyHasList == undefined) {
+        if (courseData == undefined || companyData == undefined) {
             return
         }
         var content = `
@@ -178,12 +185,26 @@ editStudentView = function (studentData) {
                         <input type="email" name="email" id="email" class="form-control" value="${studentData.email}">
                     </div>
                     <div class="form-group col-12">
+                        <label for="student-company">Empresa:</label>
+                        <select class="custom-select" id="student-company">
+                            ${companyToList}
+                        </select>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="password">Senha:</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="password-conf">Confirme a senha:</label>
+                        <input type="password" name="password-conf" id="password-conf" class="form-control" placeholder="Confirme a senha">
+                    </div>
+                    <div class="form-group col-12">
                         <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
                     </div>
                 </div>
             </form>
             <h3 class="h4 text-white text-center p-1 mb-4">Cursos</h3>
-            <ul class="list-group list-group-flush mb-5">
+            <ul class="list-group list-group-flush mb-4">
                 ${courseHasList}
             </ul>
             <form action="../controller/addCourseToStudent.php" method="post">
@@ -200,25 +221,6 @@ editStudentView = function (studentData) {
                     </div>
                 </div>
             </form>
-            <h3 class="h4 text-white text-center p-1 mb-4">Empresas</h3>
-            <ul class="list-group list-group-flush mb-5">
-                ${companyHasList}
-            </ul>
-            <form action="../controller/addCompanyToStudent.php" method="post">
-                <div class="row mx-auto">
-                    <div class="form-group col-12">
-                        <label for="student-company">Adicionar empresa:</label>
-                        <select class="custom-select" id="student-company">
-                            <option selected disabled>Empresa...</option>
-                            ${companyToList}
-                        </select>
-                    </div>
-                    <div class="form-group col-12">
-                        <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
-                    </div>
-                </div>
-            </form>
-        </div>
         `
         $('#dynamic-content').html(content)
     }
