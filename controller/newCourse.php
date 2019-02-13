@@ -1,4 +1,18 @@
 <?php
+function validateImage($type){
+    if($type == "png"){
+        return true;
+    }else if($type == "jpg"){
+        return true;
+    }else if($type == "jpeg"){
+        return true;
+    }else{
+        return false;
+    }
+}
+function validateAudio($type){
+    return $type == "mp3";
+}
 
 require_once '../config.inc.php';
 require_once APP_ROOT . "/classes/User.class.php";
@@ -17,41 +31,80 @@ if(isset($_POST["action"])){
     //insert in database
     $courseID = $database->insertGetLastID("INSERT INTO `course` (`id`, `name`, `company`, `inicial_slide`, `end_slide`) VALUES (NULL, '$courseName', '$company', '0', '0')");
 
-    //create courseDirectory
-    mkdir("../courses/" . $courseID);
 
-    // UPLOAD INICIAL SLIDE
+    $uploadFailed["inicialSlide"] = 0;
+    $uploadFailed["inicialAudio"] = 0;
+    $uploadFailed["endSlide"] = 0;
+    $uploadFailed["endAudio"] = 0;
+
     $inicialSlideName = str_replace(" ", "_", $inicialSlideNameTitle);
 
     $tempName = $_FILES["inicial_slide"]["tmp_name"];
     $type = explode("/", $_FILES["inicial_slide"]["type"])[1];
-    $slideName = $courseID . "_" . $inicialSlideName . ".". $type;
-    move_uploaded_file($_FILES["inicial_slide"]["tmp_name"], "../courses/$courseID/$slideName");
+    $apresentationSlideName = $courseID . "_" . $inicialSlideName . ".". $type;
+    if(!validateImage($type)){
+        $uploadFailed["inicialSlide"] = 1;
+    }
 
     $tempName = $_FILES["inicial_audio"]["tmp_name"];
     $type = explode("/", $_FILES["inicial_audio"]["type"])[1];
-    $audioName = $courseID . "_" . $inicialSlideName . ".". $type;
-    move_uploaded_file($_FILES["inicial_audio"]["tmp_name"], "../courses/$courseID/$audioName");
-
-    $apresentationID = $database->insertGetLastID("INSERT INTO `slides` (`id`, `course_id`, `title`, `slide_image`, `slide_audio`, `orders`) VALUES (NULL, '$courseID', '$inicialSlideNameTitle', '$slideName', '$audioName', '0')");
+    $apresentationAudioName = $courseID . "_" . $inicialSlideName . ".". $type;
+    if(!validateAudio($type)){
+        $uploadFailed["inicialAudio"] = 1;
+    }
     
-    // UPLOAD END SLIDE
     $endSlideName = str_replace(" ", "_", $endSlideNameTitle);
 
     $tempName = $_FILES["end_slide"]["tmp_name"];
     $type = explode("/", $_FILES["end_slide"]["type"])[1];
-    $slideName = $courseID . "_" . $endSlideName . ".". $type;
-    move_uploaded_file($_FILES["end_slide"]["tmp_name"], "../courses/$courseID/$slideName");
+    $conclusionSlideName = $courseID . "_" . $endSlideName . ".". $type;
+    if(!validateImage($type)){
+        $uploadFailed["endSlide"] = 1;
+    }
 
     $tempName = $_FILES["end_slide"]["tmp_name"];
     $type = explode("/", $_FILES["end_audio"]["type"])[1];
-    $audioName = $courseID . "_" . $endSlideName . ".". $type;
-    move_uploaded_file($_FILES["end_audio"]["tmp_name"], "../courses/$courseID/$audioName");
+    $conclusionAudioName = $courseID . "_" . $endSlideName . ".". $type;
+    if(!validateAudio($type)){
+        $uploadFailed["endAudio"] = 1;
+    }
 
-    $conclusionID = $database->insertGetLastID("INSERT INTO `slides` (`id`, `course_id`, `title`, `slide_image`, `slide_audio`, `orders`) VALUES (NULL, '$courseID', '$endSlideNameTitle', '$slideName', '$audioName', '1001')");
-    $updateCourse = $database->query("UPDATE `course` SET `inicial_slide`='$apresentationID',`end_slide`='$conclusionID' WHERE `id`='$courseID'");
-    echo "Você criou o curso #$courseID ( $courseName ) com sucesso!";
+    if($uploadFailed["inicialSlide"] == 1){
+        echo "<b>Erro: O slide INICIAL não pode ser neste formato! Ele deve ser em PNG, JPG, JPEG";
+        $database->query("DELETE FROM `course` WHERE `id`='$courseID'");
+        die();
+    }else if($uploadFailed["inicialAudio"] == 1){
+        echo "<b>Erro: O audio INICIAL não pode ser neste formato! Ele deve ser em MP3";
+        $database->query("DELETE FROM `course` WHERE `id`='$courseID'");
+        die();
+    }else if($uploadFailed["endSlide"] == 1){
+        echo "<b>Erro: O slide FINAL não pode ser neste formato! Ele deve ser em PNG, JPG, JPEG";
+        $database->query("DELETE FROM `course` WHERE `id`='$courseID'");
+        die();
+    }else if($uploadFailed["endAudio"] == 1){
+        echo "<b>Erro: O audio FINAL não pode ser neste formato! Ele deve ser em MP3";
+        $database->query("DELETE FROM `course` WHERE `id`='$courseID'");
+        die();
+    }else{
+        
+        //create courseDirectory
+        mkdir("../courses/" . $courseID);
+        
+        //INSERT SLIDES
+        $apresentationID = $database->insertGetLastID("INSERT INTO `slides` (`id`, `course_id`, `title`, `slide_image`, `slide_audio`, `orders`) VALUES (NULL, '$courseID', '$inicialSlideNameTitle', '$apresentationSlideName', '$apresentationAudioName', '0')");
+        $conclusionID = $database->insertGetLastID("INSERT INTO `slides` (`id`, `course_id`, `title`, `slide_image`, `slide_audio`, `orders`) VALUES (NULL, '$courseID', '$endSlideNameTitle', '$conclusionSlideName', '$conclusionAudioName', '1001')");
+    
+        //UPDATE COURSE IN DATABASE
+        $updateCourse = $database->query("UPDATE `course` SET `inicial_slide`='$apresentationID',`end_slide`='$conclusionID' WHERE `id`='$courseID'");
+    
+        //UPLOAD FILES
+        move_uploaded_file($_FILES["inicial_slide"]["tmp_name"], "../courses/$courseID/$apresentationSlideName");
+        move_uploaded_file($_FILES["inicial_audio"]["tmp_name"], "../courses/$courseID/$apresentationAudioName");
+        move_uploaded_file($_FILES["end_slide"]["tmp_name"], "../courses/$courseID/$conclusionSlideName");
+        move_uploaded_file($_FILES["end_audio"]["tmp_name"], "../courses/$courseID/$conclusionAudioName");
 
+        echo "Você criou o curso #$courseID ( $courseName ) com sucesso!";
+    }
 }
 
 
