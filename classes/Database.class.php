@@ -56,8 +56,9 @@ class DataBase{
     function getConnection(){
         return $this->connection;
     }
-    function getLastInsertedID($query){
-        $this->connection->query($query);
-        return $this->conn->lastInsertId ();
+    function insertGetLastID($query){
+        $stm = $this->connection->prepare($query);
+        $stm->execute();
+        return $this->connection->lastInsertId();
     }
 }

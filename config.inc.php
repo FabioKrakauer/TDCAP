@@ -13,7 +13,7 @@ define("APP_NAME", "tdc");
 define("APP_URL", "localhost/tdc");
 
 //Tamanho maximo para upload de arquivos
-ini_set("upload_max_filesize", "100M");
+ini_set("upload_max_filesize", "1000M");    
 
 //Defini banco de dados
 require_once 'classes/Database.class.php';

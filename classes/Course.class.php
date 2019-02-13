@@ -49,7 +49,7 @@ class Course{
     function getInicialSlide(){
         return new Slide($this->inicial_slide);
     }
-    function getEndlSlide(){
+    function getEndSlide(){
         return new Slide($this->end_slide);
     }
 }

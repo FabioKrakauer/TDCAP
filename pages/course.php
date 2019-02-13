@@ -50,7 +50,10 @@ if(isset($_GET["course"]) && isset($_GET["slide"])){
       ?>
       </ul>
       Slide Image: <img src="http://<?= $slide->getPathImage() ?>" alt="<?= $slide->getTitle() ?>" style="width:100px; height:100px">
-      Audio: <audio src="http://<?= $slide->getPathAudio() ?>" controllers>Audio</audio>
+      Audio: <audio src="http://<?= $slide->getPathAudio() ?>"></audio>
+      <audio controls="controls">
+        <source src="http://<?= $slide->getPathAudio() ?>" type="audio/mpeg" />
+      </audio>
       <?php }
       ?>
     <!-- Optional JavaScript -->

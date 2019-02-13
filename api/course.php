@@ -17,8 +17,8 @@
                     "id" => $course->getID(),
                     "name" => $course->getName(),
                     "company" => $course->getCompany()->getID(),
-                    "inicial_slide" => $course->getInicialSlideName(),
-                    "end_slide" => $course->getEndlSlideName(),
+                    "inicial_slide" => $course->getInicialSlide()->getID(),
+                    "end_slide" => $course->getEndSlide()->getID(),
                 ];
                 array_push($result, $array);
             }
@@ -32,8 +32,8 @@
                     "id" => $course->getID(),
                     "name" => $course->getName(),
                     "company" => $course->getCompany()->getID(),
-                    "inicial_slide" => $course->getInicialSlideName(),
-                    "end_slide" => $course->getEndlSlideName(),
+                    "inicial_slide" => $course->getInicialSlide()->getID(),
+                    "end_slide" => $course->getEndSlide()->getID(),
                 ];
                 
             $json = json_encode($result, JSON_PRETTY_PRINT);
