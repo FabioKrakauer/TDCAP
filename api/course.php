@@ -17,8 +17,8 @@
                     "id" => $course->getID(),
                     "name" => $course->getName(),
                     "company" => $course->getCompany()->getID(),
-                    "inicial_slide" => $course->getInicialSlideName(),
-                    "end_slide" => $course->getEndlSlideName(),
+                    "inicial_slide" => $course->getInicialSlide(),
+                    "end_slide" => $course->getEndlSlide(),
                 ];
                 array_push($result, $array);
             }

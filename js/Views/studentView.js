@@ -1,19 +1,31 @@
 addStudentView = function () {
-    console.log('teste')
     var coursesList = ``
     var companiesList = ``
     var courseData
     var companyData
 
-    $.getJSON('http://ramacciotti.org/tdc/api/course.php?course=0',
-        (data) => {
-            courseData = data
+
+    $.getJSON('../api/course.php?course=0', function (data) {
+
+        courseData = data
+    })
+        .done(function () {
+
             addContent()
         })
-    $.getJSON('http://ramacciotti.org/tdc/api/company.php?company=0',
-        (data) => {
-            companyData = data
+        .fail(function () {
+            console.log('curso erro')
+        })
+
+    $.getJSON('../api/company.php?company=0', function (data) {
+
+        companyData = data
+    })
+        .done(function () {
             addContent()
+        })
+        .fail(function () {
+            console.log('empresa erro')
         })
 
     var addContent = function () {
@@ -107,6 +119,6 @@ editStudentView = function (data) {
 
 }
 
-reportView = function (data){
+reportView = function (data) {
 
 }
