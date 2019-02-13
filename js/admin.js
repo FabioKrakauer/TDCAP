@@ -34,7 +34,7 @@ $(document).ready(function(){
         })
     }
 
-    editStudent = function(){
+    editStudent = function(id){
         $.getJSON('http://ramacciotti.org/tdc/api/student.php?student=' + id, function (data) {
             editStudentView(data)
         })
@@ -51,7 +51,7 @@ $(document).ready(function(){
         $('#admin-list li:nth-child(6)').addClass('active-content')
     }
 
-    editCourse = function(){
+    editCourse = function(id){
         $.getJSON('http://ramacciotti.org/tdc/api/course.php?course=' + id, function (data) {
             editCourseView(data)
         })

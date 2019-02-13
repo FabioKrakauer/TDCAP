@@ -116,7 +116,44 @@ showStudentView = function (data) {
 }
 
 editStudentView = function (data) {
+    let date = new Date (data.first_access)
 
+    var formatedDate = date.getDate()  + " / " + (date.getMonth()+1) + " / " + date.getFullYear() + " - " + date.getHours() + ":" + date.getMinutes();
+
+    var content = `
+            <h1 class="h3 text-white text-center p-1 mb-4">Adicionar Aluno</h1>
+            <form action="../controller/newStudent.php" method="post">
+                <div class="container row mx-auto">
+                    <div class="form-group col-12">
+                        <label for="name">Nome:</label>
+                        <input type="text" name="name" id="name" class="form-control" value="${data.name}">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="email">E-mail:</label>
+                        <input type="email" name="email" id="email" class="form-control" value="${data.email}">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="student-course">Curso:</label>
+                        <select class="custom-select" id="student-course">
+                            <option selected disabled>Curso...</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="student-company">Empresa:</label>
+                        <select class="custom-select" id="student-company">
+                            <option selected disabled>Empresa...</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-12">
+                        <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
+                    </div>
+                </div>
+            </form>
+            <p class="ml-4">Primeiro Acesso: ${formatedDate}</p>
+        `
+        $('#dynamic-content').html(content)
 }
 
 reportView = function (data) {
