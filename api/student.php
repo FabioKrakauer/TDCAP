@@ -39,7 +39,7 @@
                     "name" => utf8_encode($user->getName()),
                     "email" => utf8_encode($user->getEmail()),
                     "course" => array(),
-                    "company" => $user->getCompany(),
+                    "company" => $user->getCompany()->getID(),
                     "first_access" => $user->getFirstAccess(),
                 ];
                 foreach($user->getCourses() as $course){
