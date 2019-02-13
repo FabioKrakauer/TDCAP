@@ -49,9 +49,6 @@ $(document).ready(function(){
     showCourse = function (){
         $('#admin-list li').removeClass('active-content')
         $('#admin-list li:nth-child(6)').addClass('active-content')
-        $.getJSON('http://ramacciotti.org/tdc/api/course.php?course=0', function (data) {
-            showCourseView(data)
-        })
     }
 
     editCourse = function(){

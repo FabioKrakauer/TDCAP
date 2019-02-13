@@ -30,7 +30,7 @@ if(!$user->isAdmin()){
     <header class="text-white">
         <div class="row w-100 py-3 mx-auto">
             <div class="col-6">
-                <img src="../img/logo.gif" alt="">
+                <img src="../img/logo.gif" alt="logo">
             </div>
             <div class="col-6">
                 <h3 class="h6 text-center">Transformando Conhecimento em ação e ação em resultado</h3>
