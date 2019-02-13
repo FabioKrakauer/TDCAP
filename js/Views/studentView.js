@@ -5,7 +5,7 @@ addStudentView = function () {
     var companyData
 
 
-    $.getJSON('../api/course.php?course=0', function (data) {
+    $.getJSON('http://ramacciotti.org/tdc/api/course.php?course=0', function (data) {
 
         courseData = data
     })
@@ -17,7 +17,7 @@ addStudentView = function () {
             console.log('curso erro')
         })
 
-    $.getJSON('../api/company.php?company=0', function (data) {
+    $.getJSON('http://ramacciotti.org/tdc/api/company.php?company=0', function (data) {
 
         companyData = data
     })
