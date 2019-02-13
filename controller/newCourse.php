@@ -40,16 +40,17 @@ if(isset($_POST["action"])){
 
     $tempName = $_FILES["end_slide"]["tmp_name"];
     $type = explode("/", $_FILES["end_slide"]["type"])[1];
-    $newName = $courseID . "_" . $endSlideName . ".". $type;
-    move_uploaded_file($_FILES["end_slide"]["tmp_name"], "../courses/$courseID/$newName");
+    $slideName = $courseID . "_" . $endSlideName . ".". $type;
+    move_uploaded_file($_FILES["end_slide"]["tmp_name"], "../courses/$courseID/$slideName");
 
     $tempName = $_FILES["end_slide"]["tmp_name"];
     $type = explode("/", $_FILES["end_audio"]["type"])[1];
-    $newName = $courseID . "_" . $endSlideName . ".". $type;
-    move_uploaded_file($_FILES["end_audio"]["tmp_name"], "../courses/$courseID/$newName");
+    $audioName = $courseID . "_" . $endSlideName . ".". $type;
+    move_uploaded_file($_FILES["end_audio"]["tmp_name"], "../courses/$courseID/$audioName");
 
-
-    echo "File uploaded";
+    $conclusionID = $database->insertGetLastID("INSERT INTO `slides` (`id`, `course_id`, `title`, `slide_image`, `slide_audio`, `orders`) VALUES (NULL, '$courseID', '$endSlideNameTitle', '$slideName', '$audioName', '1001')");
+    $updateCourse = $database->query("UPDATE `course` SET `inicial_slide`='$apresentationID',`end_slide`='$conclusionID' WHERE `id`='$courseID'");
+    echo "Você criou o curso #$courseID ( $courseName ) com sucesso!";
 
 }
 

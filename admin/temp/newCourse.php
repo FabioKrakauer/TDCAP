@@ -16,7 +16,6 @@
                                 <option value="3">Three</option>
                             </select>
                         </div>
-                        <input name="teste" id="" class="btn btn-primary" type="button" value="test">
                         <input type="text" name="inicial_name" placeholder="Digite o nome do primeiro slide!">
                         <div class="form-group col-12 col-lg-6">
                             <label for="inicial-slide">Slide da apresentação:</label>
