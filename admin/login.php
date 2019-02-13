@@ -17,6 +17,7 @@
             <a class="navbar-brand" href="#"><img src="../img/logo.gif" alt="logo"></a>
         </nav>
     </header>
+    <div class="login-form container mt-5 rounded border p-5">
     <?php
         if(isset($_GET["error"])){ ?>
             <div class="alert alert-danger" role="alert">
@@ -25,7 +26,6 @@
     <?php }
     
     ?>
-    <div class="login-form container mt-5 rounded border p-5">
         <form action="../controller/loginController.php" method="post">
             <input type="hidden" name="admin" value="loginAdmin">
             <div class="form-group">
