@@ -129,7 +129,7 @@ editStudentView = function (studentData) {
         .done(function () {
             if (!($.isEmptyObject(studentData.course))) {
                 studentData.course.forEach(function (courseId) {
-                    courseHasList += `<li class='list-group-item'>${courseData[courseId - 1].name}</li>`
+                    courseHasList += `<li class='list-group-item'>${courseData[courseId - 1].name}<button class="btn btn-sm btn-danger float-right">Remover</button></li>`
                 })
             }
             courseData.forEach(function (course) {
