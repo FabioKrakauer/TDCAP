@@ -76,6 +76,21 @@ addStudentView = function () {
                         <input type="password" name="password-conf" id="password-conf" class="form-control" placeholder="Confirme a senha">
                     </div>
                     <div class="form-group col-12">
+                        <label>É administrador?</label>
+                        <div class="ml-4">
+                            <input class="form-check-input" type="radio" name="adminRadio" id="adminTrue" value="adminTrue">
+                            <label class="form-check-label" for="adminTrue">
+                                Sim
+                            </label>
+                        </div>
+                        <div class="ml-4">
+                            <input class="form-check-input" type="radio" name="adminRadio" id="adminFalse" value="adminFalse" checked>
+                            <label class="form-check-label" for="adminFalse">
+                                Não
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
                         <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
                     </div>
                 </div>
@@ -146,11 +161,11 @@ editStudentView = function (studentData) {
     })
         .done(function () {
             companyData.forEach(function (company) {
-                if($.isEmptyObject(studentData.company)){
+                if ($.isEmptyObject(studentData.company)) {
                     companyToList += `<option disabled selected>Empresa...</option>`
-                }else if(company.id == studentData.company){
+                } else if (company.id == studentData.company) {
                     companyToList += `<option value="${company.name}" selected>${company.name}</option>`
-                }else{
+                } else {
                     companyToList += `<option value="${company.name}">${company.name}</option>`
                 }
             })
