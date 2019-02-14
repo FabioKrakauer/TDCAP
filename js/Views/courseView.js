@@ -16,6 +16,7 @@ addCourseView = function () {
                                     <option value="2">Two</option>
                                     <option value="3">Three</option>
                                 </select>
+                                
                             </div>
                             <div class="form-group col-12 col-lg-6">
                                 <label for="inicial-name">Slide inicial:</label>
