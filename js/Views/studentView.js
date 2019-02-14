@@ -145,25 +145,15 @@ editStudentView = function (studentData) {
         companyData = companyAPIData
     })
         .done(function () {
-            // if (!($.isEmptyObject(studentData.company))) {
-            //     studentData.company.forEach(function (companyId) {
-            //         companyHasList += `<li class='list-group-item'>${companyData[companyId - 1].name}</li>`
-            //     })
-            // }
-            // companyData.forEach(function (company) {
-            //     if ($.inArray(company.id, studentData.company) != -1) {
-            //         return
-            //     }
-            //     companyToList += `<option value="${company.name}">${company.name}</option>`
-            // })
             companyData.forEach(function (company) {
-                if(company == studentData.company){
+                if($.isEmptyObject(studentData.company)){
+                    companyToList += `<option disabled selected>Empresa...</option>`
+                }else if(company.id == studentData.company){
                     companyToList += `<option value="${company.name}" selected>${company.name}</option>`
                 }else{
                     companyToList += `<option value="${company.name}">${company.name}</option>`
                 }
             })
-
             addEditContent()
         })
 
@@ -227,5 +217,16 @@ editStudentView = function (studentData) {
 }
 
 reportView = function (data) {
-
+    console.log(data)
+    var content = `
+        <h1 class="h3 text-white text-center p-1 mb-4">Relatório</h1>
+        <div class="container">
+            <ul class="list-group list-group-flush mb-4">
+                <li class='list-group-item'>...</li>
+                <li class='list-group-item'>...</li>
+                <li class='list-group-item'>...</li>
+            </ul>
+        </div>
+        `
+    $('#dynamic-content').html(content)
 }

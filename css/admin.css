@@ -1,9 +1,14 @@
-header{
+body{
     background-color: #427DB6;
 }
 
 .active-content{
     background-color: #194684;
+}
+
+#dynamic-content{
+    background: white;
+    min-height: 100vh;
 }
 
 #dynamic-content h1,
@@ -13,7 +18,6 @@ header{
 }
 
 .hello{
-    background-color: #427DB6;
     text-align: end;
 }
 
@@ -24,7 +28,7 @@ header{
     
     header{
         width: 35%;
-        height: 100vh;
+        height: 100%;
     }
     
     main{

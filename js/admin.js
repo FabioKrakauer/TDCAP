@@ -56,4 +56,10 @@ $(document).ready(function(){
             editCourseView(data)
         })
     }
+
+    studentReport = function(id){
+        $.getJSON('http://ramacciotti.org/tdc/api/student.php?student=' + id, function (data) {
+            reportView(data)
+        })
+    }
 })
