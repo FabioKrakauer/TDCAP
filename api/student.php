@@ -1,6 +1,5 @@
 <?php
-
-    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Origin: *; Content-type: application/json; charset=utf-8");
     $dir = realpath(__DIR__ . '/..');
     require_once $dir.'/config.inc.php';
     require_once APP_ROOT . '/classes/User.class.php';
@@ -15,8 +14,8 @@
                 $user = new User($row["id"]);
                 $array = [
                     "id" => $user->getID(),
-                    "name" => utf8_encode($user->getName()),
-                    "email" => utf8_encode($user->getEmail()),
+                    "name" => $user->getName(),
+                    "email" => $user->getEmail(),
                     "course" => array(),
                     "company" => $user->getCompany()->getID(),
                     "first_access" => $user->getFirstAccess(),
@@ -36,8 +35,8 @@
             $user = new User($field["id"]);
                 $result = [
                     "id" => $user->getID(),
-                    "name" => utf8_encode($user->getName()),
-                    "email" => utf8_encode($user->getEmail()),
+                    "name" => $user->getName(),
+                    "email" => $user->getEmail(),
                     "course" => array(),
                     "company" => $user->getCompany()->getID(),
                     "first_access" => $user->getFirstAccess(),
