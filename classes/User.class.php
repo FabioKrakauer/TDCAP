@@ -79,9 +79,10 @@ class User{
     function getCourseProgress($courseID){
         global $database;
         $user = Auth::user();
+        $userID = $user->getID();
         $slidesCourse = $database->getFieldValue("SELECT COUNT(`title`) AS `value` FROM `slides` WHERE `course_id`='$courseID'");
         $slidesQuantity = $slidesCourse["value"];
-        $slidesViews = $database->getFieldValue("SELECT COUNT(`slide_id`) AS `value` FROM `user_slides` WHERE `course_id`='$courseID'");
+        $slidesViews = $database->getFieldValue("SELECT COUNT(`slide_id`) AS `value` FROM `user_slides` WHERE `course_id`='$courseID' AND `user_id`='$userID'");
         $views = $slidesViews["value"];
         $views *= 100;
         return $views / $slidesQuantity;
