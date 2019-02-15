@@ -16,6 +16,7 @@ class Course{
     private $inicial_audio;
     private $end_slide;
     private $end_audio;
+    private $questions;
 
     function __construct($id){
         global $database;
@@ -24,6 +25,7 @@ class Course{
         $this->id = $field["id"];
         $this->name = $field["name"];
         $this->slides = [];
+        $this->questions = [];
         $this->company = new Company($field["company"]);
         $this->inicial_slide = $field["inicial_slide"];
         $this->end_slide = $field["end_slide"];
@@ -32,6 +34,11 @@ class Course{
 
         foreach($slidesFields as $slides){
             array_push($this->slides, new Slide($slides["id"]));
+        }
+        
+        $questions = $database->getFieldsValues("SELECT `id` FROM `course_test` WHERE `course_id`='$this->id'");
+        foreach($questions as $question){
+            array_push($this->questions, new Question($question["id"]));
         }
     }
     function getID(){
@@ -42,6 +49,9 @@ class Course{
     }
     function getSlides(){
         return $this->slides;
+    }
+    function getQuestions(){
+        return $this->questions;
     }
     function getCompany(){
         return $this->company;

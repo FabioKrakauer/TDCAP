@@ -4,12 +4,12 @@ require_once 'config.inc.php';
 require_once APP_ROOT . "/classes/User.class.php";
 require_once APP_ROOT . "/classes/Course.class.php";
 require_once APP_ROOT . "/classes/Auth.class.php";
+require_once APP_ROOT . "/classes/Question.class.php";
 
 global $database;
 
 Auth::isLogged(true, 0);
 $user = Auth::user();
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,9 +26,8 @@ $user = Auth::user();
     Olá, <?= $user->getName() ?>
     <h1>Seus cursos:</h1>
 
-    <?php 
+    <?php
         foreach($user->getCourse() as $course){
-
             ?>
             <!-- LIST ALL USER COURSES -->
             <div class="card">
