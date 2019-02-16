@@ -36,7 +36,9 @@ if(isset($_GET["course"]) && isset($_GET["slide"])){
             foreach($fields as $row){
               $id = $row["id"];
             ?>
+
             <!-- FRONT HERE -->
+            
             <li>
               <a href="course.php?course=<?= $course->getID() ?>&slide=<?= $id ?>">
               <?php 
@@ -51,13 +53,24 @@ if(isset($_GET["course"]) && isset($_GET["slide"])){
       </ul>
       <?php
         if($user->getCourseProgress($course->getID()) == 100){
-          //NEED VALIDATE USER ALREADY MAKE TEST
+          if($user->getUserMakeExam($course->getID()) == false){
       ?>
+          <!-- BUTTON TO USER MAKE EXAM -->
           <form action="test.php" method="post">
               <input type="hidden" name="course" value="<?= $course->getID() ?>">
               <input type="submit" name="action" value="Realizar prova" class="btn btn-success">
           </form>
-  <?php } ?>
+  <?php 
+    }else{ ?>
+
+      <!-- ALERT IF USER ALREADY MAKE EXAM! -->
+        <div class="alert alert-success col-4" role="alert">
+          <strong>Você ja realizou sua prova! Sua nota foi de <?= $user->getUserExamResult($course->getID()) ?> de 100</strong>
+        </div>
+    <?php }
+      }
+  ?>
+      <!-- SLIDE IMAGE AND AUDIO -->
       Slide Image: <img src="http://<?= $slide->getPathImage() ?>" alt="<?= $slide->getTitle() ?>" style="width:100px; height:100px">
       Audio: <audio src="http://<?= $slide->getPathAudio() ?>"></audio>
       <audio controls="controls">

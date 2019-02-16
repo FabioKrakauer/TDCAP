@@ -92,4 +92,21 @@ class User{
         }
         return $views / $slidesQuantity;
     }
+    function getUserMakeExam($courseID){
+        global $database;
+        $user = Auth::user();
+        $userID = $user->getID();
+        $field = $database->getFieldValue("SELECT `id` FROM `user_exam_result` WHERE `user_id`='$userID' AND `course_id`='$courseID'");
+        if($field == null){
+            return false;
+        }
+        return true;
+    }
+    function getUserExamResult($courseID){
+        global $database;
+        $user = Auth::user();
+        $userID = $user->getID();
+        $field = $database->getFieldValue("SELECT `result` FROM `user_exam_result` WHERE `user_id`='$userID' AND `course_id`='$courseID'");
+        return $field["result"];
+    }
 }
