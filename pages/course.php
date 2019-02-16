@@ -49,12 +49,23 @@ if(isset($_GET["course"]) && isset($_GET["slide"])){
       <?php }
       ?>
       </ul>
+      <?php
+        if($user->getCourseProgress($course->getID()) == 100){
+          //NEED VALIDATE USER ALREADY MAKE TEST
+      ?>
+          <form action="test.php" method="post">
+              <input type="hidden" name="course" value="<?= $course->getID() ?>">
+              <input type="submit" name="action" value="Realizar prova" class="btn btn-success">
+          </form>
+  <?php } ?>
       Slide Image: <img src="http://<?= $slide->getPathImage() ?>" alt="<?= $slide->getTitle() ?>" style="width:100px; height:100px">
       Audio: <audio src="http://<?= $slide->getPathAudio() ?>"></audio>
       <audio controls="controls">
         <source src="http://<?= $slide->getPathAudio() ?>" type="audio/mpeg" />
       </audio>
-      <?php }
+
+      <?php
+    }
       ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

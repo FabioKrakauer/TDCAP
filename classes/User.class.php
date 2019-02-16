@@ -4,6 +4,7 @@ $dir = realpath(__DIR__ . '/..');
 require_once $dir.'/config.inc.php';
 require_once 'Course.class.php';
 require_once 'Company.class.php';
+require_once 'Question.class.php';
 
 class User{
 
@@ -85,6 +86,10 @@ class User{
         $slidesViews = $database->getFieldValue("SELECT COUNT(`slide_id`) AS `value` FROM `user_slides` WHERE `course_id`='$courseID' AND `user_id`='$userID'");
         $views = $slidesViews["value"];
         $views *= 100;
+        $porcent = $views / $slidesQuantity;
+        if($porcent > 100){
+            return 100;
+        }
         return $views / $slidesQuantity;
     }
 }
