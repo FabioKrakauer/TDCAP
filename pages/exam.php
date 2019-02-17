@@ -13,7 +13,10 @@ if(isset($_POST["course"])){
 
     <p>Realizar prova do curso <b><?= $course->getName() ?></b></p>
     <form action="../controller/examValidade.php" method="post">
+        <input type="hidden" name="courseID" value="<?= $course->getID() ?>">
 
+        <!-- JAVA SCRIPT PLAY SECONDS TIME -->
+        <input type="hidden" name="time" value="2100">
     <?php
         $questions = 0; 
         foreach($course->getQuestions() as $question){
@@ -56,7 +59,6 @@ if(isset($_POST["course"])){
     ?>
     <input type="submit" name="action" value="Finalizar" class="btn btn-success">
     </form>
-?>
 <!doctype html>
 <html lang="en">
   <head>
