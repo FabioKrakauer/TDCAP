@@ -65,7 +65,12 @@ if(isset($_GET["course"]) && isset($_GET["slide"])){
 
       <!-- ALERT IF USER ALREADY MAKE EXAM! -->
         <div class="alert alert-success col-4" role="alert">
-          <strong>Você ja realizou sua prova! Sua nota foi de <?= $user->getUserExamResult($course->getID()) ?> de 100</strong>
+          <strong>Você ja realizou sua prova! Sua nota foi de <?= $user->getUserExamResult($course->getID()) ?> de 100
+            <form action="viewExam.php" method="post">
+                <input type="hidden" name="course_id" value="<?= $course->getID() ?>">
+                <input type="submit" name="action" class="btn btn-success" value="Ver exame">
+            </form>
+          </strong>
         </div>
     <?php }
       }
