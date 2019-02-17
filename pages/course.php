@@ -56,7 +56,7 @@ if(isset($_GET["course"]) && isset($_GET["slide"])){
           if($user->getUserMakeExam($course->getID()) == false){
       ?>
           <!-- BUTTON TO USER MAKE EXAM -->
-          <form action="test.php" method="post">
+          <form action="exam.php" method="post">
               <input type="hidden" name="course" value="<?= $course->getID() ?>">
               <input type="submit" name="action" value="Realizar prova" class="btn btn-success">
           </form>

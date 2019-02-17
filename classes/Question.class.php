@@ -16,7 +16,7 @@ class Question{
 
         global $database;
 
-        $fields = $database->getFieldValue("SELECT * FROM `course_test` WHERE `course_id`='$id'");
+        $fields = $database->getFieldValue("SELECT * FROM `course_test` WHERE `id`='$id'");
         $this->id = $fields["id"];
         $this->course = $fields["course_id"];
         $this->question = $fields["question"];
