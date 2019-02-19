@@ -27,7 +27,6 @@ if(isset($_POST["course_id"])){
       <body>
 
             <h1>Vendo a prova do curso - <b><?= $course->getName() ?></b></h1>
-
             <?php 
                 $questionsAndAnswers = $database->getFieldsValues("SELECT `question_id`,`answer` FROM `user_exam` WHERE `user_id`='$userID' AND `course_id`='$courseID'");
                 $questions = 0;
@@ -37,19 +36,18 @@ if(isset($_POST["course_id"])){
                     ?>
 
                <!-- FRONT HERE -->
-            
             <div class="form-group">
                 <p><?= $questions . "- " . $question->getQuestion() ?></p>
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="1" aria-label="Text for screen reader">
+                        <input disabled class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="1" aria-label="Text for screen reader">
                         <?= $question->getAlternatives()["1"] ?>
                         <?php
                             if($question->getCorrectAlternative() == 1){
-                                echo 'ICONE DE CERTO';
+                                echo '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>';
                             }else{
                                 if($field["answer"] == 1){
-                                    echo 'ICONE DE ERRADO';
+                                    echo '<i class="fa fa-times-circle text-danger" aria-hidden="true"></i>';
                                 }
                             }
                         ?>
@@ -58,14 +56,14 @@ if(isset($_POST["course_id"])){
 
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="2" aria-label="Text for screen reader">
+                        <input disabled class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="2" aria-label="Text for screen reader">
                         <?= $question->getAlternatives()["2"] ?>
                         <?php
                             if($question->getCorrectAlternative() == 2){
-                                echo 'ICONE DE CERTO';
+                                echo '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>';
                             }else{
                                 if($field["answer"] == 2){
-                                    echo 'ICONE DE ERRADO';
+                                    echo '<i class="fa fa-times-circle text-danger" aria-hidden="true"></i>';
                                 }
                             }
                         ?>
@@ -74,14 +72,14 @@ if(isset($_POST["course_id"])){
 
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="3" aria-label="Text for screen reader">
+                        <input disabled class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="3" aria-label="Text for screen reader">
                         <?= $question->getAlternatives()["3"] ?>
                         <?php
                             if($question->getCorrectAlternative() == 3){
-                                echo 'ICONE DE CERTO';
+                                echo '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>';
                             }else{
                                 if($field["answer"] == 3){
-                                    echo 'ICONE DE ERRADO';
+                                    echo '<i class="fa fa-times-circle text-danger" aria-hidden="true"></i>';
                                 }
                             }
                         ?>
@@ -90,15 +88,15 @@ if(isset($_POST["course_id"])){
 
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="4" aria-label="Text for screen reader">
+                        <input disabled class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="4" aria-label="Text for screen reader">
                         <?= $question->getAlternatives()["4"] ?>
                     </label>
                     <?php
                             if($question->getCorrectAlternative() == 4){
-                                echo 'ICONE DE CERTO';
+                                echo '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>';
                             }else{
                                 if($field["answer"] == 4){
-                                    echo 'ICONE DE ERRADO';
+                                    echo '<i class="fa fa-times-circle text-danger" aria-hidden="true"></i>';
                                 }
                             }
                         ?>
