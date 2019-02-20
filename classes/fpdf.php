@@ -167,13 +167,14 @@ function __construct($orientation='P', $unit='mm', $size='A4')
 	$this->SetCompression(true);
 	// Set default PDF version number
 	$this->PDFVersion = '1.3';
+
 }
 
 function SetMargins($left, $top, $right=null)
 {
 	// Set left, top and right margins
-	$this->lMargin = $left;
-	$this->tMargin = $top;
+	$this->lMargin = 0;
+	$this->tMargin = 0;
 	if($right===null)
 		$right = $left;
 	$this->rMargin = $right;
