@@ -56,14 +56,14 @@ addStudentView = function () {
                     <div class="form-group col-12">
                         <label for="student-course">Curso:</label>
                         <select class="custom-select" id="student-course" name="course" required>
-                            <option selected disabled>Curso...</option>
+                            <option value="" selected disabled>Curso...</option>
                             ${coursesList}
                         </select>
                     </div>
                     <div class="form-group col-12">
                         <label for="student-company">Empresa:</label>
                         <select class="custom-select" id="student-company" name="company" required>
-                            <option selected disabled>Empresa...</option>
+                            <option value="" selected disabled>Empresa...</option>
                             ${companiesList}
                         </select>
                     </div>
@@ -162,7 +162,7 @@ editStudentView = function (studentData) {
         .done(function () {
             companyData.forEach(function (company) {
                 if ($.isEmptyObject(studentData.company)) {
-                    companyToList += `<option disabled selected>Empresa...</option>`
+                    companyToList += `<option value="" disabled selected>Empresa...</option>`
                 } else if (company.id == studentData.company) {
                     companyToList += `<option value="${company.name}" selected>${company.name}</option>`
                 } else {
@@ -191,7 +191,7 @@ editStudentView = function (studentData) {
                     </div>
                     <div class="form-group col-12">
                         <label for="student-company">Empresa:</label>
-                        <select class="custom-select" id="student-company">
+                        <select class="custom-select" id="student-company" required>
                             ${companyToList}
                         </select>
                     </div>
@@ -216,12 +216,11 @@ editStudentView = function (studentData) {
                 <div class="row mx-auto">
                     <div class="form-group col-12">
                         <label for="student-course">Adicionar curso:</label>
-                        <select class="custom-select" id="student-course">
-                            <option selected disabled>Curso...</option>
+                        <select class="custom-select" id="student-course" required>
+                            <option value="" selected disabled>Curso...</option>
                             ${courseToList}
                         </select>
                     </div>
-                    <input type="hidden" name="id" value"${studentData.id}">
                     <div class="form-group col-12">
                         <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
                     </div>
