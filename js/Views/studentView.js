@@ -47,33 +47,33 @@ addStudentView = function () {
                 <div class="container row mx-auto">
                     <div class="form-group col-12">
                         <label for="name">Nome:</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="Nome do aluno">
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Nome do aluno" required>
                     </div>
                     <div class="form-group col-12">
                         <label for="email">E-mail:</label>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="E-mail do aluno">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="E-mail do aluno" required>
                     </div>
                     <div class="form-group col-12">
                         <label for="student-course">Curso:</label>
-                        <select class="custom-select" id="student-course">
+                        <select class="custom-select" id="student-course" name="course" required>
                             <option selected disabled>Curso...</option>
                             ${coursesList}
                         </select>
                     </div>
                     <div class="form-group col-12">
                         <label for="student-company">Empresa:</label>
-                        <select class="custom-select" id="student-company">
+                        <select class="custom-select" id="student-company" name="company" required>
                             <option selected disabled>Empresa...</option>
                             ${companiesList}
                         </select>
                     </div>
                     <div class="form-group col-12">
                         <label for="password">Senha:</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Senha" required>
                     </div>
                     <div class="form-group col-12">
                         <label for="password-conf">Confirme a senha:</label>
-                        <input type="password" name="password-conf" id="password-conf" class="form-control" placeholder="Confirme a senha">
+                        <input type="password" name="password-conf" id="password-conf" class="form-control" placeholder="Confirme a senha" required>
                     </div>
                     <div class="form-group col-12">
                         <label>É administrador?</label>
