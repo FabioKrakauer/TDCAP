@@ -221,6 +221,7 @@ editStudentView = function (studentData) {
                             ${courseToList}
                         </select>
                     </div>
+                    <input type="hidden" name="id" value"${studentData.id}">
                     <div class="form-group col-12">
                         <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
                     </div>
