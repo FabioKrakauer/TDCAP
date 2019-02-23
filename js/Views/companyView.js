@@ -127,5 +127,5 @@ validateForm = function() {
   }
 
   validatePhone = function(){
-    $('#telephone').mask('(00) 0000-0000');
+    $('#telephone').mask('(00) 0000-00009');
   }
