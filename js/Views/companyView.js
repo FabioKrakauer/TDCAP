@@ -10,7 +10,7 @@ addCompanyView = function(){
                     </div>
                     <div class="form-group col-12">
                         <label for="cnpj">CNPJ:</label>
-                        <input type="text" name="cnpj" id="cnpj" class="form-control" placeholder="CNPJ da empresa" required>
+                        <input type="text" name="cnpj" id="cnpj" class="form-control" placeholder="CNPJ da empresa" onfocus="validateCNPJ()" required>
                     </div>
                     <div class="form-group col-12">
                         <label for="adress">Endereço:</label>
@@ -18,7 +18,7 @@ addCompanyView = function(){
                     </div>
                     <div class="form-group col-12">
                         <label for="telephone">Telefone:</label>
-                        <input type="text" name="telephone" id="telephone" class="form-control" placeholder="Telefone da empresa" required>
+                        <input type="text" name="telephone" id="telephone" class="form-control" placeholder="Telefone da empresa" onfocus="validatePhone()" required>
                     </div>
                     <div class="form-group col-12">
                         <label for="site">Site:</label>
@@ -72,7 +72,7 @@ showCompanyView = function (data) {
 editCompanyView = function(data) {
     var content = `
         <h1 class="h3 text-white text-center p-1 mb-4">Editar Empresa</h1>
-        <form action="../controller/editCompany.php" method="post">
+        <form action="../controller/editCompany.php" method="post" name="editCompany" onsubmit="return validateForm()">
             <div class="container row mx-auto">
                 <div class="form-group col-12">
                     <label for="name">Nome:</label>
@@ -80,7 +80,7 @@ editCompanyView = function(data) {
                 </div>
                 <div class="form-group col-12">
                     <label for="cnpj">CNPJ:</label>
-                    <input type="text" name="cnpj" id="cnpj" class="form-control" value="${data.CNPJ}" required>
+                    <input type="text" name="cnpj" id="cnpj" class="form-control" value="${data.CNPJ}" onfocus="validateCNPJ()" required>
                 </div>
                 <div class="form-group col-12">
                     <label for="adress">Endereço:</label>
@@ -88,7 +88,7 @@ editCompanyView = function(data) {
                 </div>
                 <div class="form-group col-12">
                     <label for="telephone">Telefone:</label>
-                    <input type="text" name="telephone" id="telephone" class="form-control" value="${data.phone}" required>
+                    <input type="text" name="telephone" id="telephone" class="form-control" value="${data.phone}" onfocus="validatePhone()" required>
                 </div>
                 <div class="form-group col-12">
                     <label for="site">Site:</label>
@@ -102,6 +102,7 @@ editCompanyView = function(data) {
                     <label for="email">E-mail:</label>
                     <input type="email" name="email" id="email" class="form-control" value="${data.email}" required>
                 </div>
+                <input type="hidden" name="id" value"${data.id}">
                 <div class="form-group col-12">
                     <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
                 </div>
@@ -111,3 +112,20 @@ editCompanyView = function(data) {
 
     $('#dynamic-content').html(content)
 }
+
+validateForm = function() {
+
+    var x = document.forms["editCompany"]["telephone"].value;
+    if (isNaN(x)) {
+      alert("Somente números no campo telefone");
+      return false;
+    }
+  }
+
+  validateCNPJ = function(){
+    $('#cnpj').mask('00.000.000/0000-00', {reverse: true});
+  }
+
+  validatePhone = function(){
+    $('#telephone').mask('(00) 0000-0000');
+  }
