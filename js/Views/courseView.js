@@ -37,7 +37,7 @@ addCourseView = function () {
                                 <input type="file" class="form-control-file" id="end-audio">
                             </div>
                             <div class="form-group col-12">
-                                <input type="submit" name="action" class="btn save text-white" value="Salvar">
+                                <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
                             </div>
                         </div>
                     </form>

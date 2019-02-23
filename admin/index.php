@@ -41,7 +41,7 @@ if(!$user->isAdmin()){
                 <li class="py-1" onclick="showCompany()">Empresas Cadastradas</li>
                 <li class="py-1" onclick="addStudent()">Adicionar Aluno</li>
                 <li class="py-1" onclick="showStudent()">Alunos Cadastrados</li>
-                <li class="py-1" onclick="addCourse()">Adicionar Cursos</li>
+                <li class="py-1" onclick="addCourse()">Adicionar Curso</li>
                 <li class="py-1" onclick="showCourse()">Cursos Cadastrados</li>
             </ul>
         </nav>
