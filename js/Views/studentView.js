@@ -172,9 +172,9 @@ editStudentView = function (studentData) {
                 if ($.isEmptyObject(studentData.company)) {
                     companyToList += `<option value="" disabled selected>Empresa...</option>`
                 } else if (company.id == studentData.company) {
-                    companyToList += `<option value="${company.name}" selected>${company.name}</option>`
+                    companyToList += `<option value="${company.id}" selected>${company.name}</option>`
                 } else {
-                    companyToList += `<option value="${company.name}">${company.name}</option>`
+                    companyToList += `<option value="${company.id}">${company.name}</option>`
                 }
             })
             addEditContent()
