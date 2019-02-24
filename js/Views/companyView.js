@@ -102,7 +102,7 @@ editCompanyView = function (data) {
                     <label for="email">E-mail:</label>
                     <input type="email" name="email" id="email" class="form-control" value="${data.email}" required>
                 </div>
-                <input type="hidden" name="id" value"${data.id}">
+                <input type="hidden" name="id" value="${data.id}">
                 <div class="form-group col-12">
                     <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
                 </div>
