@@ -38,7 +38,7 @@ addStudentView = function () {
         })
 
         companyData.forEach(function (data) {
-            companiesList += `<option value="${data.name}">${data.name}</option>`
+            companiesList += `<option value="${data.id}">${data.name}</option>`
         })
 
         var content = `
@@ -78,13 +78,13 @@ addStudentView = function () {
                     <div class="form-group col-12">
                         <label>É administrador?</label>
                         <div class="ml-4">
-                            <input class="form-check-input" type="radio" name="adminRadio" id="adminTrue" value="adminTrue">
+                            <input class="form-check-input" type="radio" name="adminRadio" id="adminTrue" value="1">
                             <label class="form-check-label" for="adminTrue">
                                 Sim
                             </label>
                         </div>
                         <div class="ml-4">
-                            <input class="form-check-input" type="radio" name="adminRadio" id="adminFalse" value="adminFalse" checked>
+                            <input class="form-check-input" type="radio" name="adminRadio" id="adminFalse" value="0" checked>
                             <label class="form-check-label" for="adminFalse">
                                 Não
                             </label>
