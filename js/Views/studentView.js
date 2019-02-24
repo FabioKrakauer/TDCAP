@@ -34,7 +34,7 @@ addStudentView = function () {
         }
 
         courseData.forEach(function (data) {
-            coursesList += `<option value="${data.name}">${data.name}</option>`
+            coursesList += `<option value="${data.id}">${data.name}</option>`
         })
 
         companyData.forEach(function (data) {
@@ -159,7 +159,7 @@ editStudentView = function (studentData) {
                 if ($.inArray(course.id, studentData.course) != -1) {
                     return
                 }
-                courseToList += `<option value="${course.name}">${course.name}</option>`
+                courseToList += `<option value="${course.id}">${course.name}</option>`
             })
             addEditContent()
         })
