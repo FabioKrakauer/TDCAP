@@ -12,3 +12,12 @@ validatePhone = function () {
         }
     });
 }
+
+validatePassword = function(){
+    let pass = $('#password')
+    let passConf = $('#password-conf')
+    if(pass != passConf){
+        alert('As senhas não conferem. Tente novamente.')
+        return false
+    }
+}

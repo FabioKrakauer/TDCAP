@@ -55,7 +55,7 @@ addStudentView = function () {
                     </div>
                     <div class="form-group col-12">
                         <label for="student-course">Curso:</label>
-                        <select class="custom-select" id="student-course" name="course" required>
+                        <select class="custom-select" id="student-course" name="course">
                             <option value="" selected disabled>Curso...</option>
                             ${coursesList}
                         </select>
@@ -73,7 +73,7 @@ addStudentView = function () {
                     </div>
                     <div class="form-group col-12">
                         <label for="password-conf">Confirme a senha:</label>
-                        <input type="password" name="password-conf" id="password-conf" class="form-control" placeholder="Confirme a senha" required>
+                        <input type="password" name="password-conf" id="password-conf" class="form-control" placeholder="Confirme a senha" onfocusout="validatePassword()" required>
                     </div>
                     <div class="form-group col-12">
                         <label>É administrador?</label>
@@ -144,7 +144,15 @@ editStudentView = function (studentData) {
         .done(function () {
             if (!($.isEmptyObject(studentData.course))) {
                 studentData.course.forEach(function (courseId) {
-                    courseHasList += `<li class='list-group-item'>${courseData[courseId - 1].name}<button class="btn btn-sm btn-danger float-right">Remover</button></li>`
+                    courseHasList += `
+                    <li class='list-group-item d-flex justify-content-between'>
+                        ${courseData[courseId - 1].name}
+                        <form action="../controller/removeCourseFromStudent.php" method="post">
+                            <input type="hidden" value="${studentData.id}" name="studentId">
+                            <input type="hidden" value="${courseData.id}" name="courseId">
+                            <input type="submit" name="action" class="btn btn-sm btn-danger float-right" value="Remover">
+                        </form>
+                    </li>`
                 })
             }
             courseData.forEach(function (course) {
@@ -179,53 +187,56 @@ editStudentView = function (studentData) {
         var content = `
         <h1 class="h3 text-white text-center p-1 mb-4">Editar Aluno</h1>
         <div class="container">
-            <form action="../controller/newStudent.php" method="post">
-                <div class="row mx-auto">
-                    <div class="form-group col-12">
-                        <label for="name">Nome:</label>
-                        <input type="text" name="name" id="name" class="form-control" value="${studentData.name}">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="email">E-mail:</label>
-                        <input type="email" name="email" id="email" class="form-control" value="${studentData.email}">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="student-company">Empresa:</label>
-                        <select class="custom-select" id="student-company" required>
-                            ${companyToList}
-                        </select>
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="password">Senha:</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="password-conf">Confirme a senha:</label>
-                        <input type="password" name="password-conf" id="password-conf" class="form-control" placeholder="Confirme a senha">
-                    </div>
-                    <div class="form-group col-12">
-                        <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
-                    </div>
+        <form action="../controller/editStudent.php" method="post">
+            <div class="row mx-auto">
+                <div class="form-group col-12">
+                    <label for="name">Nome:</label>
+                    <input type="text" name="name" id="name" class="form-control" value="${studentData.name}" required>
                 </div>
-            </form>
-            <h3 class="h4 text-white text-center p-1 mb-4">Cursos</h3>
-            <ul class="list-group list-group-flush mb-4">
-                ${courseHasList}
-            </ul>
-            <form action="../controller/addCourseToStudent.php" method="post">
-                <div class="row mx-auto">
-                    <div class="form-group col-12">
-                        <label for="student-course">Adicionar curso:</label>
-                        <select class="custom-select" id="student-course" required>
-                            <option value="" selected disabled>Curso...</option>
-                            ${courseToList}
-                        </select>
-                    </div>
-                    <div class="form-group col-12">
-                        <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
-                    </div>
+                <div class="form-group col-12">
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email" id="email" class="form-control" value="${studentData.email}" required>
                 </div>
-            </form>
+                <div class="form-group col-12">
+                    <label for="student-company">Empresa:</label>
+                    <select class="custom-select" id="student-company" name="studentCompany" required>
+                        ${companyToList}
+                    </select>
+                </div>
+                <div class="form-group col-12">
+                    <label for="password">Senha:</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Senha" required>
+                </div>
+                <div class="form-group col-12">
+                    <label for="password-conf">Confirme a senha:</label>
+                    <input type="password" name="password-conf" id="password-conf" class="form-control" placeholder="Confirme a senha" onfocusout="validatePassword()" required>
+                </div>
+                <input type="hidden" value="${studentData.id}" name="studentId">
+                <div class="form-group col-12">
+                    <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
+                </div>
+            </div>
+        </form>
+        <h3 class="h4 text-white text-center p-1 mb-4">Cursos</h3>
+        <ul class="list-group list-group-flush mb-4">
+            ${courseHasList}
+        </ul>
+        <form action="../controller/addCourseToStudent.php" method="post">
+            <input type="hidden" value="${studentData.id}" name="studentId">
+            <input type="hidden" value="${courseData.id}" name="courseId">
+            <div class="row mx-auto">
+                <div class="form-group col-12">
+                    <label for="student-course">Adicionar curso:</label>
+                    <select class="custom-select" id="student-course" name="studentCourse" required>
+                        <option value="" selected disabled>Curso...</option>
+                        ${courseToList}
+                    </select>
+                </div>
+                <div class="form-group col-12">
+                    <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
+                </div>
+            </div>
+        </form>
         `
         $('#dynamic-content').html(content)
     }
