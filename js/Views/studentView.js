@@ -43,7 +43,7 @@ addStudentView = function () {
 
         var content = `
             <h1 class="h3 text-white text-center p-1 mb-4">Adicionar Aluno</h1>
-            <form action="../controller/newStudent.php" method="post">
+            <form action="../controller/newStudent.php" method="post" onsubmit="return validatePassword()">
                 <div class="container row mx-auto">
                     <div class="form-group col-12">
                         <label for="name">Nome:</label>
@@ -73,7 +73,7 @@ addStudentView = function () {
                     </div>
                     <div class="form-group col-12">
                         <label for="password-conf">Confirme a senha:</label>
-                        <input type="password" name="password-conf" id="password-conf" class="form-control" placeholder="Confirme a senha" onfocusout="validatePassword()" required>
+                        <input type="password" name="password-conf" id="password-conf" class="form-control" placeholder="Confirme a senha" required>
                     </div>
                     <div class="form-group col-12">
                         <label>É administrador?</label>

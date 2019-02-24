@@ -14,8 +14,8 @@ validatePhone = function () {
 }
 
 validatePassword = function(){
-    let pass = $('#password')
-    let passConf = $('#password-conf')
+    let pass = $('#password')[0].value
+    let passConf = $('#password-conf')[0].value
     if(pass != passConf){
         alert('As senhas não conferem. Tente novamente.')
         return false
