@@ -1,5 +1,6 @@
 <?php
-    header("Access-Control-Allow-Origin: *; Content-type: application/json; charset=utf-8");
+    header("Access-Control-Allow-Origin: *");
+    header("Content-type: application/json; charset=utf-8");
     $dir = realpath(__DIR__ . '/..');
     require_once $dir.'/config.inc.php';
     require_once APP_ROOT . '/classes/User.class.php';

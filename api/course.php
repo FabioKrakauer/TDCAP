@@ -1,6 +1,7 @@
 <?php
 
     header("Access-Control-Allow-Origin: *");
+    header("Content-type: application/json; charset=utf-8");
     $dir = realpath(__DIR__ . '/..');
     require_once $dir.'/config.inc.php';
     require_once APP_ROOT . '/classes/Course.class.php';
@@ -37,7 +38,6 @@
                 ];
                 
             $json = json_encode($result, JSON_PRETTY_PRINT);
-            header('Content-Type: application/json');
             echo $json;
         }
     }
