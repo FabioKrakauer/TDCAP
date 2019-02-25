@@ -23,7 +23,7 @@
                 ];
                 array_push($result, $array);
             }
-                $json = json_encode($result, JSON_PRETTY_PRINT);
+                $json = json_encode($result, JSON_UNESCAPED_UNICODE);
                 header('Content-Type: application/json');
                 echo $json;
             }else{
@@ -37,7 +37,7 @@
                     "end_slide" => $course->getEndSlide()->getID(),
                 ];
                 
-            $json = json_encode($result, JSON_PRETTY_PRINT);
+            $json = json_encode($result, JSON_UNESCAPED_UNICODE);
             echo $json;
         }
     }

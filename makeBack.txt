@@ -1,6 +1,5 @@
-Logica do progresso
-Estruturacao do banco de dados - Teste Questionario
-Courso - Questionario
-Nome da pessoa na msg de Ola
-Speed database
+CHANGE IN PHP INI
 
+output_buffering = On
+upload_max_filesize = 1000M
+post_max_size = 1000M
