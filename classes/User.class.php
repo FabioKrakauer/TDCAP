@@ -27,7 +27,7 @@ class User{
         $this->password = $fields["password"];
         $this->company = new Company($fields["company"]);
         $this->admin = $fields["admin"];
-        $this->first_access = $fields["first_access"];
+        $this->first_access = $fields["created_at"];
         $this->courses = [];
         $coursesFields = $database->getFieldsValues("SELECT `course_id` FROM `user_course` WHERE `user_id`='$id'");
         foreach($coursesFields as $position=>$course){

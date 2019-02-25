@@ -13,7 +13,7 @@ addCourseView = function () {
             console.log('empresa erro')
         })
 
-    addContent = function(){
+    addContent = function () {
 
         companyData.forEach(function (data) {
             companiesList += `<option value="${data.id}">${data.name}</option>`
@@ -34,23 +34,37 @@ addCourseView = function () {
                                         ${companiesList}
                                     </select>
                                 </div>
-                                <div class="form-group col-12 col-lg-6">
+                                <div class="form-group col-12">
                                     <label for="inicial-name">Slide inicial:</label>
-                                    <input type="text" name="inicial_name" id="inicial-name" class="form-control mb-1" placeholder="Digite o nome do primeiro slide!" required>
-                                    <input type="file" name="inicial_slide" class="form-control-file" id="inicial-slide" required>
+                                    <div class="input-group">
+                                        <input type="text" name="inicial_name" id="inicial-name" class="form-control col-9"
+                                            placeholder="Digite o nome do primeiro slide!" required>
+                                        <label for="end-slide" class="form-control btn btn-outline-primary col-3">Carregar slide inicial</label>
+                                        <input type="file" name="inicial_slide" class="form-control-file" id="inicial-slide" required hidden>
+                                    </div>
                                 </div>
-                                <div class="form-group col-12 col-lg-6">
+                                <div class="form-group col-12">
                                     <label for="end-name">Slide final:</label>
-                                    <input type="text" name="end_name" id="end-name" class="form-control mb-1" placeholder="Digite o nome do ultimo slide!" required>
-                                    <input type="file" name="end_slide" class="form-control-file" id="end-slide" required>
+                                    <div class="input-group">
+                                        <input type="text" name="end_name" id="end-name" class="form-control col-9"
+                                            placeholder="Digite o nome do ultimo slide!" required>
+                                        <label for="end-slide" class="form-control btn btn-outline-primary col-3">Carregar slide final</label>
+                                        <input type="file" name="end_slide" class="form-control-file" id="end-slide" required hidden>
+                                    </div>
                                 </div>
-                                <div class="form-group col-12 col-lg-6">
+                                <div class="form-group col-12">
                                     <label for="inicial-audio">Áudio inicial:</label>
-                                    <input type="file" name="inicial_audio" class="form-control-file" id="inicial-audio" required>
+                                    <div>
+                                        <label for="end-slide" class="btn btn-outline-primary">Carregar áudio inicial</label>
+                                        <input type="file" name="inicial_audio" class="form-control-file" id="inicial-audio" required hidden>
+                                    </div>
                                 </div>
-                                <div class="form-group col-12 col-lg-6">
+                                <div class="form-group col-12">
                                     <label for="end-audio">Áudio final:</label>
-                                    <input type="file" name="end-audio" class="form-control-file" id="end-audio" required>
+                                    <div>
+                                        <label for="end-slide" class="btn btn-outline-primary">Carregar áudio final</label>
+                                        <input type="file" name="end-audio" class="form-control-file" id="end-audio" required hidden>
+                                    </div>
                                 </div>
                                 <div class="form-group col-12">
                                     <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
@@ -58,7 +72,7 @@ addCourseView = function () {
                             </div>
                         </form>
                     `
-    
+
         $('#dynamic-content').html(content)
     }
 
