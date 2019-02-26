@@ -65,7 +65,7 @@ addCourseView = function () {
                                     <label for="end-audio">Áudio final:</label>
                                     <div>
                                         <label id="label-end-audio" for="end-audio" class="btn btn-outline-primary">Carregar áudio final</label>
-                                        <input type="file" name="end-audio" class="form-control-file" id="end-audio" onchange="validateEndAudio()" accept="audio/*" required hidden>
+                                        <input type="file" name="end_audio" class="form-control-file" id="end-audio" onchange="validateEndAudio()" accept="audio/*" required hidden>
                                     </div>
                                 </div>
                                 <div class="form-group col-12">
