@@ -70,20 +70,24 @@ if(isset($_POST["action"])){
     }
 
     if($uploadFailed["inicialSlide"] == 1){
-        echo "<b>Erro: O slide INICIAL não pode ser neste formato! Ele deve ser em PNG, JPG, JPEG";
+        $_SESSION["message-user"] = "2;Erro: O slide INICIAL não pode ser neste formato! Ele deve ser em PNG, JPG, JPEG";
+        header("Location: ../admin/");
         $database->query("DELETE FROM `course` WHERE `id`='$courseID'");
         die();
     }else if($uploadFailed["inicialAudio"] == 1){
-        echo "<b>Erro: O audio INICIAL não pode ser neste formato! Ele deve ser em MP3";
         $database->query("DELETE FROM `course` WHERE `id`='$courseID'");
+        $_SESSION["message-user"] = "2;O audio INICIAL não pode ser neste formato! Ele deve ser em MP3";
+        header("Location: ../admin/");
         die();
     }else if($uploadFailed["endSlide"] == 1){
-        echo "<b>Erro: O slide FINAL não pode ser neste formato! Ele deve ser em PNG, JPG, JPEG";
         $database->query("DELETE FROM `course` WHERE `id`='$courseID'");
+        $_SESSION["message-user"] = "2;Erro: O slide FINAL não pode ser neste formato! Ele deve ser em PNG, JPG, JPEG";
+        header("Location: ../admin/");
         die();
     }else if($uploadFailed["endAudio"] == 1){
-        echo "<b>Erro: O audio FINAL não pode ser neste formato! Ele deve ser em MP3";
         $database->query("DELETE FROM `course` WHERE `id`='$courseID'");
+        $_SESSION["message-user"] = "2;O audio FINAL não pode ser neste formato! Ele deve ser em MP3";
+        header("Location: ../admin/");
         die();
     }else{
         
@@ -103,7 +107,8 @@ if(isset($_POST["action"])){
         move_uploaded_file($_FILES["end_slide"]["tmp_name"], "../courses/$courseID/$conclusionSlideName");
         move_uploaded_file($_FILES["end_audio"]["tmp_name"], "../courses/$courseID/$conclusionAudioName");
 
-        echo "Você criou o curso #$courseID ( $courseName ) com sucesso!";
+        $_SESSION["message-user"] = "0;Você criou o curso $courseName com sucesso!";
+        header("Location: ../admin/");
     }
 }
 
