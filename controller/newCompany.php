@@ -15,7 +15,8 @@ if(isset($_POST["action"])){
 
     $id = $database->query("INSERT INTO `company` (`id`, `name`, `cnpj`, `adress`, `phone`, `website`, `contact`, `email`) VALUES (NULL, '$name', '$cnpj', '$adress', '$telephone', '$website', '$contact', '$email')");
 
-    echo "Empresa ( $name ) cadastrada com sucesso!";
+    $_SESSION["message-user"] = "0;Você cadastrou a empresa $name com sucesso!";
+    header("Location: ../admin/");
 
 
 }
