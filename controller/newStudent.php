@@ -12,12 +12,14 @@ if(isset($_POST["action"])){
     $admin = $_POST["adminRadio"];
 
     if($password != $password_confir){
-        echo "Suas senhas não conferem!";
+        $_SESSION["message-user"] = "1;As senhas não conferem!";
+        header("Location: ../admin/");
     }else{
         global $database;
         $today = date("Y-m-d",time());
         $userID = $database->insertGetLastID("INSERT INTO `user` (`id`, `name`, `email`, `password`, `company`, `admin`, `created_at`) VALUES (NULL, '$name', '$email', '$password', '$company', '$admin', '$today')");
         $database->query("INSERT INTO `user_course` (`id`, `user_id`, `course_id`) VALUES (NULL, '$userID', '$course')");
-        echo "Usuario criado com sucesso";
+        $_SESSION["message-user"] = "0;Aluno criado com sucesso!";
+        header("Location: ../admin/");
     }
 }
