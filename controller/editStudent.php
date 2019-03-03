@@ -18,5 +18,6 @@ if(isset($_POST["action"])){
     global $database;
 
     $database->query("UPDATE `user` SET `name`='$name',`email`='$email',`password`='$password',`company`='$company' WHERE `id`='$id'");
-    echo "Aluno editado!";
+    $_SESSION["message-user"] = "0;Você editou o aluno $name com sucesso!";
+    header("Location: ../admin/");
 }
