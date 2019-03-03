@@ -14,5 +14,6 @@ if(isset($_POST["action"])){
     $email = $_POST["email"];
 
     $database->query("UPDATE `company` SET `name`='$name',`cnpj`='$cnpj',`adress`='$adress',`phone`='$telephone',`website`='$site',`contact`='$contact',`email`='$email' WHERE `id`='$id'");
-    echo "Empresa editada!";
+    $_SESSION["message-user"] = "0;Você editou a empresa $name com sucesso!";
+    header("Location: ../admin/");
 }
