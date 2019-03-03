@@ -18,3 +18,7 @@ ini_set("upload_max_filesize", "1000M");
 //Defini banco de dados
 require_once 'classes/Database.class.php';
 $database = new DataBase();
+
+if(!isset($_SESSION)){
+    session_start();
+}
