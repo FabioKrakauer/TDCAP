@@ -53,6 +53,27 @@ if(!$user->isAdmin()){
         </div>
         <div class="" id="dynamic-content">
             <h1 class="h3 text-white text-center py-1">TDC</h1>
+            <!-- RETURN USER MESSAGE ON COMPLETE AN ACTION -->
+            <?php
+                if(isset($_SESSION["message-user"])){
+                    $message = explode(";", $_SESSION["message-user"]);
+                    $color = $message[0];
+                    $message = $message[1];
+                    if($color == 0){ ?>
+                        <div class="alert alert-success" role="alert">
+                            <strong><?= $message ?></strong>
+                        </div>
+            <?php   }else if($color == 1){ ?>
+                        <div class="alert alert-warning" role="alert">
+                            <strong><?= $message ?></strong>
+                        </div>
+            <?php   }else if($color == 2){ ?>
+                        <div class="alert alert-danger" role="alert">
+                            <strong><?= $message ?></strong>
+                        </div>
+            <?php  }
+                    unset($_SESSION["message-user"]);
+                } ?>
             <div id="form"></div>
         </div>
     </main>
@@ -66,5 +87,10 @@ if(!$user->isAdmin()){
     <script src="../js/Views/companyView.js"></script>
     <script src="../js/Views/studentView.js"></script>
     <script src="../js/Views/courseView.js"></script>
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                showCourse();
+}, false);
+        </script>
 </body>
 </html>
