@@ -72,8 +72,8 @@ if(!$user->isAdmin()){
                             <strong><?= $message ?></strong>
                         </div>
             <?php  }
-                    unset($_SESSION["message-user"]);
-                } ?>
+                    unset($_SESSION["message-user"]); ?>
+                <?php } ?>
             <div id="form"></div>
         </div>
     </main>
@@ -87,10 +87,5 @@ if(!$user->isAdmin()){
     <script src="../js/Views/companyView.js"></script>
     <script src="../js/Views/studentView.js"></script>
     <script src="../js/Views/courseView.js"></script>
-    <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                showCourse();
-}, false);
-        </script>
 </body>
 </html>
