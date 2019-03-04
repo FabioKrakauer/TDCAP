@@ -149,10 +149,12 @@ editStudentView = function (studentData) {
                         ${courseData[courseId - 1].name}
                         <form action="../controller/removeCourseFromStudent.php" method="post">
                             <input type="hidden" value="${studentData.id}" name="studentId">
-                            <input type="hidden" value="${courseData.id}" name="courseId">
+                            <input type="hidden" value="${courseId}" name="courseId">
                             <input type="submit" name="action" class="btn btn-sm btn-danger float-right" value="Remover">
                         </form>
                     </li>`
+                    console.log(courseData);
+                    
                 })
             }
             courseData.forEach(function (course) {
