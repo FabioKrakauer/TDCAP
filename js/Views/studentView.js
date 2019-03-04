@@ -183,7 +183,6 @@ editStudentView = function (studentData) {
         })
 
     const addEditContent = function () {
-        alert("Ola");
         if (courseData == undefined || companyData == undefined) {
             return
         }
