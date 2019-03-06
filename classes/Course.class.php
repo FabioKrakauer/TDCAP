@@ -4,6 +4,7 @@
 $dir = realpath(__DIR__ . '/..');
 require_once $dir.'/config.inc.php';
 require_once 'Company.class.php';
+require_once 'Question.class.php';
 require_once 'Slide.class.php';
 
 class Course{
