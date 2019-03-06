@@ -27,9 +27,9 @@
                     $id = $course->getID();
                     array_push($array["course"], $id);
                 }
-                $completededCourses = $database->getFieldsValues("SELECT `course_id` FROM `user_exam_result` WHERE `user_id`='$userID'");
+                $completededCourses = $database->getFieldsValues("SELECT `course_id`, `result` FROM `user_exam_result` WHERE `user_id`='$userID'");
                 foreach($completededCourses as $completed){
-                    array_push($array["completed_courses"], $completed["course_id"]);
+                    $array["completed_courses"][$completed["course_id"]] = $completed["result"];
                 }
                 array_push($result, $array);
             
@@ -54,9 +54,9 @@
                     $id = $course->getID();
                     array_push($result["course"], $id);
                 }
-                $completededCourses = $database->getFieldsValues("SELECT `course_id` FROM `user_exam_result` WHERE `user_id`='$userID'");
+                $completededCourses = $database->getFieldsValues("SELECT `course_id`, `result` FROM `user_exam_result` WHERE `user_id`='$userID'");
                 foreach($completededCourses as $completed){
-                    array_push($result["completed_courses"], $completed["course_id"]);
+                    $result["completed_courses"][$completed["course_id"]] = $completed["result"];
                 }
                 
             $json = json_encode($result, JSON_UNESCAPED_UNICODE);
