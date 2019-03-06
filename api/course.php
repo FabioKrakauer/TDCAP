@@ -18,9 +18,15 @@
                     "id" => $course->getID(),
                     "name" => $course->getName(),
                     "company" => $course->getCompany()->getID(),
+                    "slides" => array(),
                     "inicial_slide" => $course->getInicialSlide()->getID(),
                     "end_slide" => $course->getEndSlide()->getID(),
                 ];
+                $courseReallyID = $course->getID();
+                $slides = $database->getFieldsValues("SELECT `id` FROM `slides` WHERE `course_id`='$courseReallyID'");
+                foreach($slides as $slide){
+                    array_push($array["slides"], $slide["id"]);
+                }
                 array_push($result, $array);
             }
                 $json = json_encode($result, JSON_UNESCAPED_UNICODE);
@@ -32,11 +38,16 @@
                 $result = [
                     "id" => $course->getID(),
                     "name" => $course->getName(),
+                    "slides" => array(),
                     "company" => $course->getCompany()->getID(),
                     "inicial_slide" => $course->getInicialSlide()->getID(),
                     "end_slide" => $course->getEndSlide()->getID(),
                 ];
-                
+                $courseReallyID = $course->getID();
+                $slides = $database->getFieldsValues("SELECT `id` FROM `slides` WHERE `course_id`='$courseReallyID'");
+                foreach($slides as $slide){
+                    array_push($result["slides"], $slide["id"]);
+                }
             $json = json_encode($result, JSON_UNESCAPED_UNICODE);
             echo $json;
         }
