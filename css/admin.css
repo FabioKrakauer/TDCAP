@@ -6,6 +6,14 @@ body{
     background-color: #194684;
 }
 
+.admin-list{
+    margin: 0 25%;
+}
+
+.admin-list li{
+    cursor: pointer;
+}
+
 #dynamic-content{
     background: white;
     min-height: 100vh;

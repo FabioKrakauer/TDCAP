@@ -36,7 +36,7 @@ if(!$user->isAdmin()){
             </div>
         </div>
         <nav>
-            <ul class="text-center py-3 mb-0 border-top border-bottom border-secondary" id="admin-list">
+            <ul class="admin-list text-left py-3 border-top border-bottom border-secondary" id="admin-list">
                 <li class="py-1" onclick="addCompany()">Adicionar Empresa</li>
                 <li class="py-1" onclick="showCompany()">Empresas Cadastradas</li>
                 <li class="py-1" onclick="addStudent()">Adicionar Aluno</li>
