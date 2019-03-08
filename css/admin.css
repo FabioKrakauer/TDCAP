@@ -6,12 +6,9 @@ body{
     background-color: #194684;
 }
 
-.admin-list{
-    margin: 0 25%;
-}
-
 .admin-list li{
     cursor: pointer;
+    padding: 0 25%;
 }
 
 #dynamic-content{
