@@ -24,7 +24,7 @@
                     "questions" => array(),
                 ];
                 $courseReallyID = $course->getID();
-                $slides = $database->getFieldsValues("SELECT `id` FROM `slides` WHERE `course_id`='$courseReallyID'");
+                $slides = $database->getFieldsValues("SELECT `id` FROM `slides` WHERE `course_id`='$courseReallyID' ORDER BY `orders` ASC");
                 foreach($slides as $slide){
                     array_push($array["slides"], $slide["id"]);
                 }
@@ -58,7 +58,7 @@
                     "questions" => array(),
                 ];
                 $courseReallyID = $course->getID();
-                $slides = $database->getFieldsValues("SELECT `id` FROM `slides` WHERE `course_id`='$courseReallyID'");
+                $slides = $database->getFieldsValues("SELECT `id` FROM `slides` WHERE `course_id`='$courseReallyID' ORDER BY `orders` ASC");
                 foreach($slides as $slide){
                     array_push($result["slides"], $slide["id"]);
                 }
