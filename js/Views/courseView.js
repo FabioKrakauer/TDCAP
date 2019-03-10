@@ -177,7 +177,7 @@ editCourseView = function (courseData) {
                             </div>
                         </div>
                     </form>
-                    <form action="../controller/addSlide.php" method="post">
+                    <form action="../controller/addSlide.php" method="post" enctype="multipart/form-data">
                         <h3 class="text-white text-center h4 py-1">Adicionar slide</h3>
                         <div class="container row mx-auto mt-4">
                             <div class="form-group col-9">
