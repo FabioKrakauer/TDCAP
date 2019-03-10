@@ -119,7 +119,7 @@ editCourseView = function (courseData) {
                             <form action="../controller/slideController.php" method="post">
                                 <div class="row">
                                     <div class="form-group col-12 col-md-6 row">
-                                        <label for="order" class="col-8">Posição</label>
+                                        <label for="order" class="col-4">Posição</label>
                                         <input type="number" id="order" value="${allCoursesSlide.order}" name="slide_order" class="col-4 border rounded">
                                     </div>
                                     <div class="form-group col-12 col-md-6 text-md-right">
@@ -173,7 +173,7 @@ editCourseView = function (courseData) {
                                 </select>
                             </div>
                             <div class="form-group col-12">
-                                <input type="hidden" value="${courseData.id}">
+                                <input type="hidden" value="${courseData.id}" name="course_id">
                                 <button class="btn btn-sm btn-outline-secondary">Prova</button>
                                 <input type="submit" name="action" class="btn btn-sm btn-outline-danger" value="Remover">
                                 <input type="submit" name="action" class="btn btn-sm save text-white float-right" value="Salvar">
@@ -202,6 +202,9 @@ editCourseView = function (courseData) {
                                     <label id="label-audio" for="audio" class="form-control btn btn-outline-primary">Carregar áudio</label>
                                     <input type="file" name="audio" id="audio" onchange="????()" accept="audio/*" required hidden>
                                 </div>
+                            </div>
+                            <div class="form-group col-12">
+                                <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
                             </div>
                         </div>
                     </form>
