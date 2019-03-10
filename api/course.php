@@ -32,11 +32,12 @@
                 foreach($questions as $question){
                     $questionArray = [
                         "title" => $question["question"],
-                        "1-alternative" => $question["1_alternative"],
-                        "2-alternative" => $question["2_alternative"],
-                        "3-alternative" => $question["3_alternative"],
-                        "4-alternative" => $question["4_alternative"],
-                        "correct_alternative" => $question["correct_alternative"]
+                        "firstAlternative" => $question["1_alternative"],
+                        "secondAlternative" => $question["2_alternative"],
+                        "thirdAlternative" => $question["3_alternative"],
+                        "fourthAlternative" => $question["4_alternative"],
+                        "correct_alternative" => $question["correct_alternative"],
+                        "id" => $question["id"]
                     ];
                     array_push($array["questions"], $questionArray);
                 }
@@ -66,11 +67,12 @@
                 foreach($questions as $question){
                     $questionArray = [
                         "title" => $question["question"],
-                        "1-alternative" => $question["1_alternative"],
-                        "2-alternative" => $question["2_alternative"],
-                        "3-alternative" => $question["3_alternative"],
-                        "4-alternative" => $question["4_alternative"],
-                        "correct_alternative" => $question["correct_alternative"]
+                        "firstAlternative" => $question["1_alternative"],
+                        "secondAlternative" => $question["2_alternative"],
+                        "thirdAlternative" => $question["3_alternative"],
+                        "fourthAlternative" => $question["4_alternative"],
+                        "correct_alternative" => $question["correct_alternative"],
+                        "id" => $question["id"]
                     ];
                     array_push($result["questions"], $questionArray);
                 }
