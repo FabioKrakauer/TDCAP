@@ -115,18 +115,18 @@ editCourseView = function (courseData) {
                 if (allCoursesSlide.course == courseData.id) {
                     slides += `
                         <li class="list-group-item">
-                            <h6 class="text-center mb-4">${allCoursesSlide.title}</h6>
+                            <h6 class="mb-4">${allCoursesSlide.title}</h6>
                             <form action="../controller/slideController.php" method="post">
                                 <div class="row">
-                                    <div class="form-group col-6">
-                                        <label for="order">Posição</label>
-                                        <input type="number" id="order" value="${allCoursesSlide.order}" name="slide_order">
+                                    <div class="form-group col-12 col-md-6 row">
+                                        <label for="order" class="col-8">Posição</label>
+                                        <input type="number" id="order" value="${allCoursesSlide.order}" name="slide_order" class="col-4 border rounded">
                                     </div>
-                                    <div class="form-group col-6 d-flex flex-column">
+                                    <div class="form-group col-12 col-md-6 text-md-right">
                                         <input type="hidden" value="${allCoursesSlide.id}" name="slide_id">
                                         <input type="hidden" value="${courseData.id}" name="course_id">
-                                        <input type="submit" class="btn btn-sm btn-success mb-1" value="Salvar" name="action">
-                                        <input type="submit" class="btn btn-sm btn-danger" value="Remover" name="action">
+                                        <input type="submit" class="btn btn-sm btn-outline-success" value="Salvar" name="action">
+                                        <input type="submit" class="btn btn-sm btn-outline-danger" value="Remover" name="action">
                                     </div>
                                 </div>
                             </form>
@@ -174,22 +174,12 @@ editCourseView = function (courseData) {
                             </div>
                             <div class="form-group col-12">
                                 <input type="hidden" value="${courseData.id}">
-                                <button class="btn btn-sm btn-secondary">Prova</button>
-                                <input type="submit" name="action" class="btn btn-sm btn-danger" value="Remover">
-                                <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
+                                <button class="btn btn-sm btn-outline-secondary">Prova</button>
+                                <input type="submit" name="action" class="btn btn-sm btn-outline-danger" value="Remover">
+                                <input type="submit" name="action" class="btn btn-sm save text-white float-right" value="Salvar">
                             </div>
                         </div>
                     </form>
-                    <div class="mb-4">
-                        <h3 class="text-white text-center h4 py-1">Editar slides</h3>
-                        <div class="container mt-4">
-                            <div class="container row mx-auto">
-                                <ul class="container list-group list-group-flush">
-                                    ${slides}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                     <form action="../controller/addSlide.php" method="post">
                         <h3 class="text-white text-center h4 py-1">Adicionar slide</h3>
                         <div class="container row mx-auto mt-4">
@@ -215,6 +205,16 @@ editCourseView = function (courseData) {
                             </div>
                         </div>
                     </form>
+                    <div class="mb-4">
+                        <h3 class="text-white text-center h4 py-1">Editar slides</h3>
+                        <div class="container mt-4">
+                            <div class="container row mx-auto">
+                                <ul class="container list-group list-group-flush list-group-striped">
+                                    ${slides}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 `
 
         $('#dynamic-content').html(content)
