@@ -114,14 +114,21 @@ editCourseView = function (courseData) {
             slideData.forEach(function (allCoursesSlide) {
                 if (allCoursesSlide.course == courseData.id) {
                     slides += `
-                        <li>
-                            ${allCoursesSlide.title}
+                        <li class="list-group-item">
+                            <h6 class="text-center mb-4">${allCoursesSlide.title}</h6>
                             <form action="../controller/slideController.php" method="post">
-                                <input type="number" value="${allCoursesSlide.order}" name="slide_order">
-                                <input type="hidden" value="${allCoursesSlide.id}" name="slide_id">
-                                <input type="hidden" value="${courseData.id}" name="course_id">
-                                <input type="submit" class="btn btn-sm btn-success" value="Salvar" name="action">
-                                <input type="submit" class="btn btn-sm btn-danger" value="Remover" name="action">
+                                <div class="row">
+                                    <div class="form-group col-6">
+                                        <label for="order">Posição</label>
+                                        <input type="number" id="order" value="${allCoursesSlide.order}" name="slide_order">
+                                    </div>
+                                    <div class="form-group col-6 d-flex flex-column">
+                                        <input type="hidden" value="${allCoursesSlide.id}" name="slide_id">
+                                        <input type="hidden" value="${courseData.id}" name="course_id">
+                                        <input type="submit" class="btn btn-sm btn-success mb-1" value="Salvar" name="action">
+                                        <input type="submit" class="btn btn-sm btn-danger" value="Remover" name="action">
+                                    </div>
+                                </div>
                             </form>
                         </li>
                     `
@@ -167,30 +174,32 @@ editCourseView = function (courseData) {
                             </div>
                             <div class="form-group col-12">
                                 <input type="hidden" value="${courseData.id}">
-                                <button>Prova</button>
+                                <button class="btn btn-sm btn-secondary">Prova</button>
                                 <input type="submit" name="action" class="btn btn-sm btn-danger" value="Remover">
                                 <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
                             </div>
                         </div>
                     </form>
-                    <div>
+                    <div class="mb-4">
                         <h3 class="text-white text-center h4 py-1">Editar slides</h3>
-                        <div class="container row mx-auto">
-                            <ul>
-                                ${slides}
-                            </ul>
+                        <div class="container mt-4">
+                            <div class="container row mx-auto">
+                                <ul class="container list-group list-group-flush">
+                                    ${slides}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <form action="../controller/addSlide.php" method="post">
                         <h3 class="text-white text-center h4 py-1">Adicionar slide</h3>
-                        <div class="container row mx-auto">
+                        <div class="container row mx-auto mt-4">
                             <div class="form-group col-9">
                                 <label for="slide-name">Nome:</label>
-                                <input type="text" id="slide-name" class="form-control" placeholder="Nome" name="name">
+                                <input type="text" id="slide-name" class="form-control" placeholder="Nome do slide" name="name">
                             </div>
                             <div class="form-group col-3">
                                 <label for="slide-number">Posição:</label>
-                                <input type="number" id="slide-number" class="form-control" placeholder="Posição" name="position">
+                                <input type="number" id="slide-number" class="form-control" name="position">
                             </div>
                             <div class="form-group col-6">
                                 <div class="input-group">
