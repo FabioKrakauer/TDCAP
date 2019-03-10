@@ -201,6 +201,7 @@ editCourseView = function (courseData) {
                                 </div>
                             </div>
                             <div class="form-group col-12">
+                                <input type="hidden" name="course_id" value="${courseData.id}">
                                 <input type="submit" name="action" class="btn btn-sm save text-white" value="Salvar">
                             </div>
                         </div>
