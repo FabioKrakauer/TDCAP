@@ -53,3 +53,19 @@ validateEndAudio = function(){
         $("#label-end-audio").addClass('btn-success')
     }
 }
+
+validateAudio = function(){
+    if($("#add-audio")[0].files[0].name != ""){
+        $("#label-add-audio").html('Arquivo adicionado!')
+        $("#label-add-audio").removeClass('btn-outline-primary')
+        $("#label-add-audio").addClass('btn-success')
+    }
+}
+
+validateSlide = function(){
+    if($("#add-slide")[0].files[0].name != ""){
+        $("#label-add-slide").html('Arquivo adicionado!')
+        $("#label-add-slide").removeClass('btn-outline-primary')
+        $("#label-add-slide").addClass('btn-success')
+    }
+}

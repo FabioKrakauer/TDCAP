@@ -100,8 +100,6 @@ showCourseView = function (coursesData) {
 }
 
 editCourseView = function (courseData) {
-
-    console.log(courseData);
     let companyToList = ``
     let slides = ``
 
@@ -109,7 +107,6 @@ editCourseView = function (courseData) {
         slideData = slideAPIData
     })
         .done(function () {
-            console.log(slideData);
 
             slideData.forEach(function (allCoursesSlide) {
                 if (allCoursesSlide.course == courseData.id) {
@@ -193,14 +190,14 @@ editCourseView = function (courseData) {
                             </div>
                             <div class="form-group col-6">
                                 <div class="input-group">
-                                    <label id="label-slide" for="slide" class="form-control btn btn-outline-primary">Carregar slide</label>
-                                    <input type="file" name="slide" id="slide" onchange="????()" accept="image/*" required hidden>
+                                    <label id="label-add-slide" for="add-slide" class="form-control btn btn-outline-primary">Carregar slide</label>
+                                    <input type="file" name="slide" id="add-slide" onchange="validateSlide()" accept="image/*" required hidden>
                                 </div>
                             </div>
                             <div class="form-group col-6">
                                 <div class="input-group">
-                                    <label id="label-audio" for="audio" class="form-control btn btn-outline-primary">Carregar áudio</label>
-                                    <input type="file" name="audio" id="audio" onchange="????()" accept="audio/*" required hidden>
+                                    <label id="label-add-audio" for="add-audio" class="form-control btn btn-outline-primary">Carregar áudio</label>
+                                    <input type="file" name="audio" id="add-audio" onchange="validateAudio()" accept="audio/*" required hidden>
                                 </div>
                             </div>
                             <div class="form-group col-12">
