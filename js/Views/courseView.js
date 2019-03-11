@@ -182,7 +182,7 @@ editCourseView = function (courseData) {
                         </div>
                     </form>
                     <form action="../controller/addSlide.php" method="post" enctype="multipart/form-data">
-                        <h3 class="text-white text-center h4 py-1">Adicionar slide</h3>
+                        <h3 class="text-white text-center h4 py-1">Adicionar Slide</h3>
                         <div class="container row mx-auto mt-4">
                             <div class="form-group col-9">
                                 <label for="slide-name">Nome:</label>
@@ -211,7 +211,7 @@ editCourseView = function (courseData) {
                         </div>
                     </form>
                     <div class="mb-4">
-                        <h3 class="text-white text-center h4 py-1">Editar slides</h3>
+                        <h3 class="text-white text-center h4 py-1">Editar Slides</h3>
                         <div class="container mt-4">
                             <div class="container row mx-auto">
                                 <ul class="container list-group list-group-flush list-group-striped">
@@ -227,7 +227,8 @@ editCourseView = function (courseData) {
 }
 
 testView = function(courseId){
-    let content = ``
+    let content = `<h1 class="h3 text-white text-center p-1 mb-4">Prova</h1>`
+    let althernatives = ``
 
     $.getJSON('http://ramacciotti.org/tdc/api/course.php?course=' + courseId, function (courseData) {
             data = courseData
@@ -235,27 +236,122 @@ testView = function(courseId){
         .done(
             function(data){                
                 data.questions.forEach(function(question){
+                    switch(question.correct_alternative){
+                        case '1':
+                            althernatives = `
+                                <option value="1" selected>Resposta 1</option>
+                                <option value="2">Resposta 2</option>
+                                <option value="3">Resposta 3</option>
+                                <option value="4">Resposta 4</option>
+                                `
+                            break
+                        case '2':
+                            althernatives = `
+                            <option value="1">Resposta 1</option>
+                            <option value="2" selected>Resposta 2</option>
+                            <option value="3">Resposta 3</option>
+                            <option value="4">Resposta 4</option>
+                            `
+                            break
+                            case '3':
+                                althernatives = `
+                                <option value="1">Resposta 1</option>
+                                <option value="2">Resposta 2</option>
+                                <option value="3" selected>Resposta 3</option>
+                                <option value="4">Resposta 4</option>
+                                `
+                                break
+                            case '4':
+                                althernatives = `
+                                <option value="1">Resposta 1</option>
+                                <option value="2">Resposta 2</option>
+                                <option value="3">Resposta 3</option>
+                                <option value="4" selected>Resposta 4</option>
+                                `
+                                break
+                    }
+
                     content += `
                         <form action="../controller/editExam.php" method="post">
-                            <input type="text" value="${question.title}" name="question">
-                            <input type="text" value="${question.firstAlternative}" name="1_alternative">
-                            <input type="text" value="${question.secondAlternative}" name="2_alternative">
-                            <input type="text" value="${question.thirdAlternative}" name="3_alternative">
-                            <input type="text" value="${question.fourthAlternative}" name="4_alternative">
-                            <select name="correct_alternative" id="">
-                            // PRECISA DO FOREACH PARA DEIXAR SELECIONADA A OPÇÃO CERTA //
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                            <input type="hidden" name="question_id" value="${question.id}">
-                            <input type="submit" name="action" value="Salvar">
-                            <input type="submit" name="action" value="Remover">
+                            <div class="container row mx-auto">
+                                <div class="form-group col-12">
+                                    <label for="title">Pergunta:</label>
+                                    <input class="form-control" type="text" value="${question.title}" name="question" id="title" required>
+                                </div>
+                                <div class="form-group col-10 ml-4">
+                                    <label for="first-althernative">Resposta 1:</label>
+                                    <input class="form-control" type="text" id="first-althernative" value="${question.firstAlternative}" name="1_alternative" required>
+                                </div>
+                                <div class="form-group col-10 ml-4">
+                                    <label for="second-althernative">Resposta 2:</label>
+                                    <input class="form-control" type="text" id="second-althernative" value="${question.secondAlternative}" name="2_alternative" required>
+                                </div>
+                                <div class="form-group col-10 ml-4">
+                                    <label for="third-althernative">Resposta 3:</label>
+                                    <input class="form-control" type="text" id="third-althernative" value="${question.thirdAlternative}" name="3_alternative" required>
+                                </div>
+                                <div class="form-group col-10 ml-4">
+                                    <label for="fourth-althernative">Resposta 4:</label>
+                                    <input class="form-control" type="text" id="fourth-althernative" value="${question.fourthAlternative}" name="4_alternative" required>
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="correct-alternative">Resposta correta:</label>
+                                    <select class="custom-select" id="correct-alternative" name="correct_alternative" required>
+                                        ${althernatives}
+                                    </select>
+                                </div>
+                                <div class="form-group col-12">
+                                    <input type="hidden" name="question_id" value="${question.id}">
+                                    <input class="btn btn-sm btn-outline-primary" type="submit" name="action" value="Salvar">
+                                    <input class="btn btn-sm btn-outline-danger" type="submit" name="action" value="Remover">
+                                </div>
+                            </div>
                         </form>
+                        <hr>
                     `
-                        addContent()
                 })
+                content += `
+                    <h3 class="text-white text-center h4 py-1">Adicionar Questão</h3>
+                    <form action="../controller/addQuestion.php" method="post">
+                        <div class="container row mx-auto">
+                            <div class="form-group col-12">
+                                <label for="title">Pergunta:</label>
+                                <input class="form-control" type="text" placeholder="Digite a pergunta" name="question" id="title" required>
+                            </div>
+                            <div class="form-group col-10 ml-4">
+                                <label for="first-althernative">Resposta 1:</label>
+                                <input class="form-control" type="text" id="first-althernative" placeholder="Digite a 1 resposta" name="1_alternative" required>
+                            </div>
+                            <div class="form-group col-10 ml-4">
+                                <label for="second-althernative">Resposta 2:</label>
+                                <input class="form-control" type="text" id="second-althernative" placeholder="Digite a 2 resposta" name="2_alternative" required>
+                            </div>
+                            <div class="form-group col-10 ml-4">
+                                <label for="third-althernative">Resposta 3:</label>
+                                <input class="form-control" type="text" id="third-althernative" placeholder="Digite a 3 resposta" name="3_alternative" required>
+                            </div>
+                            <div class="form-group col-10 ml-4">
+                                <label for="fourth-althernative">Resposta 4:</label>
+                                <input class="form-control" type="text" id="fourth-althernative" placeholder="Digite a 4 resposta" name="4_alternative" required>
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="correct-alternative">Resposta correta:</label>
+                                <select class="custom-select" id="correct-alternative" name="correct_alternative" required>
+                                    <option value="" selected disabled>Selecione a resposta correta</option>
+                                    <option value="1">Resposta 1</option>
+                                    <option value="2">Resposta 2</option>
+                                    <option value="3">Resposta 3</option>
+                                    <option value="4">Resposta 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-12">
+                                <input type="hidden" name="course_id" value="${courseId}">
+                                <input class="btn btn-sm save text-white" type="submit" value="Salvar">
+                            </div>
+                        </div>
+                    </form>
+                `
+                addContent()
             }
         )
 

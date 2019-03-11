@@ -144,17 +144,20 @@ editStudentView = function (studentData) {
         .done(function () {
             if (!($.isEmptyObject(studentData.course))) {
                 studentData.course.forEach(function (courseId) {
-                    courseHasList += `
-                    <li class='list-group-item d-flex justify-content-between'>
-                        ${courseData[courseId - 1].name}
-                        <form action="../controller/removeCourseFromStudent.php" method="post">
-                            <input type="hidden" value="${studentData.id}" name="studentId">
-                            <input type="hidden" value="${courseId}" name="courseId">
-                            <input type="submit" name="action" class="btn btn-sm btn-danger float-right" value="Remover">
-                        </form>
-                    </li>`
-                    console.log(courseData);
-                    
+                    courseData.forEach(function(course){
+                        if(course.id == courseId){
+                            courseHasList += `
+                                <li class='list-group-item d-flex justify-content-between'>
+                                    ${course.name}
+                                    <form action="../controller/removeCourseFromStudent.php" method="post">
+                                        <input type="hidden" value="${studentData.id}" name="studentId">
+                                        <input type="hidden" value="${courseId}" name="courseId">
+                                        <input type="submit" name="action" class="btn btn-sm btn-danger float-right" value="Remover">
+                                    </form>
+                                </li>
+                            `    
+                        }
+                    })
                 })
             }
             courseData.forEach(function (course) {
@@ -188,9 +191,9 @@ editStudentView = function (studentData) {
         }
         var content = `
         <h1 class="h3 text-white text-center p-1 mb-4">Editar Aluno</h1>
-        <div class="container">
+
         <form action="../controller/editStudent.php" method="post">
-            <div class="row mx-auto">
+            <div class="container row mx-auto">
                 <div class="form-group col-12">
                     <label for="name">Nome:</label>
                     <input type="text" name="name" id="name" class="form-control" value="${studentData.name}" required>
@@ -226,7 +229,7 @@ editStudentView = function (studentData) {
         <form action="../controller/addCourseToStudent.php" method="post">
             <input type="hidden" value="${studentData.id}" name="studentId">
             <input type="hidden" value="${courseData.id}" name="courseId">
-            <div class="row mx-auto">
+            <div class="container row mx-auto">
                 <div class="form-group col-12">
                     <label for="student-course">Adicionar curso:</label>
                     <select class="custom-select" id="student-course" name="studentCourse" required>
