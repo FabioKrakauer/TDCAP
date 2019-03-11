@@ -108,7 +108,11 @@ editCourseView = function (courseData) {
     })
         .done(function () {
 
-            slideData.forEach(function (allCoursesSlide) {
+            let slideDataOrdered = window.slideData.sort(function (a, b) {
+                return a.order - b.order
+              });
+
+            slideDataOrdered.forEach(function (allCoursesSlide) {
                 if (allCoursesSlide.course == courseData.id) {
                     slides += `
                         <li class="list-group-item">
@@ -171,7 +175,7 @@ editCourseView = function (courseData) {
                             </div>
                             <div class="form-group col-12">
                                 <input type="hidden" value="${courseData.id}" name="course_id">
-                                <button class="btn btn-sm btn-outline-secondary">Prova</button>
+                                <a class="btn btn-sm btn-outline-secondary" onclick="editTest(${courseData.id})">Prova</a>
                                 <input type="submit" name="action" class="btn btn-sm btn-outline-danger" value="Remover">
                                 <input type="submit" name="action" class="btn btn-sm save text-white float-right" value="Salvar">
                             </div>
@@ -218,6 +222,44 @@ editCourseView = function (courseData) {
                     </div>
                 `
 
+        $('#dynamic-content').html(content)
+    }
+}
+
+testView = function(courseId){
+    let content = ``
+
+    $.getJSON('http://ramacciotti.org/tdc/api/course.php?course=' + courseId, function (courseData) {
+            data = courseData
+        })
+        .done(
+            function(data){                
+                data.questions.forEach(function(question){
+                    content += `
+                        <form action="../controller/editExam.php" method="post">
+                            <input type="text" value="${question.title}" name="question">
+                            <input type="text" value="${question.firstAlternative}" name="1_alternative">
+                            <input type="text" value="${question.secondAlternative}" name="2_alternative">
+                            <input type="text" value="${question.thirdAlternative}" name="3_alternative">
+                            <input type="text" value="${question.fourthAlternative}" name="4_alternative">
+                            <select name="correct_alternative" id="">
+                            // PRECISA DO FOREACH PARA DEIXAR SELECIONADA A OPÇÃO CERTA //
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                            <input type="hidden" name="question_id" value="${question.id}">
+                            <input type="submit" name="action" value="Salvar">
+                            <input type="submit" name="action" value="Remover">
+                        </form>
+                    `
+                        addContent()
+                })
+            }
+        )
+
+    addContent = function(){
         $('#dynamic-content').html(content)
     }
 }

@@ -66,4 +66,8 @@ $(document).ready(function(){
             reportView(data)
         })
     }
+
+    editTest = function(courseId){
+        testView(courseId)
+    }
 })

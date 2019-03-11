@@ -245,7 +245,6 @@ editStudentView = function (studentData) {
 }
 
 reportView = function (data) {
-    console.log(data)
     var content = `
         <h1 class="h3 text-white text-center p-1 mb-4">Relatório</h1>
         <div class="container">
