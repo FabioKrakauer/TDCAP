@@ -11,8 +11,8 @@ if(isset($_POST["action"])){
     $password_confirmation = $_POST["password-conf"];
 
     if($password != $password_confirmation){
-        echo "Suas senhas não conferem!";        
-        die();
+        $_SESSION["message-user"] = "2;As senha não conferem!";
+        exit(header("Location: ../admin/"));      
     }
     $password = md5($password);
     global $database;
