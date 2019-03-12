@@ -47,9 +47,18 @@ class User{
         return $this->company;
     }
     function isAdmin(){
-        return $this->admin == 1;
+        global $database;
+        $id = $this->getID();
+        $result = $database->getFieldValue("SELECT `admin` FROM `user` WHERE `id`='$id'");
+        if($result != null){
+            if($result["admin"] == 1){
+                return true;
+            }
+        }
+        return false;
     }
     function getFirstAccess(){
+        
         return $this->first_access;
     }
     function getCourses(){

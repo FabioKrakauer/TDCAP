@@ -27,10 +27,10 @@
                     if($redirect == true){
                         if($nextPage == 1){
                             //HEADER EXCEPTION
-                            echo "<script>window.location='/".APP_NAME."/admin/login.php'</script>";
+                            echo "<script>window.location='/".APP_URL."/admin/login.php'</script>";
                         }else{
                             //HEADER EXCEPTION
-                            echo "<script>window.location='/".APP_NAME."/pages/login.php'</script>";
+                            echo "<script>window.location='/".APP_URL."/pages/login.php'</script>";
                         }
                         return false;
                     }else{
@@ -43,10 +43,10 @@
                 if($redirect == true){
                     if($nextPage == 1){
                         //HEADER EXCEPTION
-                        echo "<script>window.location='/".APP_NAME."/admin/login.php'</script>";
+                        echo "<script>window.location='/".APP_URL."/admin/login.php'</script>";
                     }else{
                         //HEADER EXCEPTION
-                        echo "<script>window.location='/".APP_NAME."/pages/login.php'</script>";
+                        echo "<script>window.location='/".APP_URL."/pages/login.php'</script>";
                     }
                 }
                 return false; 
@@ -74,6 +74,7 @@
             $arr = json_decode($_SESSION["auth"], true);
             $email = utf8_decode($arr["email"]);
             $password = utf8_decode($arr["password"]);
+            Auth::logout();
             return new User(Auth::validate($email, $password));
         }
         public static function logout(){
