@@ -144,8 +144,8 @@ editStudentView = function (studentData) {
         .done(function () {
             if (!($.isEmptyObject(studentData.course))) {
                 studentData.course.forEach(function (courseId) {
-                    courseData.forEach(function(course){
-                        if(course.id == courseId){
+                    courseData.forEach(function (course) {
+                        if (course.id == courseId) {
                             courseHasList += `
                                 <li class='list-group-item d-flex justify-content-between'>
                                     ${course.name}
@@ -155,7 +155,7 @@ editStudentView = function (studentData) {
                                         <input type="submit" name="action" class="btn btn-sm btn-danger float-right" value="Remover">
                                     </form>
                                 </li>
-                            `    
+                            `
                         }
                     })
                 })
@@ -247,16 +247,45 @@ editStudentView = function (studentData) {
     }
 }
 
-reportView = function (data) {
-    var content = `
-        <h1 class="h3 text-white text-center p-1 mb-4">Relatório</h1>
+reportView = function (student) {
+    let courses = ``
+
+    $.getJSON('http://ramacciotti.org/tdc/api/course.php?course=0', function (courseAPIData) {
+        coursesData = courseAPIData
+    })
+        .done(function () {
+            if ($.isEmptyObject(student.completed_courses)) {
+                courses = `<p>Este aluno ainda não completou nenhum curso</p>`
+            } else {
+                for (var courseId in student.completed_courses) {
+                    coursesData.forEach(function(course){
+                        if(course.id == courseId){
+                            courses += `
+                                <li class='list-group-item d-flex justify-content-between'>
+                                    ${course.name}
+                                    <form action="pages/relatorio.php" method="post">
+                                    <input type="hidden" value="${student.id}" name="user_id">
+                                    <input type="hidden" value="${courseId}" name="course_id">
+                                    <input type="submit" value="Gerar" class="btn btn-sm btn-outline-primary">
+                                    </form>
+                                </li>
+                            `
+                        }
+                    })
+                }
+            }
+            addContent()
+        })
+
+    const addContent = function () {
+        var content = `
+        <h1 class="h3 text-white text-center p-1 mb-4">Cursos Completos</h1>
         <div class="container">
             <ul class="list-group list-group-flush mb-4">
-                <li class='list-group-item'>...</li>
-                <li class='list-group-item'>...</li>
-                <li class='list-group-item'>...</li>
+                ${courses}
             </ul>
         </div>
         `
-    $('#dynamic-content').html(content)
+        $('#dynamic-content').html(content)
+    }
 }
