@@ -273,6 +273,7 @@ testView = function(courseId){
 
                     content += `
                         <form action="../controller/editExam.php" method="post">
+                            <input type="hidden" name="course_id" value="${data.id}">
                             <div class="container row mx-auto">
                                 <div class="form-group col-12">
                                     <label for="title">Pergunta:</label>
