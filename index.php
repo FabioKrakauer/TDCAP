@@ -17,29 +17,59 @@ $user = Auth::user();
     <title>Selecione seu curso</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/student.css">
   </head>
   <body>
-    Olá, <?= $user->getName() ?>
-    <h1>Seus cursos:</h1>
+    <header>
+    <div class="d-flex justify-content-between">
+      <div class="p-3">
+        <a href="index.php">
+          <img src="img/logo.gif" alt="">
+        </a>
+      </div>
+      <div class="p-3 text-white d-flex flex-column justify-content-between align-items-end">
+        <h6>
+          Olá, <?= $user->getName() ?>
+        </h6>
+        <a href="logout.php" class="text-white">sair</a>
+      </div>
+    </div>
+    </header>
+    <main>
+      <h1 class="pl-3 text-white mb-4">Seus cursos:</h1>
+      <div class="container">
+        <div class="row">
+          <?php
+              foreach($user->getCourse() as $course){
+                  ?>
+                  <!-- LIST ALL USER COURSES -->
+                  <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-4">
+                    <div class="card h-100">
+                      <div class="card-body m-1 d-flex flex-column justify-content-between">
+                          <h4 class="card-title">
+                            <a href="pages/course.php?course=<?= $course->getID() ?>&slide=<?= $course->getInicialSlide()->getID() ?>">
+                              <?= $course->getName() ?>
+                          </a>
+                        </h4>
+                          <p class="card-text">Empresa: <?= $course->getCompany()->getName() ?></p>
+                          <p class="card-text">Progresso: <?= $user->getCourseProgress($course->getID()) . "%" ?></p>
+                          <a href="pages/course.php?course=<?= $course->getID() ?>&slide=<?= $course->getInicialSlide()->getID() ?>" class="open-button btn btn-sm btn-outline-primary">Abrir</a>
+                      </div>
+                    </div>
+                  </div>
+      <?php   }
+          ?>
+        </div>
+      </div>
+    </main>
 
-    <?php
-        foreach($user->getCourse() as $course){
-            ?>
-            <!-- LIST ALL USER COURSES -->
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title"><a href="pages/course.php?course=<?= $course->getID() ?>&slide=<?= $course->getInicialSlide()->getID() ?>">Curso: <?= $course->getName() ?></a></h4>
-                    <p class="card-text">Empresa: <?= $course->getCompany()->getName() ?></p>
-                    <p class="card-text">Progresso: <?= $user->getCourseProgress($course->getID()) . "%" ?></p>
-                    <a href="pages/course.php?course=<?= $course->getID() ?>&slide=<?= $course->getInicialSlide()->getID() ?>" class="btn btn-primary">Abrir</a>
-                </div>
-            </div>
-<?php   }
-    ?>
+
+    
+
     <!-- FOOTER HERE -->
 
 
