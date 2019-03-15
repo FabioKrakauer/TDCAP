@@ -95,6 +95,9 @@ class User{
         $slidesViews = $database->getFieldValue("SELECT COUNT(`slide_id`) AS `value` FROM `user_slides` WHERE `course_id`='$courseID' AND `user_id`='$userID'");
         $views = $slidesViews["value"];
         $views *= 100;
+        if($slidesQuantity == 0){
+            return 0;
+        }
         $porcent = $views / $slidesQuantity;
         if($porcent > 100){
             return 100;
