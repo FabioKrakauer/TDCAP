@@ -40,7 +40,7 @@ $user = Auth::user();
     </div>
     </header>
     <main>
-      <h1 class="pl-3 text-white mb-4">Seus cursos:</h1>
+      <h1 class="pl-3 text-white mb-4 h3">Seus cursos:</h1>
       <div class="container">
         <div class="row">
           <?php
