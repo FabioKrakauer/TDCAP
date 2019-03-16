@@ -5,6 +5,7 @@ require_once $dir.'/config.inc.php';
 require_once 'Course.class.php';
 require_once 'Company.class.php';
 require_once 'Question.class.php';
+require_once 'Auth.class.php';
 
 class User{
 
@@ -88,8 +89,7 @@ class User{
     }
     function getCourseProgress($courseID){
         global $database;
-        $user = Auth::user();
-        $userID = $user->getID();
+        $userID = $this->id;
         $slidesCourse = $database->getFieldValue("SELECT COUNT(`title`) AS `value` FROM `slides` WHERE `course_id`='$courseID'");
         $slidesQuantity = $slidesCourse["value"];
         $slidesViews = $database->getFieldValue("SELECT COUNT(`slide_id`) AS `value` FROM `user_slides` WHERE `course_id`='$courseID' AND `user_id`='$userID'");
