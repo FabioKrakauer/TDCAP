@@ -15,7 +15,7 @@ if (isset($_GET["course"]) && isset($_GET["slide"])) {
     ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <title>Curso</title>
     <!-- Required meta tags -->
@@ -23,27 +23,12 @@ if (isset($_GET["course"]) && isset($_GET["slide"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/student.css">
   </head>
   <body>
-  <header>
-    <div class="top-bar"><h6 class="text-white text-center py-1">Transformando conhecimento em ação e ação em resultado</h6></div>
-      <div class="d-flex justify-content-between">
-        <div class="p-3">
-          <a href="index.php">
-            <img src="../img/logo.gif" alt="">
-          </a>
-        </div>
-        <div class="p-3 text-white d-flex flex-column justify-content-between align-items-end">
-          <h6>
-            Olá, <?=$user->getName()?>
-          </h6>
-          <a href="logout.php?page=1" class="text-white"><i class="fas fa-sign-out-alt"></i>  Sair</a>
-        </div>
-      </div>
-    </header>
+    <?php include 'header.php' ?>
     <main>
       <h1 class="text-white h3 pl-3 pb-1"><?=$course->getName()?><br></h1>
       <div class="d-flex">

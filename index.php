@@ -35,7 +35,7 @@ $user = Auth::user();
         <h6>
           Olá, <?= $user->getName() ?>
         </h6>
-        <a href="logout.php" class="text-white">sair</a>
+        <a href="logout.php?page=1" class="text-white">sair</a>
       </div>
     </div>
     </header>
