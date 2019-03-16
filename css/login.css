@@ -1,7 +1,11 @@
-.login-form{
-    max-width: 500px;
+header{
+    background-color: #427DB6;
 }
 
-header nav{
-    background-color: #427DB6;
+main h1{
+    background-color: #194684;
+}
+
+.sub-title{
+    max-width: 140px;
 }

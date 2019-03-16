@@ -8,3 +8,7 @@ main h1{
 .open-button{
     width: 60px;
 }
+
+.sub-title{
+    max-width: 140px;
+}

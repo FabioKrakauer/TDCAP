@@ -20,8 +20,22 @@ if(Auth::isLogged(false)){
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/student.css">
   </head>
   <body>
+  <header>
+    <div class="d-flex justify-content-between">
+      <div class="p-3">
+        <a href="index.php">
+          <img src="../img/logo.gif" alt="">
+        </a>
+      </div>
+      <div class="sub-title d-flex align-items-center">
+        <h6 class="text-white text-center mr-4">Transformando conhecimento em ação e ação em resultado</h6>
+      </div>
+    </div>
+  </header>
+
   <?php
 
         if(isset($_GET["error"])){
@@ -33,11 +47,24 @@ if(Auth::isLogged(false)){
             <?= $error ?>
 <?php   }
     ?>
-      <form action="../controller/loginController.php" method="post" >
-        <input type="text" name="email" id="email" class="form-control col-5"><br>
-        <input type="password" name="password" id="password" class="form-control col-5"><br>
-        <input type="submit" name="action" value="Logar" class="btn btn-success mt-3 col-5">
-      </form>
+    <main>
+      <h1 class="text-white p-2 h5 text-center">Seja bem vindo. Faça login para entrar.</h1>
+      <div class="container mt-5">
+        <form action="../controller/loginController.php" method="post" class="col-10 col-md-6 mx-auto p-3 rounded border">
+          <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="text" name="email" id="email" class="form-control" placeholder="Digite seu e-mail">
+          </div>
+          <div class="form-group">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" id="password" class="form-control" placeholder="Insira sua senha">
+          </div>
+          <div class="form-group">
+            <input type="submit" name="action" value="Logar" class="btn btn-sm btn-primary mt-3">
+          </div>
+        </form>
+      </div>
+    </main>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
