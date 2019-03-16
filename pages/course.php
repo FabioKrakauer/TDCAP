@@ -47,7 +47,7 @@ if (isset($_GET["course"]) && isset($_GET["slide"])) {
     <main>
       <h1 class="text-white h3 pl-3 pb-1"><?=$course->getName()?><br></h1>
       <div class="d-flex">
-        <div class="slides-list">
+        <div class="slides-list container">
           <h6>Slides:</h6>
            <ul class="list-group">
              <?php
@@ -75,8 +75,8 @@ if ($user->viewSlide($row["id"])) {
            </div>
            <?php
 if ($user->getCourseProgress($course->getID()) == 100) {
-    if ($user->getUserMakeExam($course->getID()) == false) {
-        ?>
+        if ($user->getUserMakeExam($course->getID()) == false) {
+            ?>
           <!-- BUTTON TO USER MAKE EXAM -->
           <form action="exam.php" method="post">
               <input type="hidden" name="course" value="<?=$course->getID()?>">
@@ -99,7 +99,7 @@ if ($user->getCourseProgress($course->getID()) == 100) {
 }
 ?>
         </div>
-        
+
         <div class="slide-image-content text-center">
           <img src="http://<?=$slide->getPathImage()?>" alt="<?=$slide->getTitle()?>" class="w-100">
         </div>
