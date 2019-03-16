@@ -102,7 +102,8 @@ class User{
         if($porcent > 100){
             return 100;
         }
-        return $views / $slidesQuantity;
+        $progress = $views / $slidesQuantity;
+        return (int) $progress;
     }
     function getUserMakeExam($courseID){
         global $database;

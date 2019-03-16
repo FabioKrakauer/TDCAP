@@ -101,8 +101,8 @@ if ($user->getCourseProgress($course->getID()) == 100) {
     <?php }
 }
 ?>
-
         </div>
+        
         <div class="slide-image-content text-center">
           <img src="http://<?=$slide->getPathImage()?>" alt="<?=$slide->getTitle()?>" class="w-100">
         </div>
