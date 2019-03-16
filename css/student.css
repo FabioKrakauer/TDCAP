@@ -1,7 +1,8 @@
 header{
     background-color: #427DB6;
 }
-main h1{
+main h1,
+.top-bar{
     background-color: #194684;
 }
 
@@ -11,4 +12,20 @@ main h1{
 
 .sub-title{
     max-width: 140px;
+}
+
+.slide-image-content{
+    width: 80%;
+}
+
+.slide-image-content img{
+    max-width: 960px;
+}
+
+.slides-list{
+    width: 20%;
+}
+
+.audio-content audio{
+    width: 90%;
 }
