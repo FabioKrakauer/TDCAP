@@ -1,0 +1,11 @@
+.slides-list{
+    position: absolute;
+    left: -900;
+
+}
+
+@media (min-width:992px){
+    .slides-list{
+
+    }
+}

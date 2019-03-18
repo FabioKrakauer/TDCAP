@@ -7,58 +7,7 @@ require_once APP_ROOT . '/classes/Course.class.php';
 global $database;
 Auth::isLogged(true, 0);
 $user = Auth::user();
-if(isset($_POST["course"])){ 
-    $course = new Course($_POST["course"]);
-    ?>
-
-    <p>Realizar prova do curso <b><?= $course->getName() ?></b></p>
-    <form action="../controller/examValidade.php" method="post">
-        <input type="hidden" name="courseID" value="<?= $course->getID() ?>">
-
-        <!-- JAVA SCRIPT PLAY SECONDS TIME -->
-        <input type="hidden" name="time" value="2100">
-    <?php
-        $questions = 0; 
-        foreach($course->getQuestions() as $question){
-            $questions++;
-            ?>
-
-            <!-- FRONT HERE -->
-            
-            <div class="form-group">
-                <p><?= $questions . "- " . $question->getQuestion() ?></p>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="1" aria-label="Text for screen reader">
-                        <?= $question->getAlternatives()["1"] ?>
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="2" aria-label="Text for screen reader">
-                        <?= $question->getAlternatives()["2"] ?>
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="3" aria-label="Text for screen reader">
-                        <?= $question->getAlternatives()["3"] ?>
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="4" aria-label="Text for screen reader">
-                        <?= $question->getAlternatives()["4"] ?>
-                    </label>
-                </div>
-            </div>
-    <?php }
-    ?>
-    <input type="submit" name="action" value="Finalizar" class="btn btn-success">
-    </form>
+?>
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -67,12 +16,68 @@ if(isset($_POST["course"])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/student.css">
   </head>
   <body>
-  <?php include 'header.php' ?>
+  <?php 
+  include 'header.php';
+
+  if(isset($_POST["course"])){ 
+    $course = new Course($_POST["course"]);
+    ?>
+    <main>
+        <h1 class="text-white h3 pl-3 pb-1">Realizar prova do curso <?= $course->getName() ?></h1>
+        <div class="container mt-5">
+            <form action="../controller/examValidade.php" method="post">
+                <input type="hidden" name="courseID" value="<?= $course->getID() ?>">
+        
+                <!-- JAVA SCRIPT PLAY SECONDS TIME -->
+                <input type="hidden" name="time" value="2100">
+            <?php
+                $questions = 0; 
+                foreach($course->getQuestions() as $question){
+                    $questions++;
+                    ?>
+                    <div class="form-group">
+                        <p class="font-weight-bold"><?= $questions . "- " . $question->getQuestion() ?></p>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="1" aria-label="Text for screen reader">
+                                <?= $question->getAlternatives()["1"] ?>
+                            </label>
+                        </div>
+        
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="2" aria-label="Text for screen reader">
+                                <?= $question->getAlternatives()["2"] ?>
+                            </label>
+                        </div>
+        
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="3" aria-label="Text for screen reader">
+                                <?= $question->getAlternatives()["3"] ?>
+                            </label>
+                        </div>
+        
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="4" aria-label="Text for screen reader">
+                                <?= $question->getAlternatives()["4"] ?>
+                            </label>
+                        </div>
+                        <hr>
+                    </div>
+            <?php }
+            ?>
+            <input type="submit" name="action" value="Finalizar" class="btn btn-sm btn-success mb-3">
+            </form>
+        </div>
+    </main>
+
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

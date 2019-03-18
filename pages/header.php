@@ -9,7 +9,7 @@
             </a>
         </div>
         <div class="p-3 text-white d-flex flex-column justify-content-between align-items-end">
-            <h6>
+            <h6 class="text-right">
                 Olá, <?=$user->getName()?>
             </h6>
             <a href="logout.php?page=1" class="text-white"><i class="fas fa-sign-out-alt"></i> Sair</a>

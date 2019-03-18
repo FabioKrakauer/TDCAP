@@ -15,7 +15,7 @@ main h1,
 }
 
 .slide-image-content{
-    width: 80%;
+    width: 100%;
 }
 
 .slide-image-content img{
@@ -23,9 +23,28 @@ main h1,
 }
 
 .slides-list{
-    width: 20%;
+    display: none;
 }
 
 .audio-content audio{
     width: 90%;
+}
+
+.hide{
+    display: none;
+}
+
+@media(min-width:992px){
+    .slide-image-content{
+        width: 80%;
+    }
+
+    .slides-list{
+        display: block;
+        width: 20%;
+    }
+
+    #menu-togler{
+        display: none;
+    }
 }
