@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     examTime = function () {
         finishTime = new Date()
-        let finalTime = ((finishTime - startTime)/1000).toFixed(1)
+        let finalTime = ((finishTime - startTime)/1000).toFixed()
         $('#exam-time').val(finalTime)
     }
 })
