@@ -16,6 +16,9 @@ if(isset($_POST["user_id"]) && isset($_POST["course_id"])){
     $courseID = $course->getID();
     $examResult = $database->getFieldValue("SELECT * FROM `user_exam_result` WHERE `user_id`='$userID' AND `course_id`='$courseID'");
     
+    $time = $examResult["time"];
+    $time = $time / 60;
+    $time = number_format($time, 2, ",", ".");
     $pdf = new PDF();
     $pdf->AddPage();
     $pdf->SetAutoPageBreak(true);
@@ -25,9 +28,9 @@ if(isset($_POST["user_id"]) && isset($_POST["course_id"])){
     $pdf->SetDrawColor("25", "70", "132");
     $pdf->Cell(105, 8, utf8_decode("Aluno: " . $user->getName()), 1, "", false);
     $pdf->Cell(105, 8, utf8_decode("Curso: " .$course->getName()), 1, 1);
-    $pdf->Cell(70, 8, utf8_decode("Tempo de prova: " . $examResult["time"] . " minutos"), 1, "", false);
+    $pdf->Cell(70, 8, utf8_decode("Tempo de prova: " . $time . " minutos"), 1, "", false);
     $pdf->Cell(70, 8, utf8_decode("Nota final: " .$examResult["result"] . "%"), 1, 0);
-    $pdf->Cell(70, 8, utf8_decode("Dia da prova: " .date("m/d/Y", strtotime($examResult["at"]))), 1, 1);
+    $pdf->Cell(70, 8, utf8_decode("Dia da prova: " .date("d/m/Y", strtotime($examResult["at"]))), 1, 1);
     $pdf->ln(4);
     $pdf->SetFont("Arial", "B", 14);
     $pdf->Cell(210, 10, utf8_decode("Relatório final!"), 0, 1, "C");
