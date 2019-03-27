@@ -27,13 +27,7 @@ addCourseView = function () {
                                     <label for="name">Nome:</label>
                                     <input type="text" name="name" id="name" class="form-control" placeholder="Nome do curso" required>
                                 </div>
-                                <div class="form-group col-12">
-                                    <label for="student-company">Empresa:</label>
-                                    <select class="custom-select" name="company" id="student-company" required>
-                                        <option selected disabled value="">Empresa...</option>
-                                        ${companiesList}
-                                    </select>
-                                </div>
+                                <input type="hidden" name="company" value="0">  
                                 <div class="form-group col-12">
                                     <label for="inicial-name">Slide inicial:</label>
                                     <div class="input-group">
@@ -110,7 +104,7 @@ editCourseView = function (courseData) {
 
             let slideDataOrdered = window.slideData.sort(function (a, b) {
                 return a.order - b.order
-              });
+            });
 
             slideDataOrdered.forEach(function (allCoursesSlide) {
                 if (allCoursesSlide.course == courseData.id) {
@@ -127,7 +121,7 @@ editCourseView = function (courseData) {
                                         <input type="hidden" value="${allCoursesSlide.id}" name="slide_id">
                                         <input type="hidden" value="${courseData.id}" name="course_id">
                                         <input type="submit" class="btn btn-sm btn-outline-success" value="Salvar" name="action">
-                                        <input type="submit" class="btn btn-sm btn-outline-danger" value="Remover" name="action">
+                                        <input type="submit" class="btn btn-sm btn-outline-danger" value="Remover" name="action" onclick="return confirm('Ao remover todos os dados serão perdidos. Tem certeza que deseja remover?')">
                                     </div>
                                 </div>
                             </form>
@@ -175,8 +169,7 @@ editCourseView = function (courseData) {
                             </div>
                             <div class="form-group col-12">
                                 <input type="hidden" value="${courseData.id}" name="course_id">
-                                <a class="btn btn-sm btn-outline-secondary" onclick="editTest(${courseData.id})">Prova</a>
-                                <input type="submit" name="action" class="btn btn-sm btn-outline-danger" value="Remover">
+                                <input type="submit" name="action" class="btn btn-sm btn-outline-danger" value="Remover" onclick="return confirm('Ao remover todos os dados serão perdidos. Tem certeza que deseja remover?')">
                                 <input type="submit" name="action" class="btn btn-sm save text-white float-right" value="Salvar">
                             </div>
                         </div>
@@ -220,23 +213,27 @@ editCourseView = function (courseData) {
                             </div>
                         </div>
                     </div>
+                    <div class="text-center">
+                        <h3 class="text-white text-center h4 py-1">Editar Prova</h3>
+                        <a class="btn btn-sm btn-outline-secondary" onclick="editTest(${courseData.id})">Prova</a>
+                    </div>
                 `
 
         $('#dynamic-content').html(content)
     }
 }
 
-testView = function(courseId){
+testView = function (courseId) {
     let content = `<h1 class="h3 text-white text-center p-1 mb-4">Prova</h1>`
     let althernatives = ``
 
     $.getJSON('http://ramacciotti.org/tdc/api/course.php?course=' + courseId, function (courseData) {
-            data = courseData
-        })
+        data = courseData
+    })
         .done(
-            function(data){                
-                data.questions.forEach(function(question){
-                    switch(question.correct_alternative){
+            function (data) {
+                data.questions.forEach(function (question) {
+                    switch (question.correct_alternative) {
                         case '1':
                             althernatives = `
                                 <option value="1" selected>Resposta 1</option>
@@ -253,22 +250,22 @@ testView = function(courseId){
                             <option value="4">Resposta 4</option>
                             `
                             break
-                            case '3':
-                                althernatives = `
+                        case '3':
+                            althernatives = `
                                 <option value="1">Resposta 1</option>
                                 <option value="2">Resposta 2</option>
                                 <option value="3" selected>Resposta 3</option>
                                 <option value="4">Resposta 4</option>
                                 `
-                                break
-                            case '4':
-                                althernatives = `
+                            break
+                        case '4':
+                            althernatives = `
                                 <option value="1">Resposta 1</option>
                                 <option value="2">Resposta 2</option>
                                 <option value="3">Resposta 3</option>
                                 <option value="4" selected>Resposta 4</option>
                                 `
-                                break
+                            break
                     }
 
                     content += `
@@ -356,7 +353,7 @@ testView = function(courseId){
             }
         )
 
-    addContent = function(){
+    addContent = function () {
         $('#dynamic-content').html(content)
     }
 }

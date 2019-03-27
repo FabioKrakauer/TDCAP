@@ -149,7 +149,12 @@ editStudentView = function (studentData) {
                             courseHasList += `
                                 <li class='list-group-item d-flex justify-content-between'>
                                     ${course.name}
-                                    <form action="../controller/removeCourseFromStudent.php" method="post">
+                                    <form class="ml-auto mr-2" action="../controller/disableCourseFromStudent.php" method="post">
+                                        <input type="hidden" value="${studentData.id}" name="studentId">
+                                        <input type="hidden" value="${courseId}" name="courseId">
+                                        <input type="submit" name="action" class="btn btn-sm btn-secondary float-right" value="Desativar">
+                                    </form>
+                                    <form action="../controller/removeCourseFromStudent.php" method="post" onsubmit="return confirm('Ao remover todos os dados serão perdidos. Tem certeza que deseja remover?')">
                                         <input type="hidden" value="${studentData.id}" name="studentId">
                                         <input type="hidden" value="${courseId}" name="courseId">
                                         <input type="submit" name="action" class="btn btn-sm btn-danger float-right" value="Remover">
@@ -204,7 +209,7 @@ editStudentView = function (studentData) {
                 </div>
                 <div class="form-group col-12">
                     <label for="student-company">Empresa:</label>
-                    <select class="custom-select" id="student-company" name="studentCompany" required>
+                    <select class="custom-select" id="student-company" name="studentCompany" required disabled>
                         ${companyToList}
                     </select>
                 </div>

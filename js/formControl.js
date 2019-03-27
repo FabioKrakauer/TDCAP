@@ -69,3 +69,9 @@ validateSlide = function(){
         $("#label-add-slide").addClass('btn-success')
     }
 }
+
+confirmRemove = function(el){
+    console.log(el)
+
+    return confirm('Ao remover todos os dados serão perdidos. Tem certeza que deseja remover?')
+}
