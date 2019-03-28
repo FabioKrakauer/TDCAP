@@ -254,13 +254,17 @@ editStudentView = function (studentData) {
 
 reportView = function (student) {
     let courses = ``
+    let inProgress = ``
+    let fromStart = ``
 
     $.getJSON('http://ramacciotti.org/tdc/api/course.php?course=0', function (courseAPIData) {
         coursesData = courseAPIData
     })
-        .done(function () {
+    .done(function () {
+        console.log(coursesData)
+        console.log(student)
             if ($.isEmptyObject(student.completed_courses)) {
-                courses = `<p>Este aluno ainda não completou nenhum curso</p>`
+                courses = `<p>Este aluno ainda não completou nenhum curso.</p>`
             } else {
                 for (var courseId in student.completed_courses) {
                     coursesData.forEach(function(course){
@@ -279,6 +283,39 @@ reportView = function (student) {
                     })
                 }
             }
+
+            if ($.isEmptyObject(student.inProgressCourses)) {
+                inProgress = `<p>Este aluno não tem nenhum curso em andamento.</p>`
+            } else {
+                for (var courseId in student.inProgressCourses) {
+                    coursesData.forEach(function(course){
+                        if(course.id == courseId){
+                            inProgress += `
+                                <li class='list-group-item d-flex justify-content-between'>
+                                    <p>${course.name}</p>
+                                    <p>${(student.inProgressCourses[courseId]==100) ? 99 : student.inProgressCourses[courseId]}%</p>
+                                </li>
+                            `
+                        }
+                    })
+                }
+            }
+
+            if ($.isEmptyObject(student.notViewed)) {
+                fromStart = `<p>Este aluno não tem novos cursos.</p>`
+            } else {
+                for (var courseId in student.notViewed) {
+                    coursesData.forEach(function(course){
+                        if(course.id == courseId){
+                            fromStart += `
+                                <li class='list-group-item d-flex justify-content-between'>
+                                    ${course.name}
+                                </li>
+                            `
+                        }
+                    })
+                }
+            }
             addContent()
         })
 
@@ -288,6 +325,18 @@ reportView = function (student) {
         <div class="container">
             <ul class="list-group list-group-flush mb-4">
                 ${courses}
+            </ul>
+        </div>
+        <h3 class="h4 text-white text-center p-1 mb-4">Cursos em Andamento</h3>
+        <div class="container">
+            <ul class="list-group list-group-flush mb-4">
+                ${inProgress}
+            </ul>
+        </div>
+        <h3 class="h4 text-white text-center p-1 mb-4">Cursos a Iniciar</h3>
+        <div class="container">
+            <ul class="list-group list-group-flush mb-4">
+                ${fromStart}
             </ul>
         </div>
         `
