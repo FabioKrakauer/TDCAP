@@ -136,6 +136,8 @@ editStudentView = function (studentData) {
     let companyData
     let courseToList = ``
     let companyToList = ``
+    let disabledButton = '<input type="submit" name="action" class="btn btn-sm btn-secondary float-right" value="Desativar">'
+    console.log(studentData);
 
 
     $.getJSON('http://ramacciotti.org/tdc/api/course.php?course=0', function (courseAPIData) {
@@ -145,6 +147,13 @@ editStudentView = function (studentData) {
             if (!($.isEmptyObject(studentData.course))) {
                 studentData.course.forEach(function (courseId) {
                     courseData.forEach(function (course) {
+                        if(!($.isEmptyObject(studentData.disabledCourses))){
+                            studentData.disabledCourses.forEach(function(disabledId){
+                                if(disabledId == course.id){
+                                    disabledButton = '<input type="submit" name="action" class="btn btn-sm btn-secondary float-right" value="Desativar" disabled>'
+                                }
+                            })
+                        }
                         if (course.id == courseId) {
                             courseHasList += `
                                 <li class='list-group-item d-flex justify-content-between'>
@@ -152,7 +161,7 @@ editStudentView = function (studentData) {
                                     <form class="ml-auto mr-2" action="../controller/disableCourseFromStudent.php" method="post">
                                         <input type="hidden" value="${studentData.id}" name="studentId">
                                         <input type="hidden" value="${courseId}" name="courseId">
-                                        <input type="submit" name="action" class="btn btn-sm btn-secondary float-right" value="Desativar">
+                                        ${disabledButton}
                                     </form>
                                     <form action="../controller/removeCourseFromStudent.php" method="post" onsubmit="return confirm('Ao remover todos os dados serão perdidos. Tem certeza que deseja remover?')">
                                         <input type="hidden" value="${studentData.id}" name="studentId">
@@ -261,8 +270,6 @@ reportView = function (student) {
         coursesData = courseAPIData
     })
     .done(function () {
-        console.log(coursesData)
-        console.log(student)
             if ($.isEmptyObject(student.completed_courses)) {
                 courses = `<p>Este aluno ainda não completou nenhum curso.</p>`
             } else {
