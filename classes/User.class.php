@@ -15,6 +15,7 @@ class User{
     private $password;
     private $company;
     private $courses;
+    private $activeCourses;
     private $admin;
     private $first_access;
 
@@ -34,12 +35,20 @@ class User{
         foreach($coursesFields as $position=>$course){
             array_push($this->courses, new Course($course["course_id"]));
         }
+        $this->activeCourses = array();
+        $activeCourses = $database->getFieldsValues("SELECT `course_id` FROM `user_course` WHERE `user_id`='$id' AND `disabled`='0'");
+        foreach($activeCourses as $position=>$course){
+            array_push($this->activeCourses, new Course($course["course_id"]));
+        }
     }
     function getID(){
         return $this->id;
     }
     function getName(){
         return $this->name;
+    }
+    function getActiveCourses(){
+        return $this->activeCourses;
     }
     function getEmail(){
         return $this->email;
