@@ -76,7 +76,7 @@ addStudentView = function () {
                         <input type="password" name="password-conf" id="password-conf" class="form-control" placeholder="Confirme a senha" required>
                     </div>
                     <div class="form-group col-12">
-                        <label>É administrador?</label>
+                        <label>Pode acessar painel administrativo?</label>
                         <div class="ml-4">
                             <input class="form-check-input" type="radio" name="adminRadio" id="adminTrue" value="1">
                             <label class="form-check-label" for="adminTrue">
