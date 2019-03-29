@@ -29,8 +29,6 @@
                 $userID = $user->getID();
                 $coursesNotDisabled = $database->getFieldsValues("SELECT `course_id` FROM `user_course` WHERE `disabled`='0' AND `user_id` = '$userID'");
                 foreach($coursesNotDisabled as $course){
-                    $id = $course["course_id"];
-                    array_push($array["course"], $id);
                     if($user->getCourseProgress($id) == 0){
                         $array["notViewed"][$id] = $user->getCourseProgress($id);
                     }else{
@@ -39,6 +37,9 @@
                             $array["inProgressCourses"][$id] = $user->getCourseProgress($id);
                         }
                     }
+                }
+                foreach($user->getCourses() as $course){
+                    array_push($array["course"], $course->getID());
                 }
                 $completededCourses = $database->getFieldsValues("SELECT `course_id`, `result` FROM `user_exam_result` WHERE `user_id`='$userID'");
                 foreach($completededCourses as $completed){
@@ -73,7 +74,6 @@
                 $coursesNotDisabled = $database->getFieldsValues("SELECT `course_id` FROM `user_course` WHERE `disabled`='0' AND `user_id` = '$userID'");
                 foreach($coursesNotDisabled as $course){
                     $id = $course["course_id"];
-                    array_push($result["course"], $id);
                     if($user->getCourseProgress($id) == 0){
                         $result["notViewed"][$id] = $user->getCourseProgress($id);
                     }else{
@@ -82,6 +82,9 @@
                             $result["inProgressCourses"][$id] = $user->getCourseProgress($id);
                         }
                     }
+                }
+                foreach($user->getCourses() as $course){
+                    array_push($result["course"], $course->getID());
                 }
                 $disabledCourses = $database->getFieldsValues("SELECT `course_id` FROM `user_course` WHERE `user_id` = '$userID' AND `disabled`='1'");
                 foreach($disabledCourses as $course){
