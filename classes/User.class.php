@@ -33,12 +33,16 @@ class User{
         $this->courses = [];
         $coursesFields = $database->getFieldsValues("SELECT `course_id` FROM `user_course` WHERE `user_id`='$id'");
         foreach($coursesFields as $position=>$course){
-            array_push($this->courses, new Course($course["course_id"]));
+            if($course["course_id"] != 0){
+                array_push($this->courses, new Course($course["course_id"]));
+            }
         }
         $this->activeCourses = array();
         $activeCourses = $database->getFieldsValues("SELECT `course_id` FROM `user_course` WHERE `user_id`='$id' AND `disabled`='0'");
         foreach($activeCourses as $position=>$course){
-            array_push($this->activeCourses, new Course($course["course_id"]));
+            if($course["course_id"] != 0){
+                array_push($this->activeCourses, new Course($course["course_id"]));
+            }
         }
     }
     function getID(){
