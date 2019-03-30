@@ -19,7 +19,7 @@ if(!$user->isAdmin()){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TDC - Educação Corporativa</title>
-
+    <link rel="icon" href="../img/logo.gif">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/admin.css">
@@ -45,7 +45,7 @@ if(!$user->isAdmin()){
                 <li class="py-1" onclick="showCourse()">Cursos Cadastrados</li>
             </ul>
         </nav>
-        <a href="../pages/logout.php?page=1" class="text-white float-right mr-3"><i class="fas fa-sign-out-alt"></i> Sair</a>
+        <a href="../pages/logout.php?page=0" class="text-white float-right mr-3"><i class="fas fa-sign-out-alt"></i> Sair</a>
         <a href="www.nksoftwares.com.br" hidden></a>
     </header>
     <main>
