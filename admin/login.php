@@ -24,6 +24,7 @@
                 <h6 class="text-white text-center mr-4">Transformando conhecimento em ação e ação em resultado</h6>
             </div>
         </div>
+        <a href="www.nksoftwares.com.br" hidden></a>
     </header>
     <main>
         <h1 class="text-white p-2 h5 text-center">Seja bem vindo. Faça login para entrar.</h1>

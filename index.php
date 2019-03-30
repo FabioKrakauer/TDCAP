@@ -41,6 +41,7 @@ $user = Auth::user();
         <a href="logout.php?page=1" class="text-white">sair</a>
       </div>
     </div>
+    <a href="www.nksoftwares.com.br" hidden></a>
     </header>
     <main>
       <h1 class="pl-3 text-white mb-4 h3">Seus cursos:</h1>

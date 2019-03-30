@@ -13,6 +13,7 @@
                 Olá, <?=$user->getName()?>
             </h6>
             <a href="logout.php?page=1" class="text-white"><i class="fas fa-sign-out-alt"></i> Sair</a>
+            <a href="www.nksoftwares.com.br" hidden></a>
         </div>
     </div>
 </header>

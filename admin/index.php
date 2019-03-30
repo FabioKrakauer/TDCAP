@@ -44,6 +44,7 @@ if(!$user->isAdmin()){
                 <li class="py-1" onclick="showCourse()">Cursos Cadastrados</li>
             </ul>
         </nav>
+        <a href="www.nksoftwares.com.br" hidden></a>
     </header>
     <main>
         <div class="hello">
