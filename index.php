@@ -22,6 +22,7 @@ $user = Auth::user();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/student.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   </head>
   <body>
     <header>
@@ -38,7 +39,7 @@ $user = Auth::user();
         <h6>
           Olá, <?= $user->getName() ?>
         </h6>
-        <a href="logout.php?page=1" class="text-white">sair</a>
+        <a href="logout.php?page=1" class="text-white"><i class="fas fa-sign-out-alt"></i> Sair</a>
       </div>
     </div>
     <a href="www.nksoftwares.com.br" hidden></a>
