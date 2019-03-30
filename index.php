@@ -47,7 +47,7 @@ $user = Auth::user();
       <div class="container">
         <div class="row">
           <?php
-              foreach($user->getCourse() as $course){
+              foreach($user->getActiveCourses() as $course){
                   ?>
                   <!-- LIST ALL USER COURSES -->
                   <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-4">

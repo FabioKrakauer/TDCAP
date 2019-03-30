@@ -31,6 +31,9 @@ class Company{
         return $this->id;
     }
     function getName(){
+        if($this->name == null){
+            return "Empresa não encontrada!";
+        }
         return $this->name;
     }
     function getCNPJ(){
