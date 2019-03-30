@@ -87,7 +87,7 @@ if ($user->getCourseProgress($course->getID()) == 100) {
   }
   ?>
           <div class="container">
-            <a href="<?="../pages/course.php?course=" . $courseID . "&slide=" . $course->getInicialSlide()->getID()?>"><i class="fas fa-arrow-left"></i> Voltar</a>
+            <a href="/"><i class="fas fa-arrow-left"></i> Voltar</a>
           </div>
         </div>
 

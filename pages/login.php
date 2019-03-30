@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 require_once '../config.inc.php';
 require_once APP_ROOT . '/classes/Auth.class.php';
 
-if(Auth::isLogged(false)){
+if (Auth::isLogged(false)) {
     //REDIRECT TO INDEX
     exit(header("Location: ../index.php"));
 }
@@ -36,21 +36,18 @@ if(Auth::isLogged(false)){
       </div>
     </div>
   </header>
-
-  <?php
-
-        if(isset($_GET["error"])){
-            $error =  $_GET["error"];
-            ?>
-            <!-- ERROR MESSAGE! HTML SUPPORT -->
-            
-            <!-- PRINT ERROR BELOW -->
-            <?= $error ?>
-<?php   }
-    ?>
     <main>
       <h1 class="text-white p-2 h5 text-center">Seja bem vindo. Faça login para entrar.</h1>
+
       <div class="container mt-5">
+      <?php
+        if (isset($_GET["error"])) {
+            $error = $_GET["error"]; ?>
+          <div class="alert alert-danger" role="alert">
+            <strong><?=$error?></strong>
+          </div>
+        <?php }
+        ?>
         <form action="../controller/loginController.php" method="post" class="col-10 col-md-6 mx-auto p-3 rounded border">
           <div class="form-group">
             <label for="email">E-mail:</label>
