@@ -44,11 +44,12 @@ if(!$user->isAdmin()){
                 <li class="py-1" onclick="showCourse()">Cursos Cadastrados</li>
             </ul>
         </nav>
+        <a href="../pages/logout.php?page=1" class="text-white float-right mr-3"><i class="fas fa-sign-out-alt"></i> Sair</a>
         <a href="www.nksoftwares.com.br" hidden></a>
     </header>
     <main>
         <div class="hello">
-            <h6 class="mr-4 pb-2 pt-4 mb-0 text-white">Olá, <span><?= $user->getName() ?></span></h6>
+            <h6 class="mr-4 pb-2 pt-4 mb-0 text-white mt-5 mt-lg-0">Olá, <span><?= $user->getName() ?></span></h6>
         </div>
         <div class="" id="dynamic-content">
             <h1 class="h3 text-white text-center py-1">TDC</h1>
