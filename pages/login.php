@@ -25,6 +25,9 @@ if (Auth::isLogged(false)) {
   </head>
   <body>
   <header>
+    <div class="top-bar">
+        <h6 class="text-white text-center py-1">Transformando conhecimento em ação e ação em resultado</h6>
+    </div>
     <div class="d-flex justify-content-between">
       <div class="p-3">
         <a href="index.php">
@@ -41,13 +44,13 @@ if (Auth::isLogged(false)) {
 
       <div class="container mt-5">
       <?php
-        if (isset($_GET["error"])) {
-            $error = $_GET["error"]; ?>
+if (isset($_GET["error"])) {
+    $error = $_GET["error"];?>
           <div class="alert alert-danger" role="alert">
             <strong><?=$error?></strong>
           </div>
         <?php }
-        ?>
+?>
         <form action="../controller/loginController.php" method="post" class="col-10 col-md-6 mx-auto p-3 rounded border">
           <div class="form-group">
             <label for="email">E-mail:</label>

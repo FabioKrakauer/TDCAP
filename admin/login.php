@@ -27,7 +27,7 @@
     </header>
     <main>
         <h1 class="text-white p-2 h5 text-center">Seja bem vindo. Faça login para entrar.</h1>
-        <div class="login-form container mt-5">
+        <div class="container mt-5">
         <?php
             if(isset($_GET["error"])){ ?>
                 <div class="alert alert-danger" role="alert">

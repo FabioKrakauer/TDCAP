@@ -87,7 +87,7 @@ if ($user->getCourseProgress($course->getID()) == 100) {
   }
   ?>
           <div class="container">
-            <a href="/"><i class="fas fa-arrow-left"></i> Voltar</a>
+            <a href="/tdc"><i class="fas fa-arrow-left"></i> Voltar</a>
           </div>
         </div>
 
