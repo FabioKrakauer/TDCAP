@@ -27,6 +27,8 @@ if(isset($_POST["action"])){
         $database->query("DELETE FROM `user_exam` WHERE `course_id`='$id'");
         $database->query("DELETE FROM `user_exam_result` WHERE `course_id`='$id'");
         $database->query("DELETE FROM `slides` WHERE `course_id`='$id'");
+        $database->query("DELETE FROM `user_course` WHERE `course_id`='$id'");
+        $database->query("DELETE FROM `user_slides` WHERE `course_id`='$id'");
 
         $_SESSION["message-user"] = "0;Curso deletado com sucesso!";
         header("Location: ../admin/");
