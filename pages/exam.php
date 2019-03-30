@@ -32,8 +32,6 @@ $user = Auth::user();
         <div class="container mt-5">
             <form action="../controller/examValidade.php" method="post">
                 <input type="hidden" name="courseID" value="<?= $course->getID() ?>">
-        
-                <!-- JAVA SCRIPT PLAY SECONDS TIME -->
                 <input type="hidden" name="time" value="2100" id="exam-time">
             <?php
                 $questions = 0; 
@@ -44,7 +42,7 @@ $user = Auth::user();
                         <p class="font-weight-bold"><?= $questions . "- " . $question->getQuestion() ?></p>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="1" aria-label="Text for screen reader">
+                                <input class="form-check-input" name="<?= $question->getID() ?>" id="" type="radio" value="1" aria-label="Text for screen reader" required>
                                 <?= $question->getAlternatives()["1"] ?>
                             </label>
                         </div>

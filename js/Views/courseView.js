@@ -139,6 +139,7 @@ editCourseView = function (courseData) {
             companyData.forEach(function (company) {
                 if ($.isEmptyObject(courseData.company)) {
                     companyToList += `<option value="" disabled selected>Empresa...</option>`
+                    companyToList += `<option value="${company.id}">${company.name}</option>`
                 } else if (company.id == courseData.company) {
                     companyToList += `<option value="${company.id}" selected>${company.name}</option>`
                 } else {
