@@ -38,6 +38,12 @@ if (isset($_GET["course"]) && isset($_GET["slide"])) {
       <div class="d-flex">
         <div class="slides-list container" id="slides-list">
            <ul class="list-group">
+           <div class="audio-content text-center py-3 my-3 border-top border-bottom">
+            <audio src="http://<?=$slide->getPathAudio()?>"></audio>
+            <audio controls="controls">
+              <source src="http://<?=$slide->getPathAudio()?>" type="audio/mpeg" />
+            </audio>
+           </div>
              <?php
 $fields = $database->getFieldsValues("SELECT `title`, `id` FROM `slides` WHERE `course_id`='" . $course->getID() . "' ORDER BY `orders` ASC");
     foreach ($fields as $row) {
@@ -55,13 +61,6 @@ if ($user->viewSlide($row["id"])) {
            <?php }
     ?>
            </ul>
-           <div class="audio-content text-center py-3 my-3 border-top border-bottom">
-            <audio src="http://<?=$slide->getPathAudio()?>"></audio>
-            <audio controls="controls">
-              <source src="http://<?=$slide->getPathAudio()?>" type="audio/mpeg" />
-            </audio>
-            
-           </div>
            <?php
 if ($user->getCourseProgress($course->getID()) == 100) {
         if ($user->getUserMakeExam($course->getID()) == false) {

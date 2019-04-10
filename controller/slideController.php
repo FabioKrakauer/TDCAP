@@ -27,6 +27,7 @@
             delete_files("../courses/" . $_POST["course_id"] . "/" . $slide->getSlideAudio());
             delete_files("../courses/" . $_POST["course_id"] . "/" . $slide->getSlideImage());
             $database->query("DELETE FROM `slides` WHERE `id`='$slideID'");
+            $database->query("DELETE FROM `user_slides` WHERE `slide_id`='$slideID'");
             $_SESSION["message-user"] = "0;Slide removido com sucesso!";
             header("Location: ../admin/");
         }
